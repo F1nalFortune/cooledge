@@ -14,7 +14,7 @@ class SignUp extends React.Component {
           onClick={ () => {
             dispatch(SignUp(input.value))
             input.value = '';
-         }}>
+        }}>
         </button>
       </div>
     );
