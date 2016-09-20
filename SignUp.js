@@ -8,15 +8,14 @@ class SignUp extends React.Component {
   render() {
     return(
       <div>
-        //<input ref={ node => { input = node; }} />
-        //<button
-          //className="btn"
-          //onClick={ () => {
-            //dispatch(SignUp(input.value))
-            //input.value = '';
-        //}}>
-        Hello world!
-        //</button>
+        <input ref={ node => { input = node; }} />
+        <button
+          className="btn"
+          onClick={ () => {
+            dispatch(SignUp(input.value))
+            input.value = '';
+        }}>
+        </button>
       </div>
     );
   }
