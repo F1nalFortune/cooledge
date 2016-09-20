@@ -9,14 +9,17 @@ import NotFound from './components/NotFound';
 import Dashboard from './components/Dashboard';
 import Login from './components/Login';
 import { UserAuthWrapper } from 'redux-auth-wrapper';
+import Landing from './components/Landing';
 
 const UserIsAuthenticated = UserAuthWrapper({
-	authSelector: state => state.auth,
+  authSelector: state => state.auth,
   predicate: auth => auth.isAuthenticated,
   redirectAction: history.push,
   failureRedirectPath: '/login',
   wrapperDisplayName: 'UserIsAuthenticated'
 });
+
+
 
 
 export default (

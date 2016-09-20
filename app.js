@@ -10,6 +10,7 @@ var LocalStrategy = require('passport-local').Strategy;
 
 mongoose.connect( 'mongodb://localhost/coollege' );
 
+
 var routes = require('./routes/index');
 var auth = require('./routes/auth');
 
