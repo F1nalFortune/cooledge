@@ -38,8 +38,8 @@ class App extends React.Component {
     return (
       <div>
         <nav>
-          <div className="nav-wrapper">
-            <a href="#!" className="brand-logo">My App</a>
+          <div className="nav-wrapper blue-grey darken-2">
+            <a href="/" className="brand-logo">Coollege</a>
             <a href="#" data-activates="mobile" className="button-collapse"><i className="material-icons">menu</i></a>
             <ul className="right hide-on-med-and-down">
              {this.links()}
