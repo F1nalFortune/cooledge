@@ -1,22 +1,33 @@
 import React from 'react';
-import $ from 'jquery';
 
 class Landing extends React.Component {
 	constructor(props){
 		super(props);
 		this.state = { showForm: false };
 		this.toggleForm = this.toggleForm.bind(this);
-	}
-
-	componentDidMount(){
-		$('#toggle').click( function(){
-			$('.form').toggle('show')
-		})
+		this.form = this.form.bind(this);
 	}
 
 	toggleForm(e){
 		e.preventDefault();
-		this.state.showForm = !this.state.showForm;
+		this.setState({ showForm: !this.state.showForm })
+	}
+
+	form() {
+		if (this.state.showForm) { 
+			return (
+	      <div>
+					<form className="form">
+						<input />
+						<button>
+						radarada
+						</button>
+					</form>
+				</div> 
+			)
+		} else {
+			return null
+		}
 	}
 
 	render(){
@@ -30,14 +41,7 @@ class Landing extends React.Component {
 					<button id='toggle' className='btn col s2 offset-s5' onClick={this.toggleForm}>Register now</button>
 				</div>
 
-				<div>
-					<form className="form" style={{ display: 'none' }}>
-						<input />
-						<button>
-						radarada
-						</button>
-					</form>
-				</div>
+        { this.form() }
 
 				<div className='row'>
 					<div className='col s3 blue darken-4'>
