@@ -4,7 +4,7 @@ import Items from './components/Items';
 import Item from './components/Item';
 import App from './containers/App';
 import About from './components/About';
-import Users from './components/Users';
+import User from './components/User';
 import NotFound from './components/NotFound';
 import Dashboard from './components/Dashboard';
 import Login from './components/Login';
@@ -27,9 +27,8 @@ export default (
     <Route path="/" component={App}>
       <IndexRoute component={Landing} />
       <Route path="/login" component={Login} />
-      <Route path='/dashboard' component={UserIsAuthenticated(Dashboard)} >
-        <Route path="/dashboard/:id" component={UserIsAuthenticated(Users)} />
-      </Route>
+      <Route path='/dashboard' component={UserIsAuthenticated(Dashboard)} />
+      <Route path="/dashboard/:id" component={UserIsAuthenticated(User)} />
       <Route path="/about" component={About} />
       <Route path="/items" component={Items} >
         <Route path="/items/:id" component={Item} />

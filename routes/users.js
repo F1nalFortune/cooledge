@@ -4,9 +4,9 @@ var mongoose = require('mongoose');
 var User = require('../models/user');
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+// router.get('/', function(req, res, next) {
+//   res.send('respond with a resource');
+// });
 
 router.get('/', (req, res) => {
   User.find( (err, users) => {

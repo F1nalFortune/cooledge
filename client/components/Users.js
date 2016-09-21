@@ -24,7 +24,7 @@ class Users extends React.Component {
         <Link
           to={`/users/${user._id}`}
           key={user._id}
-          className"collection-item"
+          className="collection-item"
         >
           {`${user.first_name} ${user.last_name}`}
         </Link>
