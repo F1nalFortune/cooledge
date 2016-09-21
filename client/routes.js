@@ -10,6 +10,7 @@ import Dashboard from './components/Dashboard';
 import Login from './components/Login';
 import { UserAuthWrapper } from 'redux-auth-wrapper';
 import Landing from './components/Landing';
+import SignUp from './components/signUp';
 
 const UserIsAuthenticated = UserAuthWrapper({
   authSelector: state => state.auth,
@@ -29,6 +30,7 @@ export default (
       <Route path="/login" component={Login} />
       <Route path='/dashboard' component={UserIsAuthenticated(Dashboard)} />
       <Route path="/dashboard/:id" component={UserIsAuthenticated(User)} />
+      <Route path="/signup" component={SignUp} />
       <Route path="/about" component={About} />
       <Route path="/items" component={Items} >
         <Route path="/items/:id" component={Item} />

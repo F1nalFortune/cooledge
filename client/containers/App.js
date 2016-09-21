@@ -30,7 +30,12 @@ class App extends React.Component {
         </div>
       )
     } else {
-      return (<li><Link to="/login">Login</Link></li>);
+      return (
+        <div>
+          <li><Link to="/login">Login</Link></li>
+          <li><Link to="/signup">Sign Up</Link></li>
+        </div>
+        );
     }
   }
 
