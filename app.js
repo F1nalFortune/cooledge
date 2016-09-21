@@ -13,6 +13,7 @@ mongoose.connect( 'mongodb://localhost/coollege' );
 
 var routes = require('./routes/index');
 var auth = require('./routes/auth');
+var items = require('./routes/items');
 
 var app = express();
 
@@ -53,7 +54,9 @@ passport.deserializeUser(User.deserializeUser());
 
 //API ROUTES
 app.use('/api/auth', auth);
+app.use('/api/items', items);
 app.use('*', routes);
+
 
 // error handlers
 

@@ -1,18 +1,15 @@
 import React from 'react';
-import $ from 'jquery';
 
-class Item extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+const Item = ({ id, name, condition  }) => (
+  <ul>
+    <li>
+      {name}
+    </li>
+    <li>
+      {condition}
+    </li>
+  </ul>
 
-  render() {
-    return(
-      <div>
-      	an item
-      </div>
-    )
-  }
-};
+)
 
 export default Item;
