@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import { logout } from '../actions';
+import { logout, signin } from '../actions';
+import Login from '../components/Login';
 
 
 class App extends React.Component {
@@ -30,7 +31,11 @@ class App extends React.Component {
         </div>
       )
     } else {
-      return (<li><Link to="/login">Login</Link></li>);
+      return (
+        <div>
+          <Login history={this.props.history} location={this.props.location}/>
+        </div>
+      );
     }
   }
 
