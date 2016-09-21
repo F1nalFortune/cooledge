@@ -1,4 +1,5 @@
 import React from 'react';
+import SignUp from './SignUp';
 
 class Landing extends React.Component {
 	constructor(props){
@@ -17,12 +18,7 @@ class Landing extends React.Component {
 		if (this.state.showForm) { 
 			return (
 	      <div>
-					<form className="form">
-						<input />
-						<button>
-						radarada
-						</button>
-					</form>
+					<SignUp />
 				</div> 
 			)
 		} else {
