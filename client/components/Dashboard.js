@@ -17,32 +17,28 @@ class Dashboard extends React.Component {
   }
 
 	addItem(name, category, condition) {
-	let id = ++this.state.id;
+		let id = ++this.state.id;
 
-	this.setState({
-		items: [
-			{ name, category, condition, id },
-			...this.state.items
-		],
-		id,
-		showItemForm: "hidden"
-	});
-};
+		this.setState({
+			items: [
+				{ name, category, condition, id },
+				...this.state.items
+			],
+			id,
+			showItemForm: "hidden"
+		});
+	};
 
 
   render() {
     return (
 			<div>
-				<h2>Welcome to your Dashboard</h2>
-				<Link to='/dashboard/57e1f1cc618cc4284b33fb38'>User</Link>
+				<div>
+					<h2>Welcome to your Dashboard</h2>
+					<Link to='/dashboard/57e1f1cc618cc4284b33fb38'>User</Link>
+				</div>
+
 			</div>
-      <div>
-				{/* <Navbar />
-				<ItemForm
-				showItemForm={this.state.showItemForm}
-				addItem={this.addItem} />
-				<Item /> */}
-      </div>
     )
   }
 }
