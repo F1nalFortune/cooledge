@@ -32,17 +32,20 @@ class Dashboard extends React.Component {
 
   render() {
     return (
-			<div>
-				<h2>Welcome to your Dashboard</h2>
-				<Link to='/dashboard/57e1f1cc618cc4284b33fb38'>User</Link>
-			</div>
-      <div>
-				{/* <Navbar />
-				<ItemForm
-				showItemForm={this.state.showItemForm}
-				addItem={this.addItem} />
-				<Item /> */}
-      </div>
+    	<div>
+
+				<div>
+					<h2>Welcome to your Dashboard</h2>
+					<Link to='/dashboard/57e1f1cc618cc4284b33fb38'>User</Link>
+				</div>
+	      <div>
+					{/* <Navbar />
+					<ItemForm
+					showItemForm={this.state.showItemForm}
+					addItem={this.addItem} />
+					<Item /> */}
+	      </div>
+	    </div>
     )
   }
 }
