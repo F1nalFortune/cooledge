@@ -7,7 +7,7 @@ class Login extends React.Component {
     super(props);
     this.signUp = this.signUp.bind(this);
     this.signIn = this.signIn.bind(this);
-    let redirect = this.props.location.query.redirect || '/Dashboard';
+    let redirect = this.props.location.query.redirect || '/dashboard';
     this.state = { error: false, redirect };
   }
 
@@ -28,11 +28,10 @@ class Login extends React.Component {
   render() {
     return (
       <div>
-        <h2>Sign In</h2>
         <form onSubmit={this.signIn}>
-          <label><input ref="email" placeholder="email"/></label>
-          <label><input type='password' ref="password" placeholder="password" /></label><br />
-          <button className="btn" type="submit">login</button>
+          <label><li><input className="center-align" ref="email" placeholder="email"/></li></label>
+          <label><li><input className="center-align" type='password' ref="password" placeholder="password" /></li></label>
+          <li><button className="btn" type="submit">login</button></li>
         </form>
       </div>
      )

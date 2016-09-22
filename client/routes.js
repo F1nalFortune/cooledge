@@ -27,10 +27,9 @@ export default (
   <Route>
     <Route path="/" component={App}>
       <IndexRoute component={Landing} />
-      <Route path="/login" component={Login} />
-      <Route path='/dashboard' component={UserIsAuthenticated(Dashboard)} />
-      <Route path="/dashboard/:id" component={UserIsAuthenticated(User)} />
-      <Route path="/signup" component={SignUp} />
+      <Route path='/dashboard' component={UserIsAuthenticated(Dashboard)} >
+        <Route path="/dashboard/:id" component={UserIsAuthenticated(Users)} />
+      </Route>
       <Route path="/about" component={About} />
       <Route path="/items" component={Items} >
         <Route path="/items/:id" component={Item} />
