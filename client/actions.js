@@ -13,6 +13,9 @@ export const login = (email, password, history, redirect) => {
       sessionStorage.userId = id;
       dispatch({ type: 'LOGIN', id, token });
       history.push(redirect);
+      Materialize.toast('Login successful', 2000)
+   }).fail( data => {
+      Materialize.toast(data.responseText, 4000)
    });
   }
 }
@@ -29,7 +32,10 @@ export const signup = (email, password, history, redirect) => {
       sessionStorage.token = token;
       sessionStorage.userId = id;
       dispatch({ type: 'LOGIN', id, token });
-      history.push(redirect);
+      history.push(redirect)
+      Materialize.toast('Sign up successful', 2000)
+    }).fail(data => {
+      Materialize.toast(data.responseText, 4000)
     });
   }
 };

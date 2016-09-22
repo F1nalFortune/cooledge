@@ -28,7 +28,7 @@ export default (
     <Route path="/" component={App}>
       <IndexRoute component={Landing} />
       <Route path='/dashboard' component={UserIsAuthenticated(Dashboard)} >
-        <Route path="/dashboard/:id" component={UserIsAuthenticated(Users)} />
+        <Route path="/dashboard/:id" component={UserIsAuthenticated(User)} />
       </Route>
       <Route path="/about" component={About} />
       <Route path="/items" component={Items} >
