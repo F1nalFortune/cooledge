@@ -44,8 +44,11 @@ class App extends React.Component {
       <div>
         <nav>
           <div className="nav-wrapper blue-grey darken-2">
-            <a href="/" className="brand-logo">Coollege</a>
+            <a href="/" className="brand-logo center">Coollege</a>
             <a href="#" data-activates="mobile" className="button-collapse"><i className="material-icons">menu</i></a>
+            <ul className="left hide-on-med-and-down">
+              <li><a href="sass.html">About</a></li>
+            </ul>
             <ul className="right hide-on-med-and-down">
              {this.links()}
             </ul>
