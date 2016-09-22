@@ -1,5 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
+import Item from './Item';
+import Items from './Items';
 
 class User extends React.Component {
   // constructor(props) {
@@ -24,6 +26,8 @@ class User extends React.Component {
     return (
       <div className="container">
         User Component here
+        <Item />
+        <Items />
       </div>
     );
   }
