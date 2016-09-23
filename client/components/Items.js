@@ -51,7 +51,7 @@ class Items extends React.Component {
           <li>
             School Supplies
           </li>
-            <ul>
+            <ul className="supply">
               <li>
                 Pens
               </li>
@@ -65,7 +65,7 @@ class Items extends React.Component {
           <li>
             Dorm Supplies
           </li>
-            <ul>
+            <ul className="supply">
               <li>
                 Posters
               </li>
