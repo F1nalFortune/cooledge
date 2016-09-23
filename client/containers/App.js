@@ -19,7 +19,9 @@ class App extends React.Component {
  }
 
   componentDidMount() {
-    window.jQuery('.button-collapse').sideNav();
+    window.jQuery('.button-collapse').sideNav({
+      closeOnClick: true
+    });
   }
 
   links() {
@@ -47,7 +49,7 @@ class App extends React.Component {
             <a href="/" className="brand-logo center">Coollege</a>
             <a href="#" data-activates="mobile" className="button-collapse"><i className="material-icons">menu</i></a>
             <ul className="left hide-on-med-and-down">
-              <li><a href="sass.html">About</a></li>
+              <li><a href="/about">About</a></li>
             </ul>
             <ul className="right hide-on-med-and-down">
              {this.links()}
