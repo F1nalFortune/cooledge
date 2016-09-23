@@ -34,6 +34,20 @@ class Items extends React.Component {
     });
   }
 
+  deleteItem(id) {
+    this.setState({
+      items: this.state.items.filter( i => i._id !== id)
+    });
+
+    $.ajax({
+      url: `/api/items/${id}`,
+      type: 'DELETE'
+    }).fail( () => {
+      alert('Item failed to delete');
+      this.getItems();
+    });
+  }
+
   render() {
     let items = this.state.items.map( (item) => {
       return (
@@ -41,6 +55,9 @@ class Items extends React.Component {
         <Link to={`/items/${item._id}`} key={item._id} className="collection-item">
           {item.name}
         </Link>
+        <button className="btn red" onClick={() => this.deleteItem(item._id)}>
+        Delete
+        </button>
       </div>
       );
     });
