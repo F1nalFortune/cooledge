@@ -16,7 +16,7 @@ const UserIsAuthenticated = UserAuthWrapper({
   authSelector: state => state.auth,
   predicate: auth => auth.isAuthenticated,
   redirectAction: history.push,
-  failureRedirectPath: '/login',
+  failureRedirectPath: '/',
   wrapperDisplayName: 'UserIsAuthenticated'
 });
 
