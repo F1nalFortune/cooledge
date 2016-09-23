@@ -47,13 +47,37 @@ class Items extends React.Component {
 
     return (
       <div className="row">
-        <form className="col m4" ref="form" onSubmit={this.addItem}>
-          <input ref="name" placeholder="name" />
-          <input ref="category" placeholder="category" />
-          <input ref="condition" placeholder="condition" />
-          <button className="btn" type="submit">Add Item</button>
-        </form>
-        <ul className="col m8 collection">
+        <ul className="col s2 m4">
+          <li>
+            School Supplies
+          </li>
+            <ul>
+              <li>
+                Pens
+              </li>
+              <li>
+                Pencils
+              </li>
+              <li>
+                Notebooks
+              </li>
+            </ul>
+          <li>
+            Dorm Supplies
+          </li>
+            <ul>
+              <li>
+                Posters
+              </li>
+              <li>
+                Tapestries
+              </li>
+              <li>
+                Camera
+              </li>
+            </ul>
+        </ul>
+        <ul className="col s10 m8 collection">
           {items}
         </ul>
       </div>
