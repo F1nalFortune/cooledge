@@ -7,28 +7,7 @@ import { Link } from 'react-router';
 class Dashboard extends React.Component {
   constructor(props) {
     super(props)
-		this.addItem = this.addItem.bind(this);
-		this.toggleItemForm = this.toggleItemForm.bind(this);
   }
-
-  toggleItemForm() {
-    let formState = (this.state.showItemForm === 'hidden') ? 'show' : 'hidden';
-    this.setState({showItemForm: formState});
-  }
-
-	addItem(name, category, condition) {
-  	let id = ++this.state.id;
-
-  	this.setState({
-  		items: [
-  			{ name, category, condition, id },
-  			...this.state.items
-  		],
-  		id,
-  		showItemForm: "hidden"
-  	});
-  };
-
 
   render() {
     return (
