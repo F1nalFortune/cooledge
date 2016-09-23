@@ -1,5 +1,5 @@
 import React from 'react';
-import SignUp from './SignUp';
+import Register from './Register';
 
 class Landing extends React.Component {
 	constructor(props){
@@ -18,7 +18,7 @@ class Landing extends React.Component {
 		if (this.state.showForm) { 
 			return (
 	      <div>
-					<SignUp />
+					<Register />
 				</div> 
 			)
 		} else {
