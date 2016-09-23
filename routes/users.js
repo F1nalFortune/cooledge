@@ -14,20 +14,6 @@ router.get('/', (req, res) => {
   });
 });
 
-router.post('/', (req, res) => {
-  new User({
-    name : req.body.name,
-    password : req.body.password,
-    email : req.body.email,
-    year : req.body.year,
-    gender : req.body.gender,
-    username : req.body.username,
-    age : req.body.age
-  }).save( (err, user) => {
-    res.json(user);
-  });
-});
-
 router.get('/:id', (req, res) => {
   User.findById(req.params.id, (err, user) => {
     res.json(user);

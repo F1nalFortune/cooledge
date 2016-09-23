@@ -5,8 +5,8 @@ var passport = require('passport');
 
 
 router.post('/signup', function(req, res) {
-  debugger
-  User.register(new User({username: req.body.email}), req.body.password, function(err, user) {
+  User.register(new User({username: req.body.email}),
+   req.body.password, req.body.year, req.body.age, req.body.gender, req.body.school, function(err, user) {
     if (err)
       return res.json(500, err.message);
  
