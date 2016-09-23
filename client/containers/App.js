@@ -8,7 +8,7 @@ import Login from '../components/Login';
 class App extends React.Component {
   constructor(props) {
     super(props);
-     this.links = this.links.bind(this);
+    this.links = this.links.bind(this);
   }
 
   componentWillMount() {
