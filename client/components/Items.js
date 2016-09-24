@@ -17,12 +17,18 @@ class Items extends React.Component {
   }
 
   componentWillMount() {
-    $.ajax({
-      url: '/api/items/',
-      type: 'GET'
-    }).done( (items) => {
-      this.setState({ items });
-    });
+    this.props.dispatch(fetchItems());
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.filter !== nextProps.filter) {
+      switch(nextProps.filter) {
+        case 'SHOW_ALL':
+          return this.props.items;
+        default:
+          let items = this.setState({ items: this.props.items.filter( item => item.category === nextProps.filter)})
+      }
+    }
   }
 
   updateItemUrl(id, url) {
@@ -103,7 +109,8 @@ class Items extends React.Component {
   }
 
   render() {
-    let items = this.state.items.map( (item) => {
+    let itemArr = this.props.filter === 'SHOW_ALL' ? this.props.items : this.state.items;
+    let items = itemArr.map( (item) => {
       return (
       <div className="row">
         <Link to={`/items/${item._id}`} key={item._id} className="collection-item">
@@ -170,7 +177,7 @@ class Items extends React.Component {
 }
 
 const mapStateToProps = (state) => {
- return { auth: state.auth };
+ return { auth: state.auth, filter: state.filter, items: state.items };
 }
 
 export default connect(mapStateToProps)(Items);

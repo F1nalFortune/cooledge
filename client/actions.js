@@ -46,6 +46,13 @@ export const logout = () => {
  return { type: 'LOGOUT' };
 };
 
+export const setFilter = (category) => {
+  return {
+    type: 'SET_FILTER',
+    category
+  }
+}
+
 const getToken = () => {
  return Math.random().toString(36).substring(7)
 };
@@ -69,9 +76,14 @@ export const addItems = (text) => {
 
 export const fetchItems = () => {
   return (dispatch) => {
-    fetch('/api/items')
-    .then( res => res.json())
-    .then( json => dispatch(getItems(json)))
+    $.ajax({
+      url: '/api/items',
+      type: 'GET'
+    }).done( (items) => {
+      dispatch(getItems(items));
+    }).fail(data => {
+      console.log(data);
+    });
   }
 }
 

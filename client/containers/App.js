@@ -66,7 +66,7 @@ class App extends React.Component {
 }
 
 const mapStateToProps = (state) => {
- return { auth: state.auth };
+  return { auth: state.auth };
 }
 
 export default connect(mapStateToProps)(App);
