@@ -1,12 +1,17 @@
 import React from 'react';
 import $ from 'jquery';
+import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import { fetchItems } from '../actions';
 
 class Items extends React.Component {
   constructor(props) {
     super(props);
     this.addItem = this.addItem.bind(this);
-    this.state = { items: [] };
+    this.deleteItem = this.deleteItem.bind(this);
+    this.toggleForm = this.toggleForm.bind(this);
+    this.form = this.form.bind(this);
+    this.state = { items: [], showForm: false };
   }
 
   componentWillMount() {
@@ -25,13 +30,46 @@ class Items extends React.Component {
       type: 'POST',
       data: {
         name: this.refs.name.value,
+        description: this.refs.description.value,
         category: this.refs.category.value,
-        condition: this.refs.condition.value
+        condition: this.refs.condition.value,
+        userId: this.props.auth.id
       }
     }).done( (item) => {
       this.refs.form.reset();
       this.setState({ items: [ { ...item }, ...this.state.items ]});
+      this.props.dispatch(fetchItems())
     });
+  }
+
+  toggleForm(e){
+    e.preventDefault();
+    this.setState({ showForm: !this.state.showForm })
+  }
+
+  form() {
+    if (this.state.showForm) { 
+      return (
+        <div>
+          <form ref="form" onSubmit={(e) => this.addItem(e)}>
+            <input type="text" ref="name" placeholder="Item Name" />
+            <input rows="6" type="text" ref="description" placeholder="Item Description" />
+            <div className="input-field col s12">
+              <select className="browser-default" ref="category">
+                <option value="" disabled selected>Select a Category</option>
+                <option value="school">School Supplies</option>
+                <option value="dorm">Dorm Supplies</option>
+                <option value="electronics">Computers and Electronics</option>
+              </select>
+            </div>
+            <input type="text" ref="condition" placeholder="Condition of Item" />
+            <button className="btn blue-grey"type="submit">Add</button>
+          </form>
+        </div> 
+      )
+    } else {
+      return null
+    }
   }
 
   deleteItem(id) {
@@ -64,43 +102,58 @@ class Items extends React.Component {
     });
 
     return (
-      <div className="row">
-        <ul className="col s2 m4">
-          <li>
-            School Supplies
-          </li>
-            <ul className="supply">
+      <div>
+
+        <div className="row">
+          <div className="col s2 m4">
+            <div>
+              <button id='toggle' className='btn blue-grey' onClick={this.toggleForm}>Add An Item</button>
+              { this.form() }
+            </div>
+            <ul>
               <li>
-                Pens
+                School Supplies
               </li>
+                <ul className="supply">
+                  <li>
+                    Pens
+                  </li>
+                  <li>
+                    Pencils
+                  </li>
+                  <li>
+                    Notebooks
+                  </li>
+                </ul>
               <li>
-                Pencils
+                Dorm Supplies
               </li>
-              <li>
-                Notebooks
-              </li>
+                <ul className="supply">
+                  <li>
+                    Posters
+                  </li>
+                  <li>
+                    Tapestries
+                  </li>
+                  <li>
+                    Camera
+                  </li>
+                </ul>
             </ul>
-          <li>
-            Dorm Supplies
-          </li>
-            <ul className="supply">
-              <li>
-                Posters
-              </li>
-              <li>
-                Tapestries
-              </li>
-              <li>
-                Camera
-              </li>
+          </div>
+          <div className="col s10 m8 collection">
+            <ul>
+              {items}
             </ul>
-        </ul>
-        <ul className="col s10 m8 collection">
-          {items}
-        </ul>
+          </div>
+        </div>
       </div>
     );
   }
 }
 
-export default Items;
+const mapStateToProps = (state) => {
+ return { auth: state.auth };
+}
+
+export default connect(mapStateToProps)(Items);

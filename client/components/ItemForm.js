@@ -64,16 +64,25 @@ class ItemForm extends React.Component {
 
   render() {
     return (
-      <div className={this.props.showItemForm}>
-        <div className="container">
-          <form ref="itemForm" onSubmit={this.addItem}>
-            <input ref="name" placeholder="Name..." type="text" />
-            <input ref="category" placeholder="Category..." type="text" />
-            <input ref="condition" placeholder="Condition..." type="text" />
-            <button className="right btn">Submit</button>
-          </form>
+      <div>
+        <div>
+          <h2>Add an Item</h2>
+          <form ref="form" onSubmit={(e) => this.addItem(e)}>
+            <input type="text" ref="name" placeholder="Item Name" />
+            <input rows="6" type="text" ref="description" placeholder="Item Description" />
+            <div className="input-field col s12">
+              <select className="browser-default" ref="category">
+                <option value="" disabled selected>Select a Category</option>
+                <option value="school">School Supplies</option>
+                <option value="dorm">Dorm Supplies</option>
+                <option value="electronics">Computers and Electronics</option>
+              </select>
+            </div>
+            <input type="text" ref="condition" placeholder="Condition of Item" />
+            <button className="btn"type="submit">Add</button>
+          </form>
         </div>
-      </div>
+      </div>
     )
   }
 }

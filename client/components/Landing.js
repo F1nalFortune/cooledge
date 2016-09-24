@@ -34,7 +34,7 @@ class Landing extends React.Component {
 					<h1 className='col s7 offset-s3'>Welcome To Cooledge</h1>
 				</div>
 				<div className='row'>
-					<button id='toggle' className='btn col s2 offset-s5' onClick={this.toggleForm}>Register now</button>
+					<button id='toggle' className='btn col s2 offset-s5 blue-grey' onClick={this.toggleForm}>Register now</button>
 				</div>
 
         { this.form() }

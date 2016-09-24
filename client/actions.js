@@ -49,3 +49,49 @@ export const logout = () => {
 const getToken = () => {
  return Math.random().toString(36).substring(7)
 };
+
+export const addItems = (text) => {
+  return (dispatch) => {
+    fetch('/api/items',
+      {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ text: text })
+      }
+    )
+    .then( res => res.json())
+    .then( json => dispatch(item('ADD_ITEMS', json)))
+  }
+}
+
+export const fetchItems = () => {
+  return (dispatch) => {
+    fetch('/api/items')
+    .then( res => res.json())
+    .then( json => dispatch(getItems(json)))
+  }
+}
+
+
+const getItems = (items) => {
+  return {
+    type: 'GET_ITEMS',
+    items
+  }
+}
+
+const item = (type, item) => {
+  return {
+    type: type,
+    id: item._id,
+    name: item.name,
+    description: item.description,
+    category: item.category,
+    condition: item.condition,
+    userId: item.userId
+    
+  }
+}

@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var Item = require('../models/item');
-var Offer = 
 
 
 //ITEMS
@@ -13,29 +12,25 @@ router.get('/', function(req, res) {
   });
 });
 
-router.get('/:id', function(req, res) {
-  Item.findById(req.params.id, function(err, item) {
-    res.json(item);
-  });
-});
-
-router.post('/', function(req, res) {
-  new Item({
-    name: req.body.name,
-    category: req.body.category,
-    condition: req.body.condition,
-    userId: req.params.id
-  }).save( function(err, item) {
-    res.json(item)
-  })
-})
-
-router.delete('/:id', function(req, res) {
+router.delete('/items/:id', function(req, res) {
   Item.findById(req.params.id, function(err, item) {
     item.remove();
     res.status(200).send({success: true});
   })
 })
+
+router.post('/', function(req, res) {
+  new Item({
+    name: req.body.name,
+    category: req.body.category,
+    description: req.body.description,
+    condition: req.body.condition,
+    userId: req.params.userId
+  }).save( function(err, item) {
+    res.json(item)
+  })
+})
+
 
 // OFFER CRUD
 
