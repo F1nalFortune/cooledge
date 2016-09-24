@@ -43,6 +43,7 @@ class Items extends React.Component {
 
     this.setState({ items });
     this.props.dispatch(fetchItems());
+
   }
 
   addItem(e) {

@@ -25,6 +25,7 @@ router.delete('/:id', function(req, res) {
     res.status(200).send({success: true});
   })
 })
+
 router.put('/:id', function(req, res) {
   Item.findByIdAndUpdate(
     req.params.id,
