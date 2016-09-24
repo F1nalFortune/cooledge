@@ -42,9 +42,10 @@ class Items extends React.Component {
     $.ajax({
       url: `/api/items/${id}`,
       type: 'DELETE'
+    }).done( () => {
+      Materialize.toast('Item Deleted', 2000);
     }).fail( () => {
       alert('Item failed to delete');
-      this.getItems();
     });
   }
 
