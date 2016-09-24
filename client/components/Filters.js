@@ -10,7 +10,7 @@ class Filters extends React.Component {
 	}	
 
 	setFilter(filter) {
-		this.setState({ filter });
+		this.props.dispatch({ filter });
 	}
 
 	render() {
@@ -21,3 +21,5 @@ class Filters extends React.Component {
 		)
 	}
 }
+
+export default connect()(Filters);
