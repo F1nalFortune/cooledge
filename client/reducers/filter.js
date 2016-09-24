@@ -1,15 +1,7 @@
-const filter = (state = {filteredItems: false}, action ) => {
+const filter = (state = 'SHOW_ALL', action ) => {
 	switch (action.type) {
-		case 'ALL':
-			return {
-				filteredItems: true,
-				id: action.items
-			}
-		case 'ACTIVE':
-			return {
-				filteredItems: true,
-				id: action.item.id
-			}
+		case 'SET_FILTER':
+			return action.category
 		default:
 			return state
 	}

@@ -13,6 +13,8 @@ const items = (state = [], action) => {
           contact: action.contact
         }
       ]
+    default:
+      return state
     
   }
 }

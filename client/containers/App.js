@@ -66,7 +66,6 @@ class App extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(`state is: ${state.auth}`);
   return { auth: state.auth };
 }
 

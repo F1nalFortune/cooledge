@@ -2,6 +2,7 @@ import React from 'react';
 import ItemForm from './ItemForm';
 import Items from './Items';
 import { Link } from 'react-router';
+import Filter from './Filter';
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -17,6 +18,7 @@ class Dashboard extends React.Component {
 				</div>
 	      <div>
         <Items />
+        <Filter />
 	      </div>
 	    </div>
     )
