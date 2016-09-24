@@ -91,7 +91,8 @@ const item = (type, item) => {
     description: item.description,
     category: item.category,
     condition: item.condition,
-    userId: item.userId
+    userId: item.userId,
+    url: item.url
     
   }
 }

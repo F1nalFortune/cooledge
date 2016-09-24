@@ -13,9 +13,9 @@ class Dashboard extends React.Component {
     return (
     	<div>
 
-				<div>
-					<h2>Welcome to your Dashboard</h2>
-					<Link to='/dashboard/57e1f1cc618cc4284b33fb38'>User</Link>
+				<div className="row">
+					<h2 className="col s6">Welcome to your Dashboard</h2>
+					<h3 className="clo s6 right-align"><Link to='/dashboard/57e1f1cc618cc4284b33fb38'>User</Link></h3>
 				</div>
 	      <div>
         <Items />

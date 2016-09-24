@@ -7,13 +7,16 @@ const items = (state = [], action) => {
         ...state,
         {
           id: action.id, 
-          title: action.title, 
+          name: action.name, 
           description: action.description,
-          address: action.address,
-          contact: action.contact
+          category: action.category,
+          condition: action.condition,
+          userId: action.userId,
+          url: action.url
         }
       ]
-    
+    default:
+      return state
   }
 }
 

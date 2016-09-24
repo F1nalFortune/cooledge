@@ -7,6 +7,13 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var cloudinary = require('cloudinary');
+
+cloudinary.config({ 
+  cloud_name: 'devpoint', 
+  api_key: '344657681326869', 
+  api_secret: 'j0jbcQLpqlGZLMlD6B3OQdxkbMI' 
+});
 
 mongoose.connect( 'mongodb://localhost/coollege' );
 

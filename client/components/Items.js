@@ -3,6 +3,7 @@ import $ from 'jquery';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { fetchItems } from '../actions';
+import Upload from './Upload';
 
 class Items extends React.Component {
   constructor(props) {
@@ -10,6 +11,7 @@ class Items extends React.Component {
     this.addItem = this.addItem.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
     this.toggleForm = this.toggleForm.bind(this);
+    this.updateItemUrl = this.updateItemUrl.bind(this)
     this.form = this.form.bind(this);
     this.state = { items: [], showForm: false };
   }
@@ -21,6 +23,19 @@ class Items extends React.Component {
     }).done( (items) => {
       this.setState({ items });
     });
+  }
+
+  updateItemUrl(id, url) {
+    let items = this.state.items.map( item => {
+      if (item._id !== id) 
+        return item;
+      return {
+        ...item,
+        url
+      }
+    });
+
+    this.setState({ items })
   }
 
   addItem(e) {
@@ -71,7 +86,6 @@ class Items extends React.Component {
       return null
     }
   }
-
   deleteItem(id) {
     this.setState({
       items: this.state.items.filter( i => i._id !== id)
@@ -82,6 +96,7 @@ class Items extends React.Component {
       type: 'DELETE'
     }).done( () => {
       Materialize.toast('Item Deleted', 2000);
+      this.props.dispatch(fetchItems())
     }).fail( () => {
       alert('Item failed to delete');
     });
@@ -94,6 +109,8 @@ class Items extends React.Component {
         <Link to={`/items/${item._id}`} key={item._id} className="collection-item">
           {item.name}
         </Link>
+        <Upload updateItemUrl={this.updateItemUrl} id={item._id} />
+        <img height="250 px" src={item.url} />
         <button className="btn red" onClick={() => this.deleteItem(item._id)}>
         Delete
         </button>
