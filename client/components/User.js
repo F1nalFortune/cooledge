@@ -1,6 +1,8 @@
 import React from 'react';
 import $ from 'jquery';
 import Items from './Items';
+import ItemForm from './ItemForm';
+import App from '../containers/App';
 
 class User extends React.Component {
   constructor(props) {
@@ -45,6 +47,12 @@ class User extends React.Component {
     return (
       <div className="container">
         User Component here
+        <App
+          toggleItemForm={this.toggleItemForm}
+          showItemForm={this.state.showItemForm} />
+        <ItemForm
+          showItemForm={this.state.showItemForm}
+          addItem={this.addItem} />
       </div>
     );
   }

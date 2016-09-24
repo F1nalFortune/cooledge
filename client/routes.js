@@ -10,7 +10,7 @@ import Dashboard from './components/Dashboard';
 import Login from './components/Login';
 import { UserAuthWrapper } from 'redux-auth-wrapper';
 import Landing from './components/Landing';
-import SignUp from './components/signUp';
+import Register from './components/Register';
 
 const UserIsAuthenticated = UserAuthWrapper({
   authSelector: state => state.auth,

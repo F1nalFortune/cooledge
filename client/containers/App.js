@@ -8,7 +8,7 @@ import Login from '../components/Login';
 class App extends React.Component {
   constructor(props) {
     super(props);
-     this.links = this.links.bind(this);
+    this.links = this.links.bind(this);
   }
 
   componentWillMount() {
@@ -28,8 +28,8 @@ class App extends React.Component {
     if (this.props.auth.isAuthenticated) {
       return (
         <div>
-          {/*<li>
-            <a onClick={props.toggleSongForm}>
+          <li>
+            <a onClick={props.toggleItemForm}>
               <i className="material-icons">
                 {(props.showItemForm === "show") ? "clear_all" : "reorder"}
               </i>

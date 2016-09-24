@@ -4,16 +4,47 @@ class ItemForm extends React.Component {
   constructor(props) {
     super(props)
     this.addItem = this.addItem.bind(this);
+    this.state = { items: [] };
   }
 
+  //  addItem(e) {
+  //     e.preventDefault();
+  //     let name = this.refs.name.value;
+  //     let category = this.refs.category.value;
+  //     let condition = this.refs.condition.value;
+  //     this.refs.itemForm.reset();
+  //     this.props.addSongItem(name, category, condition);
+  //   }
+
    addItem(e) {
-      e.preventDefault();
-      let name = this.refs.name.value;
-      let category = this.refs.category.value;
-      let condition = this.refs.condition.value;
-      this.refs.itemForm.reset();
-      this.props.addSongItem(artist, song, comments);
-    }
+     e.preventDefault();
+     $.ajax({
+       url: '/api/items',
+       type: 'POST',
+       data: {
+         name: this.refs.name.value,
+         category: this.refs.category.value,
+         condition: this.refs.condition.value
+       }
+     }).done( (item) => {
+       this.refs.form.reset();
+       this.setState({ items: [ { ...item }, ...this.state.items ]});
+     });
+   }
+
+   deleteItem(id) {
+     this.setState({
+       items: this.state.items.filter( i => i._id !== id)
+     });
+
+     $.ajax({
+       url: `/api/items/${id}`,
+       type: 'DELETE'
+     }).fail( () => {
+       alert('Item failed to delete');
+       this.getItems();
+     });
+   }
  // addItem(e) {
  //   e.preventDefault();
  //   $.ajax({
