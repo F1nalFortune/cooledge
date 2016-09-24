@@ -6,7 +6,7 @@ class Item extends React.Component {
   constructor(props) {
     super(props);
     this.addOffer = this.addOffer.bind(this);
-    this.state = { item: {}, assignments: [] };
+    this.state = { item: {}, offers: [] };
   }
 
   componentWillMount() {
@@ -18,35 +18,36 @@ class Item extends React.Component {
     });
 
     $.ajax({
-      url: `/api/items/${this.props.params.id}/assignments`,
+      url: `/api/items/${this.props.params.id}/offers`,
       type: 'GET'
-    }).done( assignments => {
-      this.setState({ assignments })
+    }).done( offers => {
+      this.setState({ offers })
     })
   }
 
   addOffer(e) {
     e.preventDefault();
     $.ajax({
-      url: `/api/items/${this.props.params.id}/assignments`,
+      url: `/api/items/${this.props.params.id}/offers`,
       type: 'POST',
       data: {
         name: this.refs.name.value,
-        directions: this.refs.directions.value,
+        category: this.refs.category.value,
+        condition: this.refs.condition.value
       }
-    }).done( (assignment) => {
+    }).done( (offer) => {
       this.refs.form.reset();
-      this.setState({ assignments: [ { ...assignment }, ...this.state.assignments ]});
+      this.setState({ offers: [ { ...offer }, ...this.state.offers ]});
     });
   }
 
   deleteOffer(id) {
     this.setState({
-      assignments: this.state.assignments.filter( c => c._id !== id)
+      offers: this.state.offers.filter( c => c._id !== id)
     });
 
     $.ajax({
-      url: `/api/items/assignments/${id}`,
+      url: `/api/items/offers/${id}`,
       type: 'DELETE'
     }).fail( () => {
       alert('Item failed to delete');
@@ -56,17 +57,17 @@ class Item extends React.Component {
 
   render() {
     let { title, teacher, date } = this.state.item;
-    let assignments = this.state.assignments.map( assignment => {
+    let offers = this.state.offers.map( offer => {
       return (
         <div className="row">
-          <Link to={`/assignments/${assignment._id}`} key={assignment._id} className="collection-item">
-            {assignment.name}
+          <Link to={`/offers/${offer._id}`} key={offer._id} className="collection-item">
+            {offer.name}
           </Link>
-          <button className="btn red" onClick={() => this.deleteOffer(assignment._id)}>
+          <button className="btn red" onClick={() => this.deleteOffer(offer._id)}>
             Delete
           </button>
         </div>
-        /* <li className="collection-item" key={assignment._id}>{assignment.name}</li> */
+        /* <li className="collection-item" key={offer._id}>{offer.name}</li> */
       )
     })
     return (
@@ -90,7 +91,7 @@ class Item extends React.Component {
           <div className="row">
             <div className="col m12">
               <ul className="collection">
-                {assignments}
+                {offers}
               </ul>
             </div>
           </div>

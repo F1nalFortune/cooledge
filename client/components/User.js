@@ -47,9 +47,9 @@ class User extends React.Component {
     return (
       <div className="container">
         User Component here
-        <App
+        {/* <App
           toggleItemForm={this.toggleItemForm}
-          showItemForm={this.state.showItemForm} />
+          showItemForm={this.state.showItemForm} /> */}
         <ItemForm
           showItemForm={this.state.showItemForm}
           addItem={this.addItem} />

@@ -5,8 +5,8 @@ import { Link } from 'react-router';
 class Items extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { items: [] };
     this.addItem = this.addItem.bind(this);
+    this.state = { items: [] };
   }
 
   componentWillMount() {
