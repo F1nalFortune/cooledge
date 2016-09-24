@@ -28,13 +28,13 @@ class App extends React.Component {
     if (this.props.auth.isAuthenticated) {
       return (
         <div>
-          <li>
+          {/*<li>
             <a onClick={props.toggleSongForm}>
               <i className="material-icons">
                 {(props.showItemForm === "show") ? "clear_all" : "reorder"}
               </i>
             </a>
-          </li>
+          </li>*/}
           <li><Link to="/dashboard">Dashboard</Link></li>
           <li><a onClick={() => this.props.dispatch(logout())}>Logout</a></li>
         </div>
