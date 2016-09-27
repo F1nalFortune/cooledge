@@ -1,5 +1,6 @@
 import React from 'react';
 import Register from './Register';
+import {Slider, Slide} from 'react-materialize';
 
 class Landing extends React.Component {
 	constructor(props){
@@ -26,6 +27,7 @@ class Landing extends React.Component {
 		}
 	}
 
+
 	render(){
 
 		return(
@@ -33,28 +35,59 @@ class Landing extends React.Component {
 				<div className='row'>
 					<h1 className='col s7 offset-s3 sitefont'>Cooledge</h1>
 					<p className="sitefont">For College Kids</p>
-				</div>
-				<div className='row'>
-					<button id='toggle' className='btn col s2 offset-s5 blue-grey' onClick={this.toggleForm}>Register now</button>
-				</div>
-
-        { this.form() }
-
-				<div className='row'>
-					<div className='col s3 blue darken-4'>
-						this is the pic of a guy
+					{/*Landing Image Slider*/}
+					<div className='col s12'>
+						<Slider>
+							<Slide title='Make Friends' src='https://upload.wikimedia.org/wikipedia/commons/d/dc/Two_Friends_Shaking_Hands.jpg'>
+							</Slide>
+						</Slider>
 					</div>
-					<div className='col flow-text s3 blue darken-4'>
-						this is going to be the long area where all the listed items will be listed in a list.
+
+					<img className='col s3'
+						src="https://upload.wikimedia.org/wikipedia/commons/d/dc/9.13.09GuyDelisleByLuigiNovi.jpg"
+						alt="some_text"
+					/>
+
+					{/* Guy side */}
+					<div className='col s3 flow-text blue darken-4'>
+						<span className='col s4 offset-s4' style={{textDecoration: 'underline'}}>Has:</span>
+						<img className='col s5 offset-s4'
+							src="http://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c02931617.png"
+							alt="some_text"
+						/>
+						<span className='col s4 offset-s4' style={{textDecoration: 'underline'}}>Needs:</span>
+						<img className='col s5 offset-s4'
+							src="http://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c02931617.png"
+							alt="some_text"
+						/>
 					</div>
+
+					{/* Girl side */}
 					<div className='col flow-text s3 pink darken-4'>
-						this is going to be the long area where all the listed items will be listed in a list.
+						<span className='col s4 offset-s4' style={{textDecoration: 'underline'}}>Has:</span>
+						<img className='col s5 offset-s4'
+							src="http://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c02931617.png"
+							alt="some_text"
+						/>
+						<span className='col s4 offset-s4' style={{textDecoration: 'underline'}}>Needs:</span>
+						<img className='col s5 offset-s4'
+							src="http://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c02931617.png"
+							alt="some_text"
+						/>
 					</div>
-					<div className='col s3 pink darken-4'>
-						this is the pic of the girl
-					</div>
+
+					<img className='col s3'
+						src="http://www.publicdomainpictures.net/pictures/20000/velka/girl-with-red-apple-112979690098uy.jpg"
+						alt="some_text"	
+					/>
+
+				<div className='row'>
+					<button id='toggle' className='btn col s2 offset-s5' onClick={this.toggleForm}>Register now</button>
 				</div>
+				{/* render form*/}
+        { this.form() }
 			</div>
+		</div>
 		)
 	}
 }
