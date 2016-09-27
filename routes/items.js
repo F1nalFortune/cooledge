@@ -13,6 +13,12 @@ router.get('/', function(req, res) {
   });
 });
 
+router.get('/:id', function(req, res) {
+  Item.findById(req.params.id, function(err, item) {
+    res.json(item);
+  })
+})
+
 router.delete('/:id', function(req, res) {
   Item.findById(req.params.id, function(err, item) {
     item.remove();

@@ -21,8 +21,6 @@ const UserIsAuthenticated = UserAuthWrapper({
 });
 
 
-
-
 export default (
   <Route>
     <Route path="/" component={App}>
@@ -32,7 +30,6 @@ export default (
       <Route path="/about" component={About} />
       <Route path="/items" component={Items} />
       <Route path="/items/:id" component={Item} />
-      
       <Route path="*" component={NotFound} />
     </Route>
   </Route>

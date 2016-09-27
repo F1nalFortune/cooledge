@@ -17,12 +17,12 @@ class Item extends React.Component {
       this.setState({ item });
     });
 
-    $.ajax({
-      url: `/api/items/${this.props.params.id}/offers`,
-      type: 'GET'
-    }).done( offers => {
-      this.setState({ offers })
-    })
+    // $.ajax({
+    //   url: `/api/items/${this.props.params.id}/offers`,
+    //   type: 'GET'
+    // }).done( offers => {
+    //   this.setState({ offers })
+    // })
   }
 
   addOffer(e) {
@@ -66,8 +66,8 @@ class Item extends React.Component {
           <button className="btn red" onClick={() => this.deleteOffer(offer._id)}>
             Delete
           </button>
+        {/* <li className="collection-item" key={offer._id}>{offer.name}</li> */}
         </div>
-        /* <li className="collection-item" key={offer._id}>{offer.name}</li> */
       )
     })
     return (
