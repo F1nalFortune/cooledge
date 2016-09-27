@@ -16,7 +16,9 @@ class Filter extends React.Component {
 	render() {
 		return (
 			<div>
-			  <a onClick={() => this.setFilter('school')}>School Supplies</a>
+			  <a onClick={() => this.setFilter('school')}>School Supplies</a><br />
+			  <a onClick={() => this.setFilter('dorm')}>Dorm Supplies</a><br />
+			  <a onClick={() => this.setFilter('SHOW_ALL')}>All</a>
 			</div>
 		)
 	}
