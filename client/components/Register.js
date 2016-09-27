@@ -6,6 +6,8 @@ class Register extends React.Component {
   constructor(props){
     super(props);
     this.signUp = this.signUp.bind(this);
+    let redirect = '/dashboard';
+    this.state = { error: false, redirect };
   }
 
   signUp(e) {
@@ -15,7 +17,7 @@ class Register extends React.Component {
     let school = this.refs.school.value;
     let year = this.refs.year.value;
     let age = this.refs.age.value;
-    this.props.dispatch(signup(email, password, this.props.history, this.state.redirect));
+    this.props.dispatch(signup(email, password, school, year, age, this.props.history, this.state.redirect));
   }
 
   render() {
@@ -43,4 +45,4 @@ class Register extends React.Component {
   }
 }
 
-export default Register;
+export default connect()(Register);

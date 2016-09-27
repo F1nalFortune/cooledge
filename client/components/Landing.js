@@ -18,7 +18,7 @@ class Landing extends React.Component {
 		if (this.state.showForm) {
 			return (
 	      <div>
-					<Register />
+					<Register history={this.props.history} />
 				</div>
 			)
 		} else {

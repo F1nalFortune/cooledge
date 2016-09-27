@@ -20,12 +20,12 @@ export const login = (email, password, history, redirect) => {
   }
 }
 
-export const signup = (email, password, history, redirect) => {
+export const signup = (email, password, school, year, age, history, redirect) => {
   return (dispatch) => {
     $.ajax({
       url: '/api/auth/signup',
       type: 'POST',
-      data: { email, password }
+      data: { email, password, school, year, age }
     }).done( (res) => {
       let id = res.id
       let token = getToken();
