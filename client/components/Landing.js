@@ -42,11 +42,6 @@ class Landing extends React.Component {
 							</Slide>
 						</Slider>
 					</div>
-				</div>
-
-				<div className='row'>
-					<button id='toggle' className='btn col s2 offset-s5 blue-grey' onClick={this.toggleForm}>Register now</button>
-				</div>
 
 					<img className='col s3'
 						src="https://upload.wikimedia.org/wikipedia/commons/d/dc/9.13.09GuyDelisleByLuigiNovi.jpg"
@@ -92,6 +87,7 @@ class Landing extends React.Component {
 				{/* render form*/}
         { this.form() }
 			</div>
+		</div>
 		)
 	}
 }
