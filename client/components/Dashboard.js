@@ -14,7 +14,7 @@ class Dashboard extends React.Component {
     	<div>
 
 				<div>
-					<h2>Welcome to your Dashboard</h2>
+					<h2 className="sitefont">Welcome to your Dashboard</h2>
 					<Link to='/dashboard/57e1f1cc618cc4284b33fb38'>User</Link>
 				</div>
 	      <div>

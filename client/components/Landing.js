@@ -15,11 +15,11 @@ class Landing extends React.Component {
 	}
 
 	form() {
-		if (this.state.showForm) { 
+		if (this.state.showForm) {
 			return (
 	      <div>
 					<Register />
-				</div> 
+				</div>
 			)
 		} else {
 			return null
@@ -30,8 +30,9 @@ class Landing extends React.Component {
 
 		return(
 			<div className='container'>
-				<div className='row'> 
-					<h1 className='col s7 offset-s3'>Welcome To Cooledge</h1>
+				<div className='row'>
+					<h1 className='col s7 offset-s3 sitefont'>Cooledge</h1>
+					<p className="sitefont">For College Kids</p>
 				</div>
 				<div className='row'>
 					<button id='toggle' className='btn col s2 offset-s5 blue-grey' onClick={this.toggleForm}>Register now</button>

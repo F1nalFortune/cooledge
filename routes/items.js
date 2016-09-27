@@ -12,7 +12,7 @@ router.get('/', function(req, res) {
   });
 });
 
-router.delete('/items/:id', function(req, res) {
+router.delete('/:id', function(req, res) {
   Item.findById(req.params.id, function(err, item) {
     item.remove();
     res.status(200).send({success: true});
