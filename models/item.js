@@ -5,7 +5,8 @@ var Item = new Schema({
   category: String,
   description: String,
   condition: String,
-  userId: String
+  userId: String,
+  url: String
 });
 
 module.exports = mongoose.model( 'Item', Item );

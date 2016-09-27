@@ -1,8 +1,9 @@
 import React from 'react';
 import ItemForm from './ItemForm';
 import Items from './Items';
-import Navbar from './NavBar';
 import { Link } from 'react-router';
+import Filter from './Filter';
+import { connect } from 'react-redux';
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -10,24 +11,24 @@ class Dashboard extends React.Component {
   }
 
   render() {
+  	let id = this.props.auth.id;
     return (
     	<div>
-
 				<div>
 					<h2 className="sitefont">Welcome to your Dashboard</h2>
-					<Link to='/dashboard/57e1f1cc618cc4284b33fb38'>User</Link>
+					<Link to={`/dasboard/${id}`} >User</Link>
 				</div>
 	      <div>
         <Items />
-					{/* <Navbar />
-					<ItemForm
-					showItemForm={this.state.showItemForm}
-					addItem={this.addItem} />
-					<Item /> */}
+        <Filter />
 	      </div>
 	    </div>
     )
   }
 }
 
-export default Dashboard;
+const mapStateToProps = (state) => {
+  return { auth: state.auth };
+}
+
+export default connect(mapStateToProps)(Dashboard);

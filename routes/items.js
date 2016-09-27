@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var Item = require('../models/item');
+var cloudinary = require('cloudinary');
 
 
 //ITEMS
@@ -12,11 +13,26 @@ router.get('/', function(req, res) {
   });
 });
 
+router.get('/:id', function(req, res) {
+  Item.findById(req.params.id, function(err, item) {
+    res.json(item);
+  })
+})
+
 router.delete('/:id', function(req, res) {
   Item.findById(req.params.id, function(err, item) {
     item.remove();
     res.status(200).send({success: true});
   })
+})
+router.put('/:id', function(req, res) {
+  Item.findByIdAndUpdate(
+    req.params.id,
+    { $set : { url: req.body.url }},
+    { new: true },
+    function(err, item) {
+      res.json(item);
+  });
 })
 
 router.post('/', function(req, res) {
@@ -25,7 +41,7 @@ router.post('/', function(req, res) {
     category: req.body.category,
     description: req.body.description,
     condition: req.body.condition,
-    userId: req.params.userId
+    userId: req.body.userId
   }).save( function(err, item) {
     res.json(item)
   })

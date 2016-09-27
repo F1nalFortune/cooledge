@@ -3,6 +3,7 @@ import $ from 'jquery';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { fetchItems } from '../actions';
+import Upload from './Upload';
 
 class Items extends React.Component {
   constructor(props) {
@@ -10,17 +11,38 @@ class Items extends React.Component {
     this.addItem = this.addItem.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
     this.toggleForm = this.toggleForm.bind(this);
+    this.updateItemUrl = this.updateItemUrl.bind(this)
     this.form = this.form.bind(this);
     this.state = { items: [], showForm: false };
   }
 
   componentWillMount() {
-    $.ajax({
-      url: '/api/items/',
-      type: 'GET'
-    }).done( (items) => {
-      this.setState({ items });
+    this.props.dispatch(fetchItems());
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.filter !== nextProps.filter) {
+      switch(nextProps.filter) {
+        case 'SHOW_ALL':
+          return this.props.items;
+        default:
+          let items = this.setState({ items: this.props.items.filter( item => item.category === nextProps.filter)})
+      }
+    }
+  }
+
+  updateItemUrl(id, url) {
+    let items = this.state.items.map( item => {
+      if (item._id !== id) 
+        return item;
+      return {
+        ...item,
+        url
+      }
     });
+
+    this.setState({ items });
+    this.props.dispatch(fetchItems());
   }
 
   addItem(e) {
@@ -71,7 +93,6 @@ class Items extends React.Component {
       return null
     }
   }
-
   deleteItem(id) {
     this.setState({
       items: this.state.items.filter( i => i._id !== id)
@@ -82,18 +103,22 @@ class Items extends React.Component {
       type: 'DELETE'
     }).done( () => {
       Materialize.toast('Item Deleted', 2000);
+      this.props.dispatch(fetchItems())
     }).fail( () => {
       alert('Item failed to delete');
     });
   }
 
   render() {
-    let items = this.state.items.map( (item) => {
+    let itemArr = this.props.filter === 'SHOW_ALL' ? this.props.items : this.state.items;
+    let items = itemArr.map( (item) => {
       return (
       <div className="row">
         <Link to={`/items/${item._id}`} key={item._id} className="collection-item">
           {item.name}
         </Link>
+        <Upload updateItemUrl={this.updateItemUrl} id={item._id} />
+        <img height="250 px" src={item.url} />
         <button className="btn red" onClick={() => this.deleteItem(item._id)}>
         Delete
         </button>
@@ -153,7 +178,7 @@ class Items extends React.Component {
 }
 
 const mapStateToProps = (state) => {
- return { auth: state.auth };
+ return { auth: state.auth, filter: state.filter, items: state.items };
 }
 
 export default connect(mapStateToProps)(Items);
