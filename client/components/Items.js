@@ -52,7 +52,7 @@ class Items extends React.Component {
       type: 'POST',
       data: {
         name: this.refs.name.value,
-        description: this.refs.description.value,
+        description: this.;.L./refs.description.value,
         category: this.refs.category.value,
         condition: this.refs.condition.value,
         userId: this.props.auth.id
