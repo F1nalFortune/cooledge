@@ -24,11 +24,12 @@ class ItemForm extends React.Component {
        data: {
          name: this.refs.name.value,
          category: this.refs.category.value,
-         condition: this.refs.condition.value
+         condition: this.refs.condition.value,
+         userId: this.props.params.id
        }
      }).done( (item) => {
        this.refs.form.reset();
-       this.setState({ items: [ { ...item }, ...this.state.items ]});
+       this.props.addItem(item);
      });
    }
 
@@ -63,9 +64,10 @@ class ItemForm extends React.Component {
 
 
   render() {
+
     return (
       <div>
-        <div>
+        <div className="col s4 m3">
           <h2>Add an Item</h2>
           <form ref="form" onSubmit={(e) => this.addItem(e)}>
             <input type="text" ref="name" placeholder="Item Name" />
@@ -79,7 +81,7 @@ class ItemForm extends React.Component {
               </select>
             </div>
             <input type="text" ref="condition" placeholder="Condition of Item" />
-            <button className="btn"type="submit">Add</button>
+            <button className="btn" type="submit">Add</button>
           </form>
         </div>
       </div>
