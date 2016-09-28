@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { fetchItems } from '../actions';
 import Upload from './Upload';
+import Filter from './Filter';
 
 class Items extends React.Component {
   constructor(props) {
@@ -129,43 +130,13 @@ class Items extends React.Component {
 
     return (
       <div>
-
         <div className="row">
           <div className="col s2 m4">
             <div>
               <button id='toggle' className='btn blue-grey' onClick={this.toggleForm}>Add An Item</button>
               { this.form() }
+              <Filter />
             </div>
-            <ul>
-              <li>
-                School Supplies
-              </li>
-                <ul className="supply">
-                  <li>
-                    Pens
-                  </li>
-                  <li>
-                    Pencils
-                  </li>
-                  <li>
-                    Notebooks
-                  </li>
-                </ul>
-              <li>
-                Dorm Supplies
-              </li>
-                <ul className="supply">
-                  <li>
-                    Posters
-                  </li>
-                  <li>
-                    Tapestries
-                  </li>
-                  <li>
-                    Camera
-                  </li>
-                </ul>
-            </ul>
           </div>
           <div className="col s10 m8 collection">
             <ul>

@@ -20,7 +20,6 @@ class Dashboard extends React.Component {
 				</div>
 	      <div>
         <Items />
-        <Filter />
 	      </div>
 	    </div>
     )
