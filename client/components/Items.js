@@ -34,7 +34,7 @@ class Items extends React.Component {
 
   updateItemUrl(id, url) {
     let items = this.state.items.map( item => {
-      if (item._id !== id) 
+      if (item._id !== id)
         return item;
       return {
         ...item,
@@ -72,7 +72,7 @@ class Items extends React.Component {
   }
 
   form() {
-    if (this.state.showForm) { 
+    if (this.state.showForm) {
       return (
         <div>
           <form ref="form" onSubmit={(e) => this.addItem(e)}>
@@ -89,7 +89,7 @@ class Items extends React.Component {
             <input type="text" ref="condition" placeholder="Condition of Item" />
             <button className="btn blue-grey"type="submit">Add</button>
           </form>
-        </div> 
+        </div>
       )
     } else {
       return null
@@ -120,7 +120,7 @@ class Items extends React.Component {
           {item.name}
         </Link>
         <Upload updateItemUrl={this.updateItemUrl} id={item._id} />
-        <img height="250 px" src={item.url} />
+        <img src={item.url} />
         <button className="btn red" onClick={() => this.deleteItem(item._id)}>
         Delete
         </button>

@@ -1,6 +1,7 @@
 import React from 'react';
 import Register from './Register';
 import {Slider, Slide} from 'react-materialize';
+import { Button, Card, Row, Col } from 'react-materialize';
 
 class Landing extends React.Component {
 	constructor(props){
@@ -78,7 +79,7 @@ class Landing extends React.Component {
 
 					<img className='col s3'
 						src="http://www.publicdomainpictures.net/pictures/20000/velka/girl-with-red-apple-112979690098uy.jpg"
-						alt="some_text"	
+						alt="some_text"
 					/>
 
 				<div className='row'>

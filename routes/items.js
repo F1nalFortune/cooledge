@@ -67,7 +67,8 @@ router.delete('/offers/:id', function(req, res) {
 router.post('/:id/offers', function(req, res) {
   new Offer({
     name: req.body.name,
-    ItemId: req.params.id
+    offer: req.body.offer,
+    itemId: req.params.id
   }).save( function(err, offer) {
     res.json(offer)
   })

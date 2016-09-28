@@ -1,4 +1,8 @@
 import React from 'react';
+import $ from 'jquery';
+import { connect } from 'react-redux';
+import { fetchItems } from '../actions';
+
 
 class ItemForm extends React.Component {
   constructor(props) {
@@ -25,7 +29,7 @@ class ItemForm extends React.Component {
          name: this.refs.name.value,
          category: this.refs.category.value,
          condition: this.refs.condition.value,
-         userId: this.props.params.id
+         userId: this.props.auth.id
        }
      }).done( (item) => {
        this.refs.form.reset();
@@ -89,4 +93,8 @@ class ItemForm extends React.Component {
   }
 }
 
-export default ItemForm;
+const mapStateToProps = (state) => {
+  return { auth: state.auth, items: state.items };
+}
+
+export default connect(mapStateToProps)(ItemForm);
