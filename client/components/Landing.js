@@ -1,5 +1,6 @@
 import React from 'react';
 import Register from './Register';
+import { Button, Card, Row, Col } from 'react-materialize';
 
 class Landing extends React.Component {
 	constructor(props){
