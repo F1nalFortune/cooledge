@@ -11,17 +11,24 @@ class Dashboard extends React.Component {
   }
 
   render() {
-  	let id = this.props.auth.id;
+  let id = this.props.auth.id;
     return (
-    	<div>
-				<div>
-					<h2 className="sitefont">Welcome to your Dashboard</h2>
-					<Link to={`/dashboard/${id}`} >User</Link>
-				</div>
-	      <div>
+    <div>
+      <div className="row">
+        <div className="col s2 m2">
+          <Link className="btn blue-grey" to={`/dashboard/${id}`} >User</Link>
+        </div>
+        <div className="col s10 m10">
+          <h2 className="sitefont center">Welcome to your Dashboard</h2>
+        </div>
+      </div>
+      <div>
         <Items />
-	      </div>
 	    </div>
+	    <div>
+        <Filter />
+      </div>
+    </div>
     )
   }
 }

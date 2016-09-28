@@ -9,33 +9,31 @@ class User extends React.Component {
     super(props);
     this.addItem = this.addItem.bind(this);
     this.toggleItemForm = this.toggleItemForm.bind(this);
-    this.state = { user: {} };
+    this.state = { user: {}, items: [] };
   }
 
-  // componentWillMount() {
-  //   $.ajax({
-  //     url: `/api/users/${this.props.params.id}`,
-  //     type: 'GET'
-  //   }).done( (user) => {
-  //     this.setState({ user });
-  //   });
-  // }
+  componentWillMount() {
+    $.ajax({
+      url: `/api/users/${this.props.params.id}`,
+      type: 'GET'
+    }).done( (res) => {
+      let { user, items } = res;
+      this.setState({ user, items });
+    });
+  }
 
   toggleItemForm() {
     let formState = (this.state.showItemForm === 'hidden') ? 'show' : 'hidden';
     this.setState({showItemForm: formState});
   }
 
-  addItem(name, category, condition) {
-    let id = ++this.state.id;
+  addItem(item) {
 
     this.setState({
       items: [
-        { name, category, condition, id },
+        item,
         ...this.state.items
       ],
-      id,
-      showItemForm: "hidden"
     });
   };
 
@@ -44,15 +42,31 @@ class User extends React.Component {
   // <h3>{school}</h3>
   // <h3>{items}</h3>
   render() {
+    let items = this.state.items.map( (item) => {
+      return (
+        <div className="col s8 m9">
+          <ul>
+            <li className="collection-item">
+              {item.name}
+            </li>
+          </ul>
+          <button className="btn red" onClick={() => this.deleteItem(item._id)}>
+            Delete
+          </button>
+        </div>
+      )
+    })
     return (
       <div className="container">
         Welcome
-        {/* <App
-          toggleItemForm={this.toggleItemForm}
-          showItemForm={this.state.showItemForm} /> */}
-        <ItemForm
-          showItemForm={this.state.showItemForm}
-          addItem={this.addItem} />
+        <div className="row">
+          User Component here
+          <ItemForm
+            showItemForm={this.state.showItemForm}
+            addItem={this.addItem}
+          />
+        {/* list of items */}
+        </div>
       </div>
     );
   }
