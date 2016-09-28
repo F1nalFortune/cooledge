@@ -129,14 +129,13 @@ class Items extends React.Component {
 
     return (
       <div>
-
         <div className="row">
           <div className="col s2 m4">
             <div>
               <button id='toggle' className='btn blue-grey' onClick={this.toggleForm}>Add An Item</button>
               { this.form() }
+              <Filter />
             </div>
-            <Filter />
           </div>
           <div className="col s10 m8 collection">
             <ul>

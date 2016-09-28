@@ -16,7 +16,7 @@ class Dashboard extends React.Component {
     	<div>
 				<div>
 					<h2>Welcome to your Dashboard</h2>
-					<Link to='/dashboard/' + id >User</Link>
+					<Link to={`'/dashboard/${id}'`} >User</Link>
 				</div>
 	      <div>
         <Items />
