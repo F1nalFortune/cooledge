@@ -25,9 +25,6 @@ class Dashboard extends React.Component {
       <div>
         <Items />
 	    </div>
-	    <div>
-        <Filter />
-      </div>
     </div>
     )
   }

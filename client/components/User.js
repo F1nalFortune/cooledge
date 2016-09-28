@@ -12,7 +12,7 @@ import React from 'react';import $ from 'jquery';import Items from './Items';
     this.setState({      items: [        item,
         ...this.state.items      ],    });  };  // let { name, school, items }  // <h3>{name}</h3>  // <h3>{school}</h3>  // <h3>{items}</h3>  render() {    let items = this.state.items.map( (item) => {
       return (
-        <div className="col s8 m9">
+        <div>
           <ul>
             <li className="collection-item">
               {item.name}
@@ -25,16 +25,18 @@ import React from 'react';import $ from 'jquery';import Items from './Items';
       )
     })
     return (
-      <div className="container">
-        Welcome
         <div className="row">
           User Component here
-          <ItemForm
-            showItemForm={this.state.showItemForm}
-            addItem={this.addItem}
-          />
-        {/* list of items */}
-        </div>
+          <div className="col s3 m4">
+            <ItemForm
+              showItemForm={this.state.showItemForm}
+              addItem={this.addItem}
+            />
+          </div>
+          <div className="col s9 m8">
+            {/* list of items */}
+            {items}
+          </div>
       </div>
     );
   }

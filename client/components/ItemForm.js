@@ -71,7 +71,7 @@ class ItemForm extends React.Component {
 
     return (
       <div>
-        <div className="col s4 m3">
+        <div>
           <h2>Add an Item</h2>
           <form ref="form" onSubmit={(e) => this.addItem(e)}>
             <input type="text" ref="name" placeholder="Item Name" />
