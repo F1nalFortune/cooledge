@@ -25,6 +25,7 @@ class App extends React.Component {
   }
 
   links() {
+    let id = this.props.auth.id;
     if (this.props.auth.isAuthenticated) {
       return (
         <div>

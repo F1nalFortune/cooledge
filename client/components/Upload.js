@@ -63,7 +63,7 @@ class Upload extends React.Component {
         >
           <div>
             <br />
-            <button type="button" className="btn btn-info">Add Image</button>
+            <button type="button" className="blue-grey btn btn-info">Add Image</button>
           </div>
         </DropZone>
       </div>

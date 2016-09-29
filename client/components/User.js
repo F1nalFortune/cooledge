@@ -45,15 +45,26 @@ class User extends React.Component {
   // <h3>{items}</h3>
   render() {
     return (
-      <div className="container">
-        Welcome
-        {/* <App
-          toggleItemForm={this.toggleItemForm}
-          showItemForm={this.state.showItemForm} /> */}
+    <div>
+      <button className="btn">Add Profile Picture</button>
+      <div className="row">
+        <div id="profile-space" className="col s6 m6">
+
+        </div>
+        <div id="profile-info" className="col s6 m6">
+
+        </div>
+      </div>
+      <div className="row">
+        User Component here
         <ItemForm
           showItemForm={this.state.showItemForm}
           addItem={this.addItem} />
+        {items}
+        {/* list of items */}
       </div>
+      <hr/>
+    </div>
     );
   }
 }
