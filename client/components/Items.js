@@ -94,6 +94,7 @@ class Items extends React.Component {
       return null
     }
   }
+
   deleteItem(id) {
     this.setState({
       items: this.state.items.filter( i => i._id !== id)

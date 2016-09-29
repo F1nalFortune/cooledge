@@ -30,6 +30,7 @@ class App extends React.Component {
       return (
         <div>
           <li><Link to="/dashboard">Dashboard</Link></li>
+          <li><Link to={`/dashboard/${id}`}>Profile</Link></li>
           <li><a onClick={() => this.props.dispatch(logout())}>Logout</a></li>
         </div>
       )

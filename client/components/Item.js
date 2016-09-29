@@ -15,29 +15,35 @@ class Item extends React.Component {
       type: 'GET'
     }).done( (item) => {
       this.setState({ item });
+      console.log('hello got the item');
     });
 
-    // $.ajax({
-    //   url: `/api/items/${this.props.params.id}/offers`,
-    //   type: 'GET'
-    // }).done( offers => {
-    //   this.setState({ offers })
-    // })
+    $.ajax({
+      url: `/api/items/${this.props.params.id}/offers`,
+      type: 'GET'
+    }).done( offers => {
+      this.setState({ offers });
+      console.log('hello got the offer');
+    })
   }
 
   addOffer(e) {
     e.preventDefault();
+    var itemId = this.props.params.id;
     $.ajax({
-      url: `/api/items/${this.props.params.id}/offers`,
+      url: `/api/items/${itemId}/offers`,
       type: 'POST',
       data: {
         name: this.refs.name.value,
-        category: this.refs.category.value,
-        condition: this.refs.condition.value
+        offer: this.refs.offer.value,
+        itemId: itemId
       }
     }).done( (offer) => {
       this.refs.form.reset();
       this.setState({ offers: [ { ...offer }, ...this.state.offers ]});
+    }).fail( (err) => {
+      console.log("Add offer to item failed, message from Item.js component.");
+      console.log(err);
     });
   }
 
@@ -56,7 +62,7 @@ class Item extends React.Component {
   }
 
   render() {
-    let { title, teacher, date } = this.state.item;
+    let { name, category, condition, description } = this.state.item;
     let offers = this.state.offers.map( offer => {
       return (
         <div className="row">
@@ -72,9 +78,10 @@ class Item extends React.Component {
     })
     return (
         <div className="container">
-          <h4>{title}</h4>
-          <h5>{teacher}</h5>
-          <h5>{date}</h5>
+          <h4>Name: {name}</h4>
+          <h5>{description}</h5>
+          <h5>{category}</h5>
+          <h5>{condition}</h5>
           <hr />
           <div className="row">
             <div className="col m6">
@@ -83,7 +90,7 @@ class Item extends React.Component {
             <div className="col m6">
               <form ref="form" onSubmit={this.addOffer}>
                 <input ref="name" placeholder="name" />
-                <textarea ref="directions" placeholder="directions"></textarea>
+                <textarea ref="offer" placeholder="offer"></textarea>
                 <button className="btn" type="submit">Add Offer</button>
               </form>
             </div>

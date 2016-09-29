@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var User = require('../models/user');
+var Item = require('../models/item');
 
 /* GET users listing. */
 // router.get('/', function(req, res, next) {
@@ -14,9 +15,21 @@ router.get('/', (req, res) => {
   });
 });
 
+router.put('/:id', (req, res) => {
+  User.findByIdAndUpdate(
+    req.params.id,
+    { $set : { url: req.body.url }},
+    { new: true },
+    (err, user) => {
+      res.json(user);
+  });
+})
+
 router.get('/:id', (req, res) => {
-  User.findById(req.params.id, (err, user) => {
-    res.json(user);
+  User.findById(req.params.id, (err, users) => {
+    Item.find({userId: req.params.id}, (err, items) => {
+      res.json({users, items})
+    })
   });
 });
 
