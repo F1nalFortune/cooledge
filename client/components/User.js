@@ -12,10 +12,15 @@ class User extends React.Component {
     super(props);
     this.addItem = this.addItem.bind(this);
     this.toggleItemForm = this.toggleItemForm.bind(this);
+    this.getItems = this.getItems.bind(this);
     this.state = { user: {}, items: [] };
   }
 
   componentWillMount() {
+    this.getItems();
+  }
+
+  getItems() {
     $.ajax({
       url: `/api/users/${this.props.params.id}`,
       type: 'GET'
@@ -31,7 +36,20 @@ class User extends React.Component {
   }
 
   deleteItem(id) {
-    console.log('Database call or callback to parent to delete item here');
+    // this.setState({
+    //   items: this.state.items.filter( i => i._id !== id)
+    // });
+
+    $.ajax({
+      url: `/api/items/${id}`,
+      type: 'DELETE'
+    }).done( () => {
+      Materialize.toast('Item Deleted', 2000);
+      // this.props.dispatch(fetchItems());
+      this.getItems();
+    }).fail( () => {
+      alert('Item failed to delete');
+    });
   }
 
   addItem(item) {
