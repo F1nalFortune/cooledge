@@ -1,7 +1,9 @@
 import React from 'react';
 import Register from './Register';
+import Background from './Background';
 import {Slider, Slide} from 'react-materialize';
 import { Button, Card, Row, Col } from 'react-materialize';
+import { Parallax } from 'react-parallax';
 
 class Landing extends React.Component {
 	constructor(props){
@@ -32,16 +34,18 @@ class Landing extends React.Component {
 	render(){
 
 		return(
+		<div>
+		<Background />
 			<div className='container'>
 				<div className='row'>
 					<h1 className='col s7 offset-s3 sitefont'>Cooledge</h1>
 					<p className="sitefont">For College Kids</p>
 					{/*Landing Image Slider*/}
 					<div className='col s12'>
-						<Slider>
+						{/* <Slider>
 							<Slide title='Make Friends' src='https://upload.wikimedia.org/wikipedia/commons/d/dc/Two_Friends_Shaking_Hands.jpg'>
 							</Slide>
-						</Slider>
+						</Slider> */}
 					</div>
 
 					<img className='col s3'
@@ -89,6 +93,7 @@ class Landing extends React.Component {
         { this.form() }
 			</div>
 		</div>
+	</div>
 		)
 	}
 }

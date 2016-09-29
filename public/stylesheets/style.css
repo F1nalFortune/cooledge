@@ -28,3 +28,7 @@
 .sitefont{
   font-family: 'Fredericka the Great', cursive;
 }
+
+.parallax-container {
+  height: 250px;
+}
