@@ -3,6 +3,9 @@ import $ from 'jquery';
 import Items from './Items';
 import ItemForm from './ItemForm';
 import App from '../containers/App';
+import { Link } from 'react-router';
+import Upload from './Upload';
+import { connect } from 'react-redux';
 
 class User extends React.Component {
   constructor(props) {
@@ -21,10 +24,14 @@ class User extends React.Component {
       this.setState({ user, items });
     });
   }
-  
+
   toggleItemForm() {
     let formState = (this.state.showItemForm === 'hidden') ? 'show' : 'hidden';
     this.setState({showItemForm: formState});
+  }
+
+  deleteItem(id) {
+    console.log('Database call or callback to parent to delete item here');
   }
 
   addItem(item) {
@@ -40,22 +47,39 @@ class User extends React.Component {
   // <h3>{name}</h3>
   // <h3>{school}</h3>
   // <h3>{items}</h3>
+
+
+
   render() {
     let items = this.state.items.map( (item) => {
       return (
-        <div className="col s8 m9">
-          <ul>
-            <li className="collection-item">
-              {item.name}
-            </li>
-          </ul>
-          <button className="btn red" onClick={() => this.deleteItem(item._id)}>
-            Delete
-          </button>
+        <div>
+          <div className="col s6 m3">
+            <div className="card">
+              <div className="card-image">
+                <Upload updateItemUrl={this.updateItemUrl} id={item._id} />
+                <img width="500px" src={item.url} />
+              </div>
+              <span className="card-title">{item.name}</span>
+              <div className="card-content">
+                <p>I am a very simple card. I am good at containing small bits of information.
+                I am convenient because I require little markup to use effectively.</p>
+              </div>
+              <div className="card-action">
+                <Link to={`/items/${item._id}`} key={item._id} className="collection-item">
+                  Offers
+                </Link>
+                <button className="btn red" onClick={() => this.deleteItem(item._id)}>
+                  Delete
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
-      )
-    })
+      );
+    });
     return (
+    <div>
       <div className="row">
         User Component here
         {/* <App
@@ -68,8 +92,24 @@ class User extends React.Component {
         {items}
         {/* list of items */}
       </div>
+      <hr/>
+      <button className="btn">Add Profile Picture</button>
+      <div className="row">
+        <div id="profile-space" className="col s6 m6">
+
+        </div>
+        <div id="profile-info" className="col s6 m6">
+
+        </div>
+      </div>
+    </div>
+
     );
   }
 }
 
-export default User;
+const mapStateToProps = (state) => {
+  return { auth: state.auth, items: state.items };
+}
+
+export default connect(mapStateToProps)(User);

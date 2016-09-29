@@ -44,7 +44,7 @@ router.post('/', function(req, res) {
     condition: req.body.condition,
     userId: req.body.userId
   }).save( function(err, item) {
-    res.json(item)
+    res.json(item);
   })
 })
 
@@ -68,10 +68,12 @@ router.post('/:id/offers', function(req, res) {
   new Offer({
     name: req.body.name,
     offer: req.body.offer,
-    itemId: req.params.id
+    itemId: req.body.itemId
   }).save( function(err, offer) {
-    res.json(offer)
-  })
+    res.json(offer);
+  }).fail( function(err, data) {
+    console.log("Add offer to item failed.");
+  });
 })
 
 module.exports = router;

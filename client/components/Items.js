@@ -120,7 +120,7 @@ class Items extends React.Component {
           {item.name}
         </Link>
         <Upload updateItemUrl={this.updateItemUrl} id={item._id} />
-        <img src={item.url} />
+        <img width="500px" src={item.url} />
         <button className="btn red" onClick={() => this.deleteItem(item._id)}>
         Delete
         </button>

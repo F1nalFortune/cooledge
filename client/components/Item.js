@@ -29,16 +29,21 @@ class Item extends React.Component {
 
   addOffer(e) {
     e.preventDefault();
+    var itemId = this.props.params.id;
     $.ajax({
-      url: `/api/items/${this.props.params.id}/offers`,
+      url: `/api/items/${itemId}/offers`,
       type: 'POST',
       data: {
         name: this.refs.name.value,
-        offer: this.refs.offer.value
+        offer: this.refs.offer.value,
+        itemId: itemId
       }
     }).done( (offer) => {
       this.refs.form.reset();
       this.setState({ offers: [ { ...offer }, ...this.state.offers ]});
+    }).fail( (err) => {
+      console.log("Add offer to item failed, message from Item.js component.");
+      console.log(err);
     });
   }
 
