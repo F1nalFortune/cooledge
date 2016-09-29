@@ -42,7 +42,7 @@ class Upload extends React.Component {
                         .field('file', file);
 
     upload.end((err, response) => {
-      if (err) 
+      if (err)
         console.error(err);
 
       if (response.body.url !== '') {

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { fetchItems } from '../actions';
 import Upload from './Upload';
+import Filter from './Filter';
 
 class Items extends React.Component {
   constructor(props) {
@@ -33,7 +34,7 @@ class Items extends React.Component {
 
   updateItemUrl(id, url) {
     let items = this.state.items.map( item => {
-      if (item._id !== id) 
+      if (item._id !== id)
         return item;
       return {
         ...item,
@@ -71,7 +72,7 @@ class Items extends React.Component {
   }
 
   form() {
-    if (this.state.showForm) { 
+    if (this.state.showForm) {
       return (
         <div>
           <form ref="form" onSubmit={(e) => this.addItem(e)}>
@@ -88,7 +89,7 @@ class Items extends React.Component {
             <input type="text" ref="condition" placeholder="Condition of Item" />
             <button className="btn blue-grey"type="submit">Add</button>
           </form>
-        </div> 
+        </div>
       )
     } else {
       return null
@@ -119,7 +120,7 @@ class Items extends React.Component {
           {item.name}
         </Link>
         <Upload updateItemUrl={this.updateItemUrl} id={item._id} />
-        <img height="250 px" src={item.url} />
+        <img width="500px" src={item.url} />
         <button className="btn red" onClick={() => this.deleteItem(item._id)}>
         Delete
         </button>
@@ -129,43 +130,13 @@ class Items extends React.Component {
 
     return (
       <div>
-
         <div className="row">
           <div className="col s2 m4">
             <div>
               <button id='toggle' className='btn blue-grey' onClick={this.toggleForm}>Add An Item</button>
               { this.form() }
+              <Filter />
             </div>
-            <ul>
-              <li>
-                School Supplies
-              </li>
-                <ul className="supply">
-                  <li>
-                    Pens
-                  </li>
-                  <li>
-                    Pencils
-                  </li>
-                  <li>
-                    Notebooks
-                  </li>
-                </ul>
-              <li>
-                Dorm Supplies
-              </li>
-                <ul className="supply">
-                  <li>
-                    Posters
-                  </li>
-                  <li>
-                    Tapestries
-                  </li>
-                  <li>
-                    Camera
-                  </li>
-                </ul>
-            </ul>
           </div>
           <div className="col s10 m8 collection">
             <ul>
