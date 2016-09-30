@@ -88,6 +88,32 @@ export const fetchItems = () => {
   }
 }
 
+export const searchItems = (search) => {
+  return (dispatch) => {
+    $.ajax({
+      url: '/api/items',
+      type: 'GET'
+    }).done( res => {
+      let matches = []
+      let regex = new RegExp(search, 'i')
+      res.map( item => {
+        if (regex.test(item.name) || 
+            regex.test(item.category) ||
+            regex.test(item.description) ||
+            regex.test(item.condition)
+        )
+          matches.push(item)
+      })
+
+      dispatch({ type: 'GET_ITEMS', items: matches })
+    }).done( res => {
+      res.json;
+    }).fail( res => {
+      console.log('fail');
+    })
+  }
+}
+
 
 const getItems = (items) => {
   return {

@@ -2,12 +2,14 @@ import React from 'react';
 import $ from 'jquery';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import { fetchItems } from '../actions';
+import { fetchItems, searchItems } from '../actions';
 import Upload from './Upload';
+import Filter from './Filter';
 
 class Items extends React.Component {
   constructor(props) {
     super(props);
+    this.search = this.search.bind(this);
     this.addItem = this.addItem.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
     this.toggleForm = this.toggleForm.bind(this);
@@ -29,6 +31,10 @@ class Items extends React.Component {
           let items = this.setState({ items: this.props.items.filter( item => item.category === nextProps.filter)})
       }
     }
+  }
+
+  search() {
+    this.props.dispatch(searchItems(this.refs.searchForms.value));
   }
 
   updateItemUrl(id, url) {
@@ -137,36 +143,20 @@ class Items extends React.Component {
               <button id='toggle' className='btn blue-grey' onClick={this.toggleForm}>Add An Item</button>
               { this.form() }
             </div>
-            <ul>
-              <li>
-                School Supplies
-              </li>
-                <ul className="supply">
-                  <li>
-                    Pens
-                  </li>
-                  <li>
-                    Pencils
-                  </li>
-                  <li>
-                    Notebooks
-                  </li>
-                </ul>
-              <li>
-                Dorm Supplies
-              </li>
-                <ul className="supply">
-                  <li>
-                    Posters
-                  </li>
-                  <li>
-                    Tapestries
-                  </li>
-                  <li>
-                    Camera
-                  </li>
-                </ul>
-            </ul>
+            <div className="search-row">
+              <div className="top-bar">
+                <div className="search-container">
+                  <form ref="searchForm" 
+                    onChange={(e) => {
+                      e.preventDefault()
+                      this.search()
+                    }}>
+                    <input className="search input-field" ref="searchForms" type="search" placeholder="Search" />
+                  </form>
+                </div>
+              </div>
+            </div>
+            <Filter />
           </div>
           <div className="col s10 m8 collection">
             <ul>
@@ -180,7 +170,7 @@ class Items extends React.Component {
 }
 
 const mapStateToProps = (state) => {
- return { auth: state.auth, filter: state.filter, items: state.items };
+ return { id: state.auth.id, auth: state.auth, filter: state.filter, items: state.items };
 }
 
 export default connect(mapStateToProps)(Items);
