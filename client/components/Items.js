@@ -13,6 +13,7 @@ class Items extends React.Component {
     this.toggleForm = this.toggleForm.bind(this);
     this.updateItemUrl = this.updateItemUrl.bind(this)
     this.form = this.form.bind(this);
+    this.search = this.search.bind(this)
     this.state = { items: [], showForm: false };
   }
 
@@ -111,6 +112,15 @@ class Items extends React.Component {
     });
   }
 
+  search() {
+  let items = this.state.items;
+  let searched = this.refs.searchForm.value;
+  let regex = new RegExp(searched, 'i');
+  return this.props.items.filter( item => regex.searched(item.name))
+  this.refs.searchForm.reset();
+  this.setState({ items });
+  }
+
   render() {
     let itemArr = this.props.filter === 'SHOW_ALL' ? this.props.items : this.state.items;
     let items = itemArr.map( (item) => {
@@ -131,6 +141,24 @@ class Items extends React.Component {
     return (
       <div>
 
+        <div className="row">
+          <div className="col m2 offset-m6 search-row">
+            <div className="top-bar">
+              <div className="search-container">
+                <form ref="searchForm" 
+                  onSubmit={(e) => {
+                    e.preventDefault()
+                    this.search()
+                  }}>
+                  <input className="search input-field" ref="searchForms" type="search" placeholder="Search" />
+                </form>
+              </div>
+            </div>
+          </div>
+          <div className="btn-floating center-align">
+            <span><i className="material-icons">search</i></span>
+          </div>
+        </div>
         <div className="row">
           <div className="col s2 m4">
             <div>
@@ -188,6 +216,7 @@ class Items extends React.Component {
     );
   }
 }
+
 
 const mapStateToProps = (state) => {
  return { auth: state.auth, filter: state.filter, items: state.items };

@@ -44,4 +44,23 @@
   bottom: 0;
 }
 
+.search-container {
+  max-width: 950px;
+  margin: auto;
+  padding-right: 10px;
+}
+.search {
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 5px;
+  width: 75px;
+  -webkit-transition: all .5s ease;
+  -moz-transition: all .5s ease;
+  transition: all .5s ease;
+  float: right;
+}
+.search:focus {
+    width: 25em;
+    text-decoration: black;
+}
 
