@@ -46,8 +46,8 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <nav className="transparent">
-          <div className="nav-wrapper">
+        <nav>
+          <div className="nav-wrapper blue-grey darken-2">
             <a href="/" className="brand-logo center">Coollege</a>
             <a href="#" data-activates="mobile" className="button-collapse"><i className="material-icons">menu</i></a>
             <ul className="left hide-on-med-and-down">

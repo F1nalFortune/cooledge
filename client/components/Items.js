@@ -143,6 +143,7 @@ class Items extends React.Component {
               <button id='toggle' className='btn blue-grey' onClick={this.toggleForm}>Add An Item</button>
               { this.form() }
             </div>
+            <br />
             <div className="search-row">
               <div className="top-bar">
                 <div className="search-container">
@@ -156,6 +157,7 @@ class Items extends React.Component {
                 </div>
               </div>
             </div>
+            <br />
             <Filter />
           </div>
           <div className="col s10 m8 collection">
@@ -170,7 +172,7 @@ class Items extends React.Component {
 }
 
 const mapStateToProps = (state) => {
- return { id: state.auth.id, auth: state.auth, filter: state.filter, items: state.items };
+ return { auth: state.auth, filter: state.filter, items: state.items };
 }
 
 export default connect(mapStateToProps)(Items);
