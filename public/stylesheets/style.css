@@ -21,6 +21,12 @@
   border-color: grey;
 }
 
+.center{
+  text-align:center;
+  margin-left:auto;
+  margin-right:auto;
+}
+
 .supply{
   padding-left: 20px;
 }

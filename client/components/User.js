@@ -79,9 +79,9 @@ class User extends React.Component {
                 <img width="500px" src={item.url} />
               </div>
               <span className="card-title">{item.name}</span>
+              <p> {item.condition} </p>
               <div className="card-content">
-                <p>I am a very simple card. I am good at containing small bits of information.
-                I am convenient because I require little markup to use effectively.</p>
+                <p>{item.description}</p>
               </div>
               <div className="card-action">
                 <Link to={`/items/${item._id}`} key={item._id} className="collection-item">
