@@ -118,14 +118,6 @@ class Items extends React.Component {
     });
   }
 
-  search() {
-  let items = this.state.items;
-  let searched = this.refs.searchForm.value;
-  let regex = new RegExp(searched, 'i');
-  return this.props.items.filter( item => regex.searched(item.name))
-  this.refs.searchForm.reset();
-  this.setState({ items });
-  }
 
   render() {
     let itemArr = this.props.filter === 'SHOW_ALL' ? this.props.items : this.state.items;
@@ -152,7 +144,7 @@ class Items extends React.Component {
             <div className="top-bar">
               <div className="search-container">
                 <form ref="searchForm" 
-                  onSubmit={(e) => {
+                  onChange={(e) => {
                     e.preventDefault()
                     this.search()
                   }}>
@@ -171,21 +163,7 @@ class Items extends React.Component {
               <button id='toggle' className='btn blue-grey' onClick={this.toggleForm}>Add An Item</button>
               { this.form() }
             </div>
-            <br />
-            <div className="search-row">
-              <div className="top-bar">
-                <div className="search-container">
-                  <form ref="searchForm" 
-                    onChange={(e) => {
-                      e.preventDefault()
-                      this.search()
-                    }}>
-                    <input className="search input-field" ref="searchForms" type="search" placeholder="Search" />
-                  </form>
-                </div>
-              </div>
-            </div>
-            <br />
+            
             <Filter />
           </div>
           <div className="col s10 m8 collection">
