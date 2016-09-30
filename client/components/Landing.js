@@ -38,7 +38,7 @@ class Landing extends React.Component {
 		<Background />
 			<div className='container'>
 				<div className='row'>
-					<h1 className='col s7 offset-s3 sitefont'>Cooledge</h1>
+					<h1 className='col s7 offset-s3 sitefont'>Coolege</h1>
 					<p className="sitefont">For College Kids</p>
 					{/*Landing Image Slider*/}
 					<div className='col s12'>
