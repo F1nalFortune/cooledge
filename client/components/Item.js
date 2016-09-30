@@ -84,22 +84,18 @@ class Item extends React.Component {
           <h5>{condition}</h5>
           <hr />
           <div className="row">
-            <div className="col m6">
-              <h3>Add Offer</h3>
+            <div className="col s8 m9">
+              <ul className="collection">
+                {offers}
+              </ul>
             </div>
-            <div className="col m6">
+            <div className="col s4 m3">
+              <h3>Add Offer</h3>
               <form ref="form" onSubmit={this.addOffer}>
                 <input ref="name" placeholder="name" />
                 <textarea ref="offer" placeholder="offer"></textarea>
                 <button className="btn" type="submit">Add Offer</button>
               </form>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col m12">
-              <ul className="collection">
-                {offers}
-              </ul>
             </div>
           </div>
         </div>

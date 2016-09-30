@@ -99,6 +99,7 @@ class User extends React.Component {
                 <img width="500px" src={item.url} />
               </div>
               <span className="card-title">{item.name}</span>
+              <p> {item.condition} </p>
               <div className="card-content">
                 <p>{item.description}</p>
               </div>

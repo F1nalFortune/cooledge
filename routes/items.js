@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var Item = require('../models/item');
+var Offer = require('../models/offer');
 var cloudinary = require('cloudinary');
 
 
@@ -52,7 +53,7 @@ router.post('/', function(req, res) {
 // OFFER CRUD
 
 router.get('/:id/offers', function(req, res) {
-  Offer.find({ ItemId: req.params.id}, function(err, offers) {
+  Offer.findById(req.params.id, function(err, offers) {
     res.json(offers);
   });
 });
