@@ -89,8 +89,7 @@ class User extends React.Component {
 
 
   render() {
-    let itemArr = this.props.items;
-    let items = itemArr.map( (item) => {
+    let items = this.state.items.map( (item) => {
       return (
         <div>
           <div className="col s6 m3">
@@ -116,25 +115,6 @@ class User extends React.Component {
         </div>
       );
     });
-
-    // let user = this.state.users.map( (user) => {
-    //   return (
-    //     <div>
-    //       <div className="row">
-    //         <div className="col s12 m4">
-    //           <h3 key={user._id}>{user.username}</h3>
-    //           <img width="250px" src={user.url}/>
-    //           <ProfileUpload updateUserUrl={this.updateUserUrl} id={user._id} />
-    //         </div>
-    //         <div className="col s12 m8">
-    //           <span>{user.school}</span>
-    //           <span>{user.year}</span>
-    //           <span>{user.age}</span>
-    //         </div>
-    //       </div>
-    //     </div>
-    //   )
-    // });
 
     return (
     <div>

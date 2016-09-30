@@ -29,6 +29,13 @@
   font-family: 'Fredericka the Great', cursive;
 }
 
-.parallax-container {
-  height: 250px;
+.react-parallax-content {
+  height: 500px;
+  position: fixed;
+  top: -100px;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
+
+
