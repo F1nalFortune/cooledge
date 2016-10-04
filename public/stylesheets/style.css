@@ -37,8 +37,11 @@
 }
 
 .sitefont{
-  font-family: 'Fredericka the Great', cursive;
-  text-shadow: 2px 2px #000;
+  font-family: 'Playfair Display SC', serif;
+}
+body {
+  font-family: 'News Cycle', sans-serif;
+  font-size: 16px;
 }
 
 .search-container {
@@ -89,15 +92,31 @@ nav {
   margin-top: -20px;
 }
 .bigger {
-  padding-top: 25%;
+  padding-top: 28%;
 }
 .bigger:hover {
-  padding-top: 24%;
-  font-size: 2.5em;
-  line-height: 1.2em;
+  padding-top: 25%;
+  font-size: 3em;
+  line-height: 1.4em;
   transition: all .2s ease-in-out;
 }
-#space {
+.bigtext {
+  font-size: 10em;
+}
+
+.shadow {
+  text-shadow: 6px 4px 4px #000;
+}
+
+.space {
   padding-left: 20px;
   padding-right: 20px;
 }
+
+.small-shadow {
+  text-shadow: 2px 2px #000;
+}
+.slides {
+  margin-bottom: 20px;
+}
+

@@ -51,7 +51,7 @@ class App extends React.Component {
       <div>
         <nav>
           <div className="nav-wrapper">
-            <a href="/" className="brand-logo">Coollege</a>
+            <a href="/" className="sitefont brand-logo">Trade Square</a>
             <a href="#" data-activates="mobile" className="button-collapse"><i className="material-icons">menu</i></a>
             <ul className="right hide-on-med-and-down">
               {this.links()}

@@ -3,5 +3,7 @@ extends layout
 block content
   #content
   script(type='text/javascript').
-    $('.carousel.carousel-slider').carousel({full_width: true});
+    $(document).ready(function(){
+      $('.carousel').carousel({ full_width: true });
+    });
   script(src='/static/bundle.js')
