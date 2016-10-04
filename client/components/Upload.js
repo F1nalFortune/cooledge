@@ -54,19 +54,14 @@ class Upload extends React.Component {
 
   render() {
     return (
-      <div>
-        <DropZone
-          onDrop={this.onImageDrop}
-          style={{ border: 'none' }}
-          accept='image/*'
-          multiple={false}
-        >
-          <div>
-            <br />
-            <button type="button" className="blue-grey btn btn-info">Add Image</button>
-          </div>
-        </DropZone>
-      </div>
+      <DropZone
+        onDrop={this.onImageDrop}
+        style={{ border: 'none' }}
+        accept='image/*'
+        multiple={false}
+      >
+        <button type="button" className="blue-grey btn btn-info add-image-bt">Add Image</button>
+      </DropZone>
     )
   }
 }

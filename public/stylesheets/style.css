@@ -1,3 +1,8 @@
+/*img {
+  position: relative;
+  z-index: auto;
+}*/
+
 #about{
   margin-left: 10%;
   margin-right: 10%;
@@ -21,6 +26,35 @@
   border-color: grey;
 }
 
+.row.dashboard-bg {
+  background: url('../images/dashboardbg1.jpg') no-repeat center center fixed;
+  background-size: cover;
+/*  background-repeat: no-repeat;*/
+  height: 400px;
+  margin-bottom: 0px;
+}
+
+.item-filter-div {
+  background-color: #edefed;
+}
+
+.row.col.item-list-div {
+  position: relative;
+  z-index: 1;
+  padding-right: 0px
+  padding-left: 0px;
+
+}
+
+.dashboard-greeting {
+  padding-top: 6%
+}
+
+.add-image-bt {
+  position: relative;
+  z-index: 1;
+}
+
 .center{
   text-align:center;
   margin-left:auto;
@@ -41,6 +75,19 @@
   text-shadow: 2px 2px #000;
 }
 
+.sitefont{
+  font-family: 'Playfair Display SC', serif;
+}
+
+body {
+  font-family: 'News Cycle', sans-serif;
+  font-size: 16px;
+}
+
+.pagination.center {
+  margin-top: 0px;
+}
+
 .search-container {
   max-width: 950px;
   margin: auto;
@@ -57,15 +104,19 @@
   float: right;
 }
 .search:focus {
-    width: 25em;
+    width: 21em;
     text-decoration: black;
 }
 
 nav {
   background-color: rgba(0,0,0,0.65) !important;
   position: fixed;
-  z-index: +1;
+  z-index: +2;
 
+}
+
+a {
+  cursor: pointer; 
 }
 
 .top {
@@ -129,3 +180,30 @@ nav {
   z-index: +1;
   border-radius: 50px;
 }
+
+.bigger:hover {
+  padding-top: 25%;
+  font-size: 3em;
+  line-height: 1.4em;
+  transition: all .2s ease-in-out;
+}
+.bigtext {
+  font-size: 10em;
+}
+
+.shadow {
+  text-shadow: 6px 4px 4px #000;
+}
+
+.space {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.small-shadow {
+  text-shadow: 2px 2px #000;
+}
+.slides {
+  margin-bottom: 20px;
+}
+
