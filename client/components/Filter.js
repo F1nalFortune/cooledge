@@ -10,7 +10,7 @@ class Filter extends React.Component {
 	}	
 
 	setFilter(category) {
-	  this.props.dispatch(setFilter(category))
+	  this.props.dispatch(setFilter(category));
 	}
 
 	setItemCount(field){
@@ -20,9 +20,9 @@ class Filter extends React.Component {
 	render() {
 		return (
 			<div className="collection">
-			  <a className="collection-item" onClick={() => this.setFilter('school')}>School Supplies<span className="badge blue white-text">{this.setItemCount('school')}</span></a><br />
-			  <a className="collection-item" onClick={() => this.setFilter('dorm')}>Dorm Supplies<span className="badge blue white-text">{this.setItemCount('dorm')}</span></a><br />
-			  <a className="collection-item" onClick={() => this.setFilter('SHOW_ALL')}>All<span className="badge blue white-text">{this.props.items.length}</span></a>
+			  <a className="waves-effect collection-item transparent" onClick={() => this.setFilter('school')}>School Supplies<span className="badge blue-grey white-text">{this.setItemCount('school')}</span></a>
+			  <a className="waves-effect collection-item transparent" onClick={() => this.setFilter('dorm')}>Dorm Supplies<span className="badge blue-grey white-text">{this.setItemCount('dorm')}</span></a>
+			  <a className="waves-effect collection-item transparent" onClick={() => this.setFilter('SHOW_ALL')}>All<span className="badge blue-grey white-text">{this.props.items.length}</span></a>
 			</div>
 		)
 	}
