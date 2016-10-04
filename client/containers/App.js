@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { logout, signin } from '../actions';
 import Login from '../components/Login';
+import Footer from '../components/Footer'
 
 
 class App extends React.Component {
@@ -29,6 +30,7 @@ class App extends React.Component {
     if (this.props.auth.isAuthenticated) {
       return (
         <div>
+          <li><Link to="/about">About</Link></li>
           <li><Link to="/dashboard">Dashboard</Link></li>
           <li><Link to={`/dashboard/${id}`}>Profile</Link></li>
           <li><a onClick={() => this.props.dispatch(logout())}>Logout</a></li>
@@ -37,7 +39,8 @@ class App extends React.Component {
     } else {
       return (
         <div>
-          <Login history={this.props.history} location={this.props.location}/>
+          <li><Link to="/about">About</Link></li>
+          <li><Login history={this.props.history} location={this.props.location}/></li>
         </div>
       );
     }
@@ -47,22 +50,21 @@ class App extends React.Component {
     return (
       <div>
         <nav>
-          <div className="nav-wrapper blue-grey darken-2">
-            <a href="/" className="brand-logo center">Coollege</a>
+          <div className="nav-wrapper">
+            <a href="/" className="brand-logo">Coollege</a>
             <a href="#" data-activates="mobile" className="button-collapse"><i className="material-icons">menu</i></a>
-            <ul className="left hide-on-med-and-down">
-              <li><a href="/about">About</a></li>
-            </ul>
             <ul className="right hide-on-med-and-down">
-             {this.links()}
+              {this.links()}
             </ul>
             <ul className="side-nav" id="mobile">
-             {this.links()}
+              {this.links()}
             </ul>
           </div>
         </nav>
         {this.props.children}
+        <Footer />
       </div>
+
      )
   }
 }

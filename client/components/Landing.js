@@ -1,9 +1,7 @@
 import React from 'react';
+import $ from 'jquery';
 import Register from './Register';
-import Background from './Background';
-import {Slider, Slide} from 'react-materialize';
-import { Button, Card, Row, Col } from 'react-materialize';
-import { Parallax } from 'react-parallax';
+import Carousel from './Carousel';
 
 class Landing extends React.Component {
 	constructor(props){
@@ -35,65 +33,27 @@ class Landing extends React.Component {
 
 		return(
 		<div>
-		<Background />
-			<div className='container'>
-				<div className='row'>
-					<h1 className='col s7 offset-s3 sitefont'>Cooledge</h1>
-					<p className="sitefont">For College Kids</p>
-					{/*Landing Image Slider*/}
-					<div className='col s12'>
-						{/* <Slider>
-							<Slide title='Make Friends' src='https://upload.wikimedia.org/wikipedia/commons/d/dc/Two_Friends_Shaking_Hands.jpg'>
-							</Slide>
-						</Slider> */}
+			<div className="row top">
+				<div id='toggle' className='col s12 m12'>
+					<h1 className='sitefont center-align white-text'>Cooledge</h1>
+					<h3 className='sitefont center-align white-text'>Think Smarter, Not Harder - Let's Barter!</h3>
+					<div  className='col s12 m12'>
+						<br />
+						<button  className='btn col s2 offset-s5 blue-grey lighten-1' onClick={this.toggleForm}>Register now</button>
 					</div>
-
-					<img className='col s3'
-						src="https://upload.wikimedia.org/wikipedia/commons/d/dc/9.13.09GuyDelisleByLuigiNovi.jpg"
-						alt="some_text"
-					/>
-
-					{/* Guy side */}
-					<div className='col s3 flow-text blue darken-4'>
-						<span className='col s4 offset-s4' style={{textDecoration: 'underline'}}>Has:</span>
-						<img className='col s5 offset-s4'
-							src="http://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c02931617.png"
-							alt="some_text"
-						/>
-						<span className='col s4 offset-s4' style={{textDecoration: 'underline'}}>Needs:</span>
-						<img className='col s5 offset-s4'
-							src="http://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c02931617.png"
-							alt="some_text"
-						/>
-					</div>
-
-					{/* Girl side */}
-					<div className='col flow-text s3 pink darken-4'>
-						<span className='col s4 offset-s4' style={{textDecoration: 'underline'}}>Has:</span>
-						<img className='col s5 offset-s4'
-							src="http://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c02931617.png"
-							alt="some_text"
-						/>
-						<span className='col s4 offset-s4' style={{textDecoration: 'underline'}}>Needs:</span>
-						<img className='col s5 offset-s4'
-							src="http://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c02931617.png"
-							alt="some_text"
-						/>
-					</div>
-
-					<img className='col s3'
-						src="http://www.publicdomainpictures.net/pictures/20000/velka/girl-with-red-apple-112979690098uy.jpg"
-						alt="some_text"
-					/>
-
-				<div className='row'>
-					<button id='toggle' className='btn col s2 offset-s5' onClick={this.toggleForm}>Register now</button>
 				</div>
+			</div>
 				{/* render form*/}
-        { this.form() }
+	      { this.form() }
+			<div className="row">
+				<div className="center-align info col m4 blue-grey"><h4 className="white-text bigger">Have Something You Don't Need?</h4></div>
+				<div className="center-align info col m4 blue-grey"><h4 className="white-text bigger">Need Something You Want To Trade For?</h4></div>
+				<div className="center-align info col m4 blue-grey"><h4 className="white-text bigger">Try Bartering With Coollege Today!</h4></div>
+			</div>
+			<div className="row">
+				<Carousel />
 			</div>
 		</div>
-	</div>
 		)
 	}
 }
