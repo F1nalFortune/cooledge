@@ -23,8 +23,8 @@ class Register extends React.Component {
   render() {
     return(
       <div>
-        <h2>Sign Up</h2>
-          <form onSubmit={this.signUp}>
+        <h2 className="center-align">Sign Up</h2>
+          <form onSubmit={this.signUp} className="center-align">
             <input ref="newEmail" placeholder="email" />
             <input type="password" ref="newPassword" placeholder="password"/>
             <div className="input-field col s12">

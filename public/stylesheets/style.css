@@ -31,17 +31,14 @@
   padding-left: 20px;
 }
 
-.sitefont{
-  font-family: 'Fredericka the Great', cursive;
+.form-pad {
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
-.react-parallax-content {
-  height: 500px;
-  position: fixed;
-  top: -100px;
-  left: 0;
-  right: 0;
-  bottom: 0;
+.sitefont{
+  font-family: 'Fredericka the Great', cursive;
+  text-shadow: 2px 2px #000;
 }
 
 .search-container {
@@ -64,3 +61,71 @@
     text-decoration: black;
 }
 
+nav {
+  background-color: rgba(0,0,0,0.65) !important;
+  position: fixed;
+  z-index: +1;
+
+}
+
+.top {
+  background-image: url('http://res.cloudinary.com/mydevpoint/image/upload/v1475279082/unigates_lssl3p.jpg');
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 800px;
+  background-size: cover;
+  position: relative;
+  padding-top: 250px;
+}
+.toggle {
+  position: relative;
+  margin-top: 50%;
+}
+.info {
+  height: 400px;
+  width: 80%;
+  border-right: 1px solid #fff;
+  border-left: 1px solid #fff;
+  margin-top: -20px;
+}
+.bigger {
+  padding-top: 25%;
+}
+.bigger:hover {
+  padding-top: 24%;
+  font-size: 2.5em;
+  line-height: 1.2em;
+  transition: all .2s ease-in-out;
+}
+#space {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.toppad{
+  padding-top: 100px;
+}
+
+.bck {
+  background-image: url('http://st.depositphotos.com/1001925/2676/i/950/depositphotos_26761999-Background-of-aged-grungy-textured.jpg');
+  background-repeat: repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.user-info{
+  text-shadow: 2px 2px #ad663b;
+  color: white;
+  font-size: 3vw;
+}
+
+.profile-text{
+  color: white;
+  text-shadow: 2px 2px #000;
+}
+
+.add-form{
+  background-color: rgba(0,0,0,0.65) !important;
+  z-index: +1;
+  border-radius: 50px;
+}

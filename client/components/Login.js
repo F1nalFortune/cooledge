@@ -29,8 +29,8 @@ class Login extends React.Component {
     return (
       <div>
         <form onSubmit={this.signIn}>
-          <label><li><input className="center-align" ref="email" placeholder="email"/></li></label>
-          <label><li><input className="center-align" type='password' ref="password" placeholder="password" /></li></label>
+          <label><li><input className="form-pad center-align" ref="email" placeholder="email"/></li></label>
+          <label><li><input className="form-pad center-align" type='password' ref="password" placeholder="password" /></li></label>
           <li><button className="btn" type="submit">login</button></li>
         </form>
       </div>

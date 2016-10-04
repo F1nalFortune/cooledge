@@ -118,27 +118,48 @@ class User extends React.Component {
     });
 
     return (
-    <div>
-      <div className="row">
-        <div className="col s12 m4">
-          <h3>{this.state.users.username}</h3>
-          <img width="250px" src={this.state.users.url}/>
-          <ProfileUpload updateUserUrl={this.updateUserUrl} id={this.state.users._id} />
-        </div>
-        <div className="col s12 m8">
-          <span>{this.state.users.school}</span>
-          <span>{this.state.users.year}</span>
-          <span>{this.state.users.age}</span>
+
+    <div className="bck">
+      <div className="container toppad">
+        <div className="row">
+          <div className="col s12 m4">
+            <img width="250px" src={this.state.users.url}/>
+            <ProfileUpload updateUserUrl={this.updateUserUrl} id={this.state.users._id} />
+            <h5 className="profile-text">{this.state.users.username}</h5>  
+          </div>
+          <div className="col s12 m6 user-info">
+            <div>School:{this.state.users.school}</div>
+            <div>Graduating Year:{this.state.users.year}</div>
+            <div>Age: {this.state.users.age}</div>
+            <div>General: </div>
+            <textarea></textarea>
+          </div>
+          <div className="col m2 center">
+            <img width="20%" src='http://p6cdn4static.sharpschool.com/UserFiles/Servers/Server_868860/Image/Staff%20Images/2nd%20Grade/isprat/pencil.png'/>
+            <p> Edit Profile Button </p>
+          </div>
         </div>
       </div>
       <div className="row">
-        <ItemForm
-          showItemForm={this.state.showItemForm}
-          addItem={this.addItem} />
-        {items}
+        <div className="col s12 m12">
+          <ItemForm
+            className="add-form"
+            showItemForm={this.state.showItemForm}
+            addItem={this.addItem} />
+        </div>
+        <div className="col s6 m6">
+          <h3 className="profile-text center">Items available</h3>
+        </div>
+        <div className="col s6 m6">
+          <h3 className="profile-text center">Items Needed</h3>
+        </div>
+        <div className="col s12 m12">
+          {items}
+        </div>
       </div>
       <hr/>
     </div>
+
     );
   }
 }
