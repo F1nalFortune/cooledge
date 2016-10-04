@@ -20,8 +20,8 @@ class Filter extends React.Component {
 	render() {
 		return (
 			<div className="collection">
-			  <a className="collection-item" onClick={() => this.setFilter('school')}>School Supplies<span className="badge blue white-text">{this.setItemCount('school')}</span></a><br />
-			  <a className="collection-item" onClick={() => this.setFilter('dorm')}>Dorm Supplies<span className="badge blue white-text">{this.setItemCount('dorm')}</span></a><br />
+			  <a className="collection-item" onClick={() => this.setFilter('school')}>School Supplies<span className="badge blue white-text">{this.setItemCount('school')}</span></a>
+			  <a className="collection-item" onClick={() => this.setFilter('dorm')}>Dorm Supplies<span className="badge blue white-text">{this.setItemCount('dorm')}</span></a>
 			  <a className="collection-item" onClick={() => this.setFilter('SHOW_ALL')}>All<span className="badge blue white-text">{this.props.items.length}</span></a>
 			</div>
 		)

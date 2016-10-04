@@ -21,6 +21,20 @@
   border-color: grey;
 }
 
+.dashboard-bg {
+  background-image: url('../images/dashboardbg1.jpg');
+  background-repeat: no-repeat;
+  height: 350px;
+}
+
+.item-filter-div {
+  background-color: #edefed;
+}
+
+/*.filter-div {
+  position: fixed;
+}*/
+
 .center{
   text-align:center;
   margin-left:auto;

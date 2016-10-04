@@ -9,13 +9,11 @@ import Filter from './Filter';
 class Items extends React.Component {
   constructor(props) {
     super(props);
-    this.search = this.search.bind(this);
     this.addItem = this.addItem.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
     this.toggleForm = this.toggleForm.bind(this);
     this.updateItemUrl = this.updateItemUrl.bind(this)
     this.form = this.form.bind(this);
-    this.search = this.search.bind(this)
     this.state = { items: [], showForm: false };
   }
 
@@ -32,10 +30,6 @@ class Items extends React.Component {
           let items = this.setState({ items: this.props.items.filter( item => item.category === nextProps.filter)})
       }
     }
-  }
-
-  search() {
-    this.props.dispatch(searchItems(this.refs.searchForms.value));
   }
 
   updateItemUrl(id, url) {
@@ -138,32 +132,8 @@ class Items extends React.Component {
 
     return (
       <div>
-
-        <div className="row">
-          <div className="col m2 offset-m6 search-row">
-            <div className="top-bar">
-              <div className="search-container">
-                <form ref="searchForm" 
-                  onChange={(e) => {
-                    e.preventDefault()
-                    this.search()
-                  }}>
-                  <input className="search input-field" ref="searchForms" type="search" placeholder="Search" />
-                </form>
-              </div>
-            </div>
-          </div>
-          <div className="btn-floating center-align">
-            <span><i className="material-icons">search</i></span>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col s2 m4">
-            <div>
-              <button id='toggle' className='btn blue-grey' onClick={this.toggleForm}>Add An Item</button>
-              { this.form() }
-            </div>
-            
+        <div className="row item-filter-div">
+          <div className="col s2 m4 filter-div">
             <Filter />
           </div>
           <div className="col s10 m8 collection">
