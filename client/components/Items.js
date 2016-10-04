@@ -117,15 +117,11 @@ class Items extends React.Component {
     let itemArr = this.props.filter === 'SHOW_ALL' ? this.props.items : this.state.items;
     let items = itemArr.map( (item) => {
       return (
-      <div className="row">
-        <Link to={`/items/${item._id}`} key={item._id} className="collection-item">
-          {item.name}
+      <div className="col s10 m4 item-list-div">
+        <Link to={`/items/${item._id}`} key={item._id} >
+          <img height="250 px" width="370 px" src={item.url} />
         </Link>
         <Upload updateItemUrl={this.updateItemUrl} id={item._id} />
-        <img height="250 px" src={item.url} />
-        <button className="btn red" onClick={() => this.deleteItem(item._id)}>
-        Delete
-        </button>
       </div>
       );
     });
@@ -133,10 +129,10 @@ class Items extends React.Component {
     return (
       <div>
         <div className="row item-filter-div">
-          <div className="col s2 m4 filter-div">
+          <div className="col s2 m2 filter-div">
             <Filter />
           </div>
-          <div className="col s10 m8 collection">
+          <div className="col s10 m10">
             <ul>
               {items}
             </ul>
