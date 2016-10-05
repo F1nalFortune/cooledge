@@ -10,7 +10,7 @@ class Footer extends React.Component {
   render() {
     return(
       <div>
-        <footer className="page-footer blue-grey darken-4">
+        <footer className="page-footer blue-grey darken-4 footer-div">
           <div className="footer-copyright">
             <div className="container">
             © 2016 Copyright &nbsp; &nbsp; Coollege 

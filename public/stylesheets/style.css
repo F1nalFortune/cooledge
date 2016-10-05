@@ -33,21 +33,20 @@
 .row.dashboard-bg {
   background: url('../images/dashboardbg1.jpg') no-repeat center center fixed;
   background-size: cover;
-/*  background-repeat: no-repeat;*/
   height: 400px;
   margin-bottom: 0px;
 }
 
-.item-filter-div {
+.row.item-filter-div {
   background-color: #edefed;
+  margin-bottom: 0px;
 }
 
 .row.col.item-list-div {
   position: relative;
   z-index: 1;
-  padding-right: 0px
+  padding-right: 0px;
   padding-left: 0px;
-
 }
 
 .dashboard-greeting {
@@ -216,3 +215,6 @@ a {
   margin-bottom: 20px;
 }
 
+.page-footer.footer-div {
+  margin-top: 0px;
+}
