@@ -79,10 +79,10 @@ class ItemForm extends React.Component {
       <div>
         <div className="col s12 m12 add-form">
           <h2 className="sitefont profile-text">Add an Item</h2>
-          <form ref="form" onSubmit={(e) => this.addItem(e)}>
-            <input type="text" ref="name" placeholder="Item Name" />
+          <form className="white-text" ref="form" onSubmit={(e) => this.addItem(e)}>
+            <input type="text" ref="name" placeholder="Item Name" className="white-text" />
             <input rows="6" type="text" ref="description" placeholder="Item Description" />
-            <div className="input-field col s12">
+            <div className="input-field col s12 black-text">
               <select className="browser-default" ref="category">
                 <option value="" disabled selected>Select a Category</option>
                 <option value="school">School Supplies</option>
@@ -90,7 +90,7 @@ class ItemForm extends React.Component {
                 <option value="electronics">Computers and Electronics</option>
               </select>
             </div>
-            <div className="input-field col s12">
+            <div className="input-field col s12 black-text">
               <select className="browser-default" ref="needed">
                 <option value="" disabled selected>Item Status (Adding item to page / Requesting item)</option>
                 <option value="true">Adding</option>

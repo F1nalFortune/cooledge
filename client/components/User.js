@@ -191,7 +191,7 @@ class User extends React.Component {
             addItem={this.addItem} />
         </div>
         <div className="col s6 m6">
-          <h3 className="profile-text">Items available</h3>
+          <h3 className="profile-text center">Items available</h3>
           {availableItems}
         </div>
         <div className="col s6 m6">
