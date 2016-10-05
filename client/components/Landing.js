@@ -31,6 +31,10 @@ class Landing extends React.Component {
 		}
 	}
 
+	componentDidMount(){
+		window.jQuery('.carousel.carousel-slider').carousel({full_width: true, indicators: true});
+	}
+
 
 	render(){
 
@@ -48,12 +52,17 @@ class Landing extends React.Component {
 			</div>
 				{/* render form*/}
 	      { this.form() }
+
 			<div className="row">
-				<div className="center-align info col m4 blue-grey"><h3 className="white-text bigger">Have Something You Don't Need?</h3></div>
-				<div className="center-align info col m4 blue-grey"><h3 className="white-text bigger">Need Something You Want To Trade For?</h3></div>
-				<div className="center-align info col m4 blue-grey"><h3 className="white-text bigger">Try Bartering With <br /><span className="sitefont">Trade Square</span> Today!</h3></div>
+				<div className="center-align info col m4 blue-grey"><h4 className="white-text bigger">Have Something You Don't Need?</h4></div>
+				<div className="center-align info col m4 blue-grey"><h4 className="white-text bigger">Need Something You Want To Trade For?</h4></div>
+				<div className="center-align info col m4 blue-grey"><h4 className="white-text bigger">Try Bartering With Coollege Today!</h4></div>
 			</div>
-			<Carousel />
+			
+			<div className="carousel carousel-slider">
+				<img className="carousel-item" src="http://www.smashbros.com/images/og/sonic.jpg"/>
+				<img className="carousel-item" src="http://vignette2.wikia.nocookie.net/vsbattles/images/7/72/Tails_35.png/revision/latest?cb=20150503063714"/>
+			</div>
 		</div>
 		)
 	}
