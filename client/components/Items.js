@@ -57,7 +57,8 @@ class Items extends React.Component {
         description: this.refs.description.value,
         category: this.refs.category.value,
         condition: this.refs.condition.value,
-        userId: this.props.auth.id
+        userId: this.props.auth.id,
+        needed: this.refs.needed.value
       }
     }).done( (item) => {
       this.refs.form.reset();

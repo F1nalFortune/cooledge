@@ -37,6 +37,17 @@ class User extends React.Component {
     });
    }
 
+  addItem = () => {
+    $.ajax({
+      url: '/api/items',
+      type: 'GET'
+    }).done( (items) => {
+      this.setState({ items });
+    }).fail(data => {
+      console.log(data);
+    });
+  }
+
   updateItemUrl(id, url) {
     let items = this.state.items.map( item => {
       if (item._id !== id) 
@@ -89,32 +100,64 @@ class User extends React.Component {
 
 
   render() {
-    let items = this.state.items.map( (item) => {
-      return (
-        <div>
-          <div className="col s6 m3">
-            <div className="card">
-              <div className="card-image">
-                <Upload updateItemUrl={this.updateItemUrl} id={item._id} />
-                <img width="500px" src={item.url} />
-              </div>
-              <span className="card-title">{item.name}</span>
-              <p> {item.condition} </p>
-              <div className="card-content">
-                <p>{item.description}</p>
-              </div>
-              <div className="card-action">
-                <Link to={`/items/${item._id}`} key={item._id} className="collection-item">
-                  Offers
-                </Link>
-                <button className="btn red" onClick={() => this.deleteItem(item._id)}>
-                  Delete
-                </button>
+    let availableItems = this.state.items.map( (item) => {
+      console.log(item.needed);
+      if (item.needed) {
+        return (
+          <div>
+            <div className="col s6 m3">
+              <div className="card">
+                <div className="card-image">
+                  <Upload updateItemUrl={this.updateItemUrl} id={item._id} />
+                  <img width="500px" src={item.url ? item.url : {} } />
+                </div>
+                <span className="card-title">{item.name}</span>
+                <p> {item.condition} </p>
+                <div className="card-content">
+                  <p>{item.description}</p>
+                </div>
+                <div className="card-action">
+                  <Link to={`/items/${item._id}`} key={item._id} className="collection-item">
+                    Offers
+                  </Link>
+                  <button className="btn red" onClick={() => this.deleteItem(item._id)}>
+                    Delete
+                  </button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      );
+        );
+      }
+    });
+    let wantedItems = this.state.items.map( (item) => {
+      if (!item.needed) {
+        return (
+          <div>
+            <div className="col s6 m3">
+              <div className="card">
+                <div className="card-image">
+                  <Upload updateItemUrl={this.updateItemUrl} id={item._id} />
+                  <img width="500px" src={item.url ? item.url : {} } />
+                </div>
+                <span className="card-title">{item.name}</span>
+                <p> {item.condition} </p>
+                <div className="card-content">
+                  <p>{item.description}</p>
+                </div>
+                <div className="card-action">
+                  <Link to={`/items/${item._id}`} key={item._id} className="collection-item">
+                    Offers
+                  </Link>
+                  <button className="btn red" onClick={() => this.deleteItem(item._id)}>
+                    Delete
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      }
     });
 
     return (
@@ -148,18 +191,16 @@ class User extends React.Component {
             addItem={this.addItem} />
         </div>
         <div className="col s6 m6">
-          <h3 className="profile-text center">Items available</h3>
+          <h3 className="profile-text">Items available</h3>
+          {availableItems}
         </div>
         <div className="col s6 m6">
           <h3 className="profile-text center">Items Needed</h3>
-        </div>
-        <div className="col s12 m12">
-          {items}
+          {wantedItems}
         </div>
       </div>
       <hr/>
     </div>
-
     );
   }
 }

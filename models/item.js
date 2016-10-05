@@ -6,7 +6,8 @@ var Item = new Schema({
   description: String,
   condition: String,
   userId: String,
-  url: String
+  url: String,
+  needed: Boolean
 });
 
 module.exports = mongoose.model( 'Item', Item );

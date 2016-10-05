@@ -43,7 +43,8 @@ router.post('/', function(req, res) {
     category: req.body.category,
     description: req.body.description,
     condition: req.body.condition,
-    userId: req.body.userId
+    userId: req.body.userId,
+    needed: req.body.needed
   }).save( function(err, item) {
     res.json(item);
   })

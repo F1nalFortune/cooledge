@@ -3,7 +3,7 @@ import $ from 'jquery';
 import { connect } from 'react-redux';
 import { fetchItems } from '../actions';
 
-
+let booleanValue = true;
 class ItemForm extends React.Component {
   constructor(props) {
     super(props)
@@ -22,18 +22,24 @@ class ItemForm extends React.Component {
 
    addItem(e) {
      e.preventDefault();
+     if(this.refs.needed.value === 'true') {
+      booleanValue = true;
+     } else {
+      booleanValue = false;
+     }
      $.ajax({
        url: '/api/items',
        type: 'POST',
        data: {
-         name: this.refs.name.value,
-         category: this.refs.category.value,
-         condition: this.refs.condition.value,
-         userId: this.props.auth.id
+        name: this.refs.name.value,
+        category: this.refs.category.value,
+        condition: this.refs.condition.value,
+        userId: this.props.auth.id,
+        needed: booleanValue
        }
      }).done( (item) => {
        this.refs.form.reset();
-       this.props.addItem(item);
+       this.props.addItem();
      });
    }
 
@@ -82,6 +88,13 @@ class ItemForm extends React.Component {
                 <option value="school">School Supplies</option>
                 <option value="dorm">Dorm Supplies</option>
                 <option value="electronics">Computers and Electronics</option>
+              </select>
+            </div>
+            <div className="input-field col s12">
+              <select className="browser-default" ref="needed">
+                <option value="" disabled selected>Item Status (Adding item to page / Requesting item)</option>
+                <option value="true">Adding</option>
+                <option value="false">Requesting</option>
               </select>
             </div>
             <input type="text" ref="condition" placeholder="Condition of Item" />

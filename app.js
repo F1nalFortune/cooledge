@@ -8,7 +8,7 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
-mongoose.connect( 'mongodb://localhost/coollege' );
+mongoose.connect( 'mongodb://localhost/coollege2' );
 
 
 var routes = require('./routes/index');
