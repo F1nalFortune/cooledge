@@ -8,6 +8,7 @@ import Upload from './Upload';
 import ProfileUpload from './ProfileUpload';
 import { connect } from 'react-redux';
 import { fetchItems } from '../actions';
+import UserForm from './UserForm';
 
 class User extends React.Component {
   constructor(props) {
@@ -23,6 +24,7 @@ class User extends React.Component {
     this.props.dispatch(fetchItems());
     this.getUser();
   }
+
   getUser(){
     let id = this.props.auth.id
     $.ajax({
@@ -32,6 +34,7 @@ class User extends React.Component {
     }).done( res => {
       let { users, items } = res;
       this.setState({ users, items });
+      debugger;
     }).fail( msg => {
       console.log(msg)
     });
@@ -95,9 +98,6 @@ class User extends React.Component {
       alert('Item failed to delete');
     });
   }
-
-
-
 
   render() {
     let availableItems = this.state.items.map( (item) => {
@@ -170,7 +170,10 @@ class User extends React.Component {
             <ProfileUpload updateUserUrl={this.updateUserUrl} id={this.state.users._id} />
             <h5 className="profile-text">{this.state.users.username}</h5>  
           </div>
-          <div className="col s12 m6 user-info">
+
+          <UserForm user={this.state.users} />
+
+        {/* }  <div className="col s12 m6 user-info">
             <div>School:{this.state.users.school}</div>
             <div>Graduating Year:{this.state.users.year}</div>
             <div>Age: {this.state.users.age}</div>
@@ -180,7 +183,8 @@ class User extends React.Component {
           <div className="col m2 center">
             <img width="20%" src='http://p6cdn4static.sharpschool.com/UserFiles/Servers/Server_868860/Image/Staff%20Images/2nd%20Grade/isprat/pencil.png'/>
             <p> Edit Profile Button </p>
-          </div>
+          </div> */}
+
         </div>
       </div>
       <div className="row">

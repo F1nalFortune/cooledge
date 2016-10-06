@@ -25,6 +25,8 @@ router.put('/:id', (req, res) => {
   });
 })
 
+
+
 router.get('/:id', (req, res) => {
   User.findById(req.params.id, (err, users) => {
     Item.find({userId: req.params.id}, (err, items) => {
