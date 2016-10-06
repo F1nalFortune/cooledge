@@ -25,6 +25,19 @@ router.put('/:id', (req, res) => {
   });
 })
 
+// router.put('/user/:id', function(req, res) {
+//   User.findByIdAndUpdate(
+//     req.params.id,
+//     { $set: { school: req.body.school, year: req.body.year, age: req.body.age }},
+//     function(err, user) {
+//       res.json(user);
+//     }
+//   );
+// });
+
+
+
+
 
 
 router.get('/:id', (req, res) => {

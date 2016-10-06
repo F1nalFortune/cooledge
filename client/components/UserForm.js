@@ -43,9 +43,7 @@ class UserForm extends React.Component {
             <a onClick={this.toggleEdit}>
               <img 
                 width="20%" 
-                  src='http://p6cdn4static.sharpschool.com/UserFiles/
-                  Servers/Server_868860/Image/Staff%20Images/2nd%20Grade/
-                  isprat/pencil.png'/>
+                  src='http://niceclipart.com/wp-content/uploads/2016/09/Pencil-clipart.png'/>
             </a>
             <p> Edit Profile Button </p>
           </div>
@@ -89,9 +87,7 @@ class UserForm extends React.Component {
           <a onClick={this.toggleEdit}>
             <img 
               width="20%" 
-                src='http://p6cdn4static.sharpschool.com/UserFiles/
-                Servers/Server_868860/Image/Staff%20Images/2nd%20Grade/
-                isprat/pencil.png'/>
+                src='http://niceclipart.com/wp-content/uploads/2016/09/Pencil-clipart.png'/>
           </a>
           <button onClick={this.updateUserForm} className="btn">Update</button>
         </div>
