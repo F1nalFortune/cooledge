@@ -25,7 +25,7 @@ class Dashboard extends React.Component {
           <Link className="btn blue-grey" to={`/dashboard/${id}`} >User</Link>
         </div>
         <div className="col s10 m10">
-          <h2 className="sitefont center dashboard-greeting">Welcome to your Dashboard</h2>
+          <h2 className="sitefont center dashboard-greeting white-text">The Market is Open</h2>
         </div>
           <div className="col m2 offset-m5 search-row">
             <div className="top-bar">

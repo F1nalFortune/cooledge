@@ -117,17 +117,22 @@ class User extends React.Component {
     });
 
     return (
-    <div>
+    <div className="user-header">
       <div className="row">
         <div className="col s12 m4">
-          <h3>{this.state.users.username}</h3>
-          <img width="250px" src={this.state.users.url}/>
-          <ProfileUpload updateUserUrl={this.updateUserUrl} id={this.state.users._id} />
+          <div className="profile">
+            <img className="center" width="250px" src={this.state.users.url}/>
+            <ProfileUpload updateUserUrl={this.updateUserUrl} id={this.state.users._id} />
+          </div>
         </div>
         <div className="col s12 m8">
-          <span>{this.state.users.school}</span>
-          <span>{this.state.users.year}</span>
-          <span>{this.state.users.age}</span>
+          <h3>{this.state.users.username}</h3>
+          <br />
+          <h5>{this.state.users.school}</h5>
+          <br />
+          <h5>{this.state.users.year}</h5>
+          <br />
+          <h5>{this.state.users.age}</h5>
         </div>
       </div>
       <div className="row">

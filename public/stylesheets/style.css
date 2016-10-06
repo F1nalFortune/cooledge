@@ -41,13 +41,15 @@
 .row.col.item-list-div {
   position: relative;
   z-index: 1;
-  padding-right: 0px
+  padding-right: 0px;
   padding-left: 0px;
 
 }
 
 .dashboard-greeting {
-  padding-top: 6%
+  padding-top: 10%;
+  padding-right: 25%;
+  padding-bottom: 3%;
 }
 
 .add-image-bt {
@@ -160,5 +162,16 @@ a {
 }
 .slides {
   margin-bottom: 20px;
+}
+.sticky {
+  position: relative;
+  top: 0;
+}
+.profile {
+  margin-left: 10%;
+}
+.user-header {
+  padding-top: 8%;
+  padding-bottom: 3%;
 }
 
