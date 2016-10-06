@@ -18,7 +18,6 @@ class UserForm extends React.Component {
     let year = this.refs.year.value;
     let age = this.refs.age.value;
     let general = this.refs.general.value;
-    debugger
     $.ajax({
       url: `/api/users/${this.props.user.id}`,
       type: 'PUT',

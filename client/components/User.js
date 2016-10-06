@@ -34,7 +34,6 @@ class User extends React.Component {
     }).done( res => {
       let { users, items } = res;
       this.setState({ users, items });
-      debugger;
     }).fail( msg => {
       console.log(msg)
     });
