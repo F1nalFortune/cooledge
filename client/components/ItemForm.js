@@ -93,9 +93,9 @@ class ItemForm extends React.Component {
             </div>
             <div className="input-field col s12 black-text">
               <select className="browser-default" ref="needed">
-                <option value="" disabled selected>Item Status (Adding item to page / Requesting item)</option>
-                <option value="true">Adding</option>
-                <option value="false">Requesting</option>
+                <option value="" disabled selected>Item Status ( Item Available / Item Needed )</option>
+                <option value="true">Available</option>
+                <option value="false">Needed</option>
               </select>
             </div>
             <input type="text" ref="condition" placeholder="Condition of Item" />

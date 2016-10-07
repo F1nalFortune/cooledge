@@ -17,14 +17,12 @@ class ProfileUpload extends React.Component {
   }
 
   addUrl(url) {
-    debugger
     $.ajax({
       url: `/api/users/url/${this.props.id}`,
       type: 'PUT',
       dataType: 'JSON',
       data: { url }
     }).done( (res) => {
-      debugger;
       this.props.updateUserUrl(this.props.id, url);
     });
   }

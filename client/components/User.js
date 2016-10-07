@@ -65,16 +65,7 @@ class User extends React.Component {
   }
 
   updateUserUrl(id, url) {
-    let user = this.state.users;
-      if (user._id !== id) 
-        return user;
-      return {
-        ...user,
-        url
-      }
-
-    this.setState({ users: user });
-    getUser();
+    this.getUser();
   }
 
   toggleItemForm() {

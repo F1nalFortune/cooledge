@@ -22,7 +22,7 @@ class UserForm extends React.Component {
       url: `/api/users/${this.props.user._id}`,
       type: 'PUT',
       dataType: 'JSON',
-      data: { school: this.refs.school.value, year: this.refs.year.value, age: this.refs.age.value, general: this.refs.general.value }
+      data: { url: this.props.user.url, school: this.refs.school.value, year: this.refs.year.value, age: this.refs.age.value, general: this.refs.general.value }
     }).done( user => {
       console.log(user);
       this.props.updateUser();
