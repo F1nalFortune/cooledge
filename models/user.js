@@ -9,8 +9,9 @@ let User = new Schema({
   password: { type : String },
   year : Number,
   age : Number,
-  school: String,
-  url: String
+  school : String,
+  general : String,
+  url : { type : String }
 });
 
 User.plugin(passportLocalMongoose);

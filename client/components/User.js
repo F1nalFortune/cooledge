@@ -103,62 +103,40 @@ class User extends React.Component {
       console.log(item.needed);
       if (item.needed) {
         return (
-          <div>
-            <div className="col s6 m3">
-              <div className="card">
-                <div className="card-image">
-                  <Upload updateItemUrl={this.updateItemUrl} id={item._id} />
-                  <img width="500px" src={item.url ? item.url : {} } />
+         <ul className="collapsible" data-collapsible="accordion">
+           <li>
+             <div className="collapsible-header">{item.name} - - {item.condition}</div>
+             <div className="collapsible-body">
+               <div className="row">
+                 <div className="col s6 m6">
+                    <Upload updateItemUrl={this.updateItemUrl} id={item._id} />
+                    <img width="500px" src={item.url ? item.url : {} } />
+                  </div>
+                  <div className="col s6 m6">
+                    <p>
+                      {item.description}
+                    </p>
+                  </div>
                 </div>
-                <span className="card-title">{item.name}</span>
-                <p> {item.condition} </p>
-                <div className="card-content">
-                  <p>{item.description}</p>
-                </div>
-                <div className="card-action">
-                  <Link to={`/items/${item._id}`} key={item._id} className="collection-item">
-                    Offers
-                  </Link>
-                  <button className="btn red" onClick={() => this.deleteItem(item._id)}>
-                    Delete
-                  </button>
+                <div className="row">
+                  <div className="col s6 m6">
+                    <Link to={`/items/${item._id}`} key={item._id} className="collection-item">
+                      Offers
+                    </Link>
+                  </div>
+                  <div className="col s6 m6">
+                    <button className="btn red" onClick={() => this.deleteItem(item._id)}>
+                      Delete
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
+            </li>
+          </ul>
         );
       }
     });
-//    <ul className="collapsible" data-collapsible="accordion">
-//      <li>
-//        <div className="collapsible-header">{item.name} - - {item.condition}</div>
-//        <div className="collapsible-body">
-//          <div className="row">
-//            <div className="col s6 m6">
-              // <Upload updateItemUrl={this.updateItemUrl} id={item._id} />
-              // <img width="500px" src={item.url ? item.url : {} } />
-            // </div>
-            // <div className="col s6 m6">
-              // <p>
-                // {item.description}
-              // </p>
-            // </div>
-          // </div>
-          // <div className="row">
-            // <div className="col s6 m6">
-              // <Link to={`/items/${item._id}`} key={item._id} className="collection-item">
-                // Offers
-              // </Link>
-            // </div>
-            // <div className="col s6 m6">
-              // <button className="btn red" onClick={() => this.deleteItem(item._id)}>
-                // Delete
-              // </button>
-            // </div>
-          // </div>
-        // </div>
-      // </li>
-    // </ul>
+
     let wantedItems = this.state.items.map( (item) => {
       if (!item.needed) {
         return (
@@ -200,19 +178,7 @@ class User extends React.Component {
             <h5 className="profile-text">{this.state.users.username}</h5>  
           </div>
 
-          <UserForm user={this.state.users} />
-
-        {/* }  <div className="col s12 m6 user-info">
-            <div>School:{this.state.users.school}</div>
-            <div>Graduating Year:{this.state.users.year}</div>
-            <div>Age: {this.state.users.age}</div>
-            <div>General: </div>
-            <textarea></textarea>
-          </div>
-          <div className="col m2 center">
-            <img width="20%" src='http://p6cdn4static.sharpschool.com/UserFiles/Servers/Server_868860/Image/Staff%20Images/2nd%20Grade/isprat/pencil.png'/>
-            <p> Edit Profile Button </p>
-          </div> */}
+          <UserForm user={this.state.users} updateUser={this.getUser} />
 
         </div>
       </div>

@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
   });
 });
 
-router.put('api/users/:id', (req, res) => {
+router.put('/:id', (req, res) => {
   User.findByIdAndUpdate(
     req.params.id,
     { $set : { url: req.body.url, school: req.body.school, 
@@ -23,7 +23,16 @@ router.put('api/users/:id', (req, res) => {
     (err, user) => {
       res.json(user);
   });
-})
+});
+
+router.put('/url/:id', (req, res) => {
+  User.findByIdAndUpdate(
+    req.params.id,
+    { $set : { url: req.body.url }},
+    (err, user) => {
+      res.json(user);
+  });
+});
 
 // router.put('/user/:id', function(req, res) {
 //   User.findByIdAndUpdate(
