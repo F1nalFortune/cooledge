@@ -3,7 +3,6 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var Item = require('../models/item');
 var Offer = require('../models/offer');
-var cloudinary = require('cloudinary');
 
 
 //ITEMS

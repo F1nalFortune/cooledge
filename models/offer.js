@@ -6,4 +6,4 @@ var Offer = new Schema({
   itemId: String
 });
 
-module.exports = mongoose.model( 'Offer', Offer );
+module.exports = mongoose.model( 'O0ffer', Offer );

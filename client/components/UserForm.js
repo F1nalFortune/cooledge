@@ -14,17 +14,13 @@ class UserForm extends React.Component {
   }
 
   updateUserForm() {
-    let school = this.refs.school.value;
-    let year = this.refs.year.value;
-    let age = this.refs.age.value;
-    let general = this.refs.general.value;
     $.ajax({
-      url: `/api/users/${this.props.user.id}`,
+      url: `/api/users/${this.props.user._id}`,
       type: 'PUT',
       dataType: 'JSON',
-      data: { school, year, age, general }
-    }).done( userform => {
-      this.props.updateUserForm(user._id, school, year, age, general);
+      data: { school: this.refs.school.value, year: this.refs.year.value, age: this.refs.age.value, general: this.refs.general.value }
+    }).done( res => {
+      console.log(res);
       this.toggleEdit();
     });
   }
@@ -40,55 +36,48 @@ class UserForm extends React.Component {
             <textarea></textarea>
           </div>
           <div className="col m2 center">
-            <a onClick={this.toggleEdit}>
-              <img 
-                width="20%" 
-                  src='http://niceclipart.com/wp-content/uploads/2016/09/Pencil-clipart.png'/>
-            </a>
-            <p> Edit Profile Button </p>
+            <button className="btn" onClick={this.toggleEdit}>Edit</button>
           </div>
         </div>
     );
   }
 
   edit() {
-    let school = this.props.user.school;
-    let year = this.props.user.year;
-    let age = this.props.user.age;
-    let general = this.props.user.general;
+    let sch = this.props.user.school;
+    let yr = this.props.user.year;
+    let ag = this.props.user.age;
+    let gen = this.props.user.general;
     return (
       <div>
-        <div className="col s12 m6 user-info">
-          <input
-            required={true}
-            ref="school"
-            placeholder={school}
-            defaultValue={school}
-          />
+        <div className="col s12 m6">
+          <div className="input-field col s12">
+            <select className="browser-default" ref="school">
+              <option value="" disabled selected>Select a University</option>
+              <option value="harvard">Harvard</option>
+              <option value="uofu">University of Utah</option>
+              <option value="yale">Yale</option>
+            </select>
+          </div>
           <input
             required={true}
             ref="year"
-            placeholder={year}
-            defaultValue={year}
+            placeholder={yr}
+            defaultValue={yr}
           />
           <input
             required={true}
             ref="age"
-            placeholder={age}
-            defaultValue={age}
+            placeholder={ag}
+            defaultValue={ag}
           />
-          <textarea ref="general">{general}</textarea> 
+          <textarea ref="general">{gen}</textarea> 
           {/* <div>School:{this.state.users.school}</div> 
           <div>Graduating Year:{this.state.users.year}</div>
           <div>Age: {this.state.users.age}</div>
           <div>General: </div>*/}
         </div>
         <div className="col m2 center">
-          <a onClick={this.toggleEdit}>
-            <img 
-              width="20%" 
-                src='http://niceclipart.com/wp-content/uploads/2016/09/Pencil-clipart.png'/>
-          </a>
+          <button className="btn" onClick={this.toggleEdit}>Cancel</button>
           <button onClick={this.updateUserForm} className="btn">Update</button>
         </div>
       </div>
