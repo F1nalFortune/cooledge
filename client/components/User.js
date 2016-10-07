@@ -129,20 +129,36 @@ class User extends React.Component {
         );
       }
     });
-  //    <ul class="collapsible" data-collapsible="accordion">
-   //     <li>
-    //      <div class="collapsible-header">{item.name}, {item.condition}</div>
-     //     <div class="collapsible-body">
-      //      <p>
-       //       {item.description}
-        //    </p>
-   //       </div>
-   //       <div className="card-image">
-   //         <Upload updateItemUrl={this.updateItemUrl} id={item._id} />
-   //         <img width="500px" src={item.url ? item.url : {} } />
-   //       </div>
-   //     </li>
-//      </ul>
+//    <ul className="collapsible" data-collapsible="accordion">
+//      <li>
+//        <div className="collapsible-header">{item.name} - - {item.condition}</div>
+//        <div className="collapsible-body">
+//          <div className="row">
+//            <div className="col s6 m6">
+              // <Upload updateItemUrl={this.updateItemUrl} id={item._id} />
+              // <img width="500px" src={item.url ? item.url : {} } />
+            // </div>
+            // <div className="col s6 m6">
+              // <p>
+                // {item.description}
+              // </p>
+            // </div>
+          // </div>
+          // <div className="row">
+            // <div className="col s6 m6">
+              // <Link to={`/items/${item._id}`} key={item._id} className="collection-item">
+                // Offers
+              // </Link>
+            // </div>
+            // <div className="col s6 m6">
+              // <button className="btn red" onClick={() => this.deleteItem(item._id)}>
+                // Delete
+              // </button>
+            // </div>
+          // </div>
+        // </div>
+      // </li>
+    // </ul>
     let wantedItems = this.state.items.map( (item) => {
       if (!item.needed) {
         return (
