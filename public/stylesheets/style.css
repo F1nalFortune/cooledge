@@ -74,6 +74,9 @@
   font-family: 'Fredericka the Great', cursive;
   text-shadow: 2px 2px #000;
 }
+.sitefonts {
+  font-family: 'Fredericka the Great', cursive;
+}
 
 .sitefont{
   font-family: 'Playfair Display SC', serif;
@@ -112,7 +115,10 @@ nav {
   background-color: rgba(0,0,0,0.65) !important;
   position: fixed;
   z-index: +2;
-
+}
+.side-nav {
+  position: fixed;
+  z-index: +3;
 }
 
 a {
@@ -157,12 +163,12 @@ a {
   padding-top: 100px;
 }
 
-.bck {
-  background-image: url('http://st.depositphotos.com/1001925/2676/i/950/depositphotos_26761999-Background-of-aged-grungy-textured.jpg');
-  background-repeat: repeat;
-  background-attachment: fixed;
-  background-size: cover;
-}
+// .bck {
+//   background-image: url('http://st.depositphotos.com/1001925/2676/i/950/depositphotos_26761999-Background-of-aged-grungy-textured.jpg');
+//   background-repeat: repeat;
+//   background-attachment: fixed;
+//   background-size: cover;
+// }
 
 .user-info{
   text-shadow: 2px 2px #ad663b;

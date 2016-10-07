@@ -10,9 +10,6 @@ class Landing extends React.Component {
 		this.toggleForm = this.toggleForm.bind(this);
 		this.form = this.form.bind(this);
 	}
-	ComponentDidMount() {
-		window.jquery('.carousel-slider').carousel({full_width: true});
-	}
 
 	toggleForm(e){
 		e.preventDefault();
@@ -60,8 +57,9 @@ class Landing extends React.Component {
 			</div>
 			
 			<div className="carousel carousel-slider">
-				<img className="carousel-item" src="http://www.smashbros.com/images/og/sonic.jpg"/>
-				<img className="carousel-item" src="http://vignette2.wikia.nocookie.net/vsbattles/images/7/72/Tails_35.png/revision/latest?cb=20150503063714"/>
+				<img className="carousel-item" src="http://res.cloudinary.com/mydevpoint/image/upload/v1475604285/Brett_am2bsf.jpg"/>
+				<img className="carousel-item" src="http://res.cloudinary.com/mydevpoint/image/upload/v1475604361/lorna_qmsc3o.jpg"/>
+				<img className="carousel-item" src="http://res.cloudinary.com/mydevpoint/image/upload/v1475604350/Josh_hxo9lq.jpg"/>
 			</div>
 		</div>
 		)
