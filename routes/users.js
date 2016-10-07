@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
   });
 });
 
-router.put('/:id', (req, res) => {
+router.put('api/users/:id', (req, res) => {
   User.findByIdAndUpdate(
     req.params.id,
     { $set : { url: req.body.url, school: req.body.school, 
