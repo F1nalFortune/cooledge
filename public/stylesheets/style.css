@@ -112,6 +112,7 @@ body {
   padding-top: 70px;
   padding-bottom: 60px;
   margin-bottom: 0px;
+  color: #484848;
 }
 
 .row.add-offer-bg {
@@ -123,6 +124,13 @@ body {
 
 .border-div {
   border-top: 1px solid grey;
+}
+
+.panel-info {
+  border: 1px solid #dce0e0;
+  position: relative;
+  background-color: white;
+  color: #484848;
 }
 
 nav {

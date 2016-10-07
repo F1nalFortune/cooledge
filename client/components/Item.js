@@ -91,28 +91,29 @@ class Item extends React.Component {
     return (
         <div>
           <div className="row item-desc-bg">
-            <div className="col s12 offset-m3 m3 img-div">
+            <div className="col s12 offset-m2 m3 img-div">
               <img className="z-depth-3" height="260px" src={url} />
             </div>
-            <div className="col s12 m4 item-info-div">
+            <div className="col s12 m3 item-info-div panel-info">
               <h4>Name: {name}</h4>
               <h5>{description}</h5>
-              <h5>{category}</h5>
-              <h5>{condition}</h5>
+              <h5>Condition {condition}</h5>
             </div>
           </div>
           <div className="col s12 m12 border-div">
           </div>
           <div className="row add-offer-bg">
-            <div className="col s12 m4">
-              <img height="200px" src={this.state.users.url}/>
-              <p>Contact Email: {this.state.users.username}</p>
-              <p>School: {this.state.users.school}</p>
+            <div className="col s12 m3 usr-info-div">
+              <div className="panel-info">
+                <img width="329px" src={this.state.users.url}/>
+                <h5 className="center-align">Contact Email: {this.state.users.username}</h5>
+                <h5 className="center-align">School: {this.state.users.school}</h5>
+              </div>
             </div>
-            <div className="col s12 m4">
+            <div className="col s12 m5">
               <p>{needed}</p>
             </div>
-            <div className="col s12 m4">
+            <div className="col s12 m4 panel-info">
               <h3>Add Offer</h3>
               <form ref="form" onSubmit={this.addOffer}>
                 <input ref="name" placeholder="name" />
