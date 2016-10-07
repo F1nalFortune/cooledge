@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import $ from 'jquery';
 
 class UserForm extends React.Component {
@@ -7,6 +7,10 @@ class UserForm extends React.Component {
     this.toggleEdit = this.toggleEdit.bind(this);
     this.updateUserForm = this.updateUserForm.bind(this);
     this.state = { edit: false };
+  }
+
+  static propTypes = {
+    updateUser: PropTypes.func
   }
 
   toggleEdit() {
@@ -19,8 +23,9 @@ class UserForm extends React.Component {
       type: 'PUT',
       dataType: 'JSON',
       data: { school: this.refs.school.value, year: this.refs.year.value, age: this.refs.age.value, general: this.refs.general.value }
-    }).done( res => {
-      console.log(res);
+    }).done( user => {
+      console.log(user);
+      this.props.updateUser();
       this.toggleEdit();
     });
   }
@@ -81,7 +86,7 @@ class UserForm extends React.Component {
         </div>
         <div className="col m2 center">
           <button className="btn" onClick={this.toggleEdit}>Cancel</button>
-          <button onClick={this.updateUserForm} className="btn">Update</button>
+          <button onClick={this.updateUserForm  } className="btn">Update</button>
         </div>
       </div>
     );

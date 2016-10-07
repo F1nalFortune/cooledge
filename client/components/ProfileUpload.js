@@ -17,14 +17,16 @@ class ProfileUpload extends React.Component {
   }
 
   addUrl(url) {
-      $.ajax({
-        url: `/api/users/${this.props.id}`,
-        type: 'PUT',
-        dataType: 'JSON',
-        data: { url }
-      }).done( () => {
-        this.props.updateUserUrl(this.props.id, url)
-      })
+    debugger
+    $.ajax({
+      url: `/api/users/url/${this.props.id}`,
+      type: 'PUT',
+      dataType: 'JSON',
+      data: { url }
+    }).done( (res) => {
+      debugger;
+      this.props.updateUserUrl(this.props.id, url);
+    });
   }
 
   onImageDrop(files) {

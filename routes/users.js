@@ -22,7 +22,16 @@ router.put('/:id', (req, res) => {
     (err, user) => {
       res.json(user);
   });
-})
+});
+
+router.put('/url/:id', (req, res) => {
+  User.findByIdAndUpdate(
+    req.params.id,
+    { $set : { url: req.body.url }},
+    (err, user) => {
+      res.json(user);
+  });
+});
 
 
 
