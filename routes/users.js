@@ -18,25 +18,11 @@ router.get('/', (req, res) => {
 router.put('/:id', (req, res) => {
   User.findByIdAndUpdate(
     req.params.id,
-    { $set : { url: req.body.url, school: req.body.school, 
-      year: req.body.year, age: req.body.age, general: req.body.general }},
+    { $set : { url: req.body.url, new: true }},
     (err, user) => {
       res.json(user);
   });
 })
-
-// router.put('/user/:id', function(req, res) {
-//   User.findByIdAndUpdate(
-//     req.params.id,
-//     { $set: { school: req.body.school, year: req.body.year, age: req.body.age }},
-//     function(err, user) {
-//       res.json(user);
-//     }
-//   );
-// });
-
-
-
 
 
 
