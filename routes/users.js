@@ -57,4 +57,17 @@ router.get('/:id', (req, res) => {
   });
 });
 
+router.get('/schools/items', (req, res) => {
+  User.find({ school: req.query.school }, (err, users) => {
+    if (users) {
+      let ids = users.map( user => { return user.id })
+      Item.find({ userId: { $in: ids }}, (err, items) => {
+        return res.json(items);
+      })
+    } else {
+      return res.json([]);
+    }
+  });
+});
+
 module.exports = router;

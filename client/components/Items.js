@@ -14,7 +14,7 @@ class Items extends React.Component {
     this.toggleForm = this.toggleForm.bind(this);
     this.updateItemUrl = this.updateItemUrl.bind(this)
     this.form = this.form.bind(this);
-    this.state = { items: [], showForm: false };
+    this.state = { items: [], showForm: false, userSchool: [] };
   }
 
   componentWillMount() {
@@ -29,7 +29,7 @@ class Items extends React.Component {
         default:
           let items = this.setState({ items: this.props.items.filter( item => item.category === nextProps.filter)})
       }
-    }
+    } 
   }
 
   updateItemUrl(id, url) {
@@ -123,9 +123,6 @@ class Items extends React.Component {
           <img height="250 px" width="375 px" src={item.url} />
         </Link>
         <Upload updateItemUrl={this.updateItemUrl} id={item._id} />
-          <button className="btn red" onClick={() => this.deleteItem(item._id)}>
-          Delete
-          </button>
       </div>
       );
     });
@@ -159,7 +156,7 @@ class Items extends React.Component {
 
 
 const mapStateToProps = (state) => {
- return { auth: state.auth, filter: state.filter, items: state.items };
+ return { auth: state.auth, filter: state.filter, items: state.items, userSchool: state.school };
 }
 
 export default connect(mapStateToProps)(Items);

@@ -53,6 +53,20 @@ export const setFilter = (category) => {
   }
 }
 
+export const schoolItemFilter = (school) => {
+  return (dispatch) => {
+    $.ajax({
+      url: '/api/users/schools/items',
+      type: 'GET',
+      data: { school }
+    }).done( school => {
+      dispatch({ type: 'GET_SCHOOL', school })
+    }).fail( data => {
+      Materialize.toast(data.responseText, 3000)
+    });
+  }
+}
+
 
 const getToken = () => {
  return Math.random().toString(36).substring(7)
