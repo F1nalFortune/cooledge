@@ -72,7 +72,7 @@ class ItemForm extends React.Component {
     return (
       <div>
         <div className="col s12 m3">
-          <h2 className="sitefont">Add an Item</h2>
+          <h2 className="sitefonts">Add an Item</h2>
           <form ref="form" onSubmit={(e) => this.addItem(e)}>
             <input type="text" ref="name" placeholder="Item Name" />
             <input rows="6" type="text" ref="description" placeholder="Item Description" />

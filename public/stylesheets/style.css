@@ -72,9 +72,16 @@
   padding-right: 10px;
 }
 
+
+.sitefonts {
+  font-family: 'Playfair Display SC', serif
+}
+
 .sitefont{
   font-family: 'Playfair Display SC', serif;
+  text-shadow: 2px 2px #000;
 }
+
 body {
   font-family: 'News Cycle', sans-serif;
   font-size: 16px;
@@ -108,7 +115,10 @@ nav {
   background-color: rgba(0,0,0,0.65) !important;
   position: fixed;
   z-index: +2;
-
+}
+.side-nav {
+  position: fixed;
+  z-index: +3;
 }
 
 a {
@@ -136,8 +146,48 @@ a {
   margin-top: -20px;
 }
 .bigger {
-  padding-top: 28%;
+  padding-top: 25%;
 }
+.bigger:hover {
+  padding-top: 24%;
+  font-size: 2.5em;
+  line-height: 1.2em;
+  transition: all .2s ease-in-out;
+}
+#space {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.toppad{
+  padding-top: 100px;
+}
+
+
+.bck {
+  background-image: url('https://static.pexels.com/photos/1486/wood-pattern-ground-parquet-floor.jpg');
+  background-repeat: repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.user-info{
+  text-shadow: 2px 2px #ad663b;
+  color: white;
+  font-size: 3vw;
+}
+
+.profile-text{
+  color: white;
+  text-shadow: 2px 2px #000;
+}
+
+.add-form{
+  background-color: rgba(0,0,0,0.65) !important;
+  z-index: +1;
+  border-radius: 50px;
+}
+
 .bigger:hover {
   padding-top: 25%;
   font-size: 3em;

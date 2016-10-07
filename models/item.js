@@ -6,7 +6,12 @@ var Item = new Schema({
   description: String,
   condition: String,
   userId: String,
-  url: String
+  url: String,
+  needed: Boolean,
+  offer: String,
+  offerName: String,
+  offerContact: String,
+  
 });
 
 module.exports = mongoose.model( 'Item', Item );

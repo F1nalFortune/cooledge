@@ -8,6 +8,7 @@ import Upload from './Upload';
 import ProfileUpload from './ProfileUpload';
 import { connect } from 'react-redux';
 import { fetchItems } from '../actions';
+import UserForm from './UserForm';
 
 class User extends React.Component {
   constructor(props) {
@@ -23,6 +24,7 @@ class User extends React.Component {
     this.props.dispatch(fetchItems());
     this.getUser();
   }
+
   getUser(){
     let id = this.props.auth.id
     $.ajax({
@@ -36,6 +38,17 @@ class User extends React.Component {
       console.log(msg)
     });
    }
+
+  addItem = () => {
+    $.ajax({
+      url: '/api/items',
+      type: 'GET'
+    }).done( (items) => {
+      this.setState({ items });
+    }).fail(data => {
+      console.log(data);
+    });
+  }
 
   updateItemUrl(id, url) {
     let items = this.state.items.map( item => {
@@ -84,62 +97,123 @@ class User extends React.Component {
     });
   }
 
-
-
-
   render() {
-    let items = this.state.items.map( (item) => {
-      return (
-        <div>
-          <div className="col s6 m3">
-            <div className="card">
-              <div className="card-image">
-                <Upload updateItemUrl={this.updateItemUrl} id={item._id} />
-                <img width="500px" src={item.url} />
-              </div>
-              <span className="card-title">{item.name}</span>
-              <p> {item.condition} </p>
-              <div className="card-content">
-                <p>{item.description}</p>
-              </div>
-              <div className="card-action">
-                <Link to={`/items/${item._id}`} key={item._id} className="collection-item">
-                  Offers
-                </Link>
-                <button className="btn red" onClick={() => this.deleteItem(item._id)}>
-                  Delete
-                </button>
+    let availableItems = this.state.items.map( (item) => {
+      console.log(!item.needed);
+      if (!item.needed) {
+        return (
+          <div>
+            <div className="col s6 m3">
+              <div className="card">
+                <div className="card-image">
+                  <Upload updateItemUrl={this.updateItemUrl} id={item._id} />
+                  <img width="500px" src={item.url ? item.url : {} } />
+                </div>
+                <span className="card-title">{item.name}</span>
+                <p> {item.condition} </p>
+                <div className="card-content">
+                  <p>{item.description}</p>
+                </div>
+                <div className="card-action">
+                  <Link to={`/items/${item._id}`} key={item._id} className="collection-item">
+                    Offers
+                  </Link>
+                  <button className="btn red" onClick={() => this.deleteItem(item._id)}>
+                    Delete
+                  </button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      );
+        );
+      }
+    });
+  //    <ul class="collapsible" data-collapsible="accordion">
+   //     <li>
+    //      <div class="collapsible-header">{item.name}, {item.condition}</div>
+     //     <div class="collapsible-body">
+      //      <p>
+       //       {item.description}
+        //    </p>
+   //       </div>
+   //       <div className="card-image">
+   //         <Upload updateItemUrl={this.updateItemUrl} id={item._id} />
+   //         <img width="500px" src={item.url ? item.url : {} } />
+   //       </div>
+   //     </li>
+//      </ul>
+    let wantedItems = this.state.items.map( (item) => {
+      if (item.needed) {
+        return (
+          <div>
+            <div className="col s6 m3">
+              <div className="card">
+                <div className="card-image">
+                  <Upload updateItemUrl={this.updateItemUrl} id={item._id} />
+                  <img width="500px" src={item.url ? item.url : {} } />
+                </div>
+                <span className="card-title">{item.name}</span>
+                <p> {item.condition} </p>
+                <div className="card-content">
+                  <p>{item.description}</p>
+                </div>
+                <div className="card-action">
+                  <Link to={`/items/${item._id}`} key={item._id} className="collection-item">
+                    Offers
+                  </Link>
+                  <button className="btn red" onClick={() => this.deleteItem(item._id)}>
+                    Delete
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      }
     });
 
     return (
-    <div className="user-header">
-      <div className="row">
-        <div className="col s12 m4">
-          <div className="profile">
-            <img className="center" width="250px" src={this.state.users.url}/>
+
+    <div className="bck">
+      <div className="container toppad">
+        <div className="row">
+          <div className="col s12 m4">
+            <img width="250px" src={this.state.users.url}/>
             <ProfileUpload updateUserUrl={this.updateUserUrl} id={this.state.users._id} />
+            <h5 className="profile-text">{this.state.users.username}</h5>  
           </div>
-        </div>
-        <div className="col s12 m8">
-          <h3>{this.state.users.username}</h3>
-          <br />
-          <h5>{this.state.users.school}</h5>
-          <br />
-          <h5>{this.state.users.year}</h5>
-          <br />
-          <h5>{this.state.users.age}</h5>
+
+          <UserForm user={this.state.users} />
+
+        {/* }  <div className="col s12 m6 user-info">
+            <div>School:{this.state.users.school}</div>
+            <div>Graduating Year:{this.state.users.year}</div>
+            <div>Age: {this.state.users.age}</div>
+            <div>General: </div>
+            <textarea></textarea>
+          </div>
+          <div className="col m2 center">
+            <img width="20%" src='http://p6cdn4static.sharpschool.com/UserFiles/Servers/Server_868860/Image/Staff%20Images/2nd%20Grade/isprat/pencil.png'/>
+            <p> Edit Profile Button </p>
+          </div> */}
+
         </div>
       </div>
       <div className="row">
-        <ItemForm
-          showItemForm={this.state.showItemForm}
-          addItem={this.addItem} />
-        {items}
+        <div className="col s12 m12">
+          <ItemForm
+            className="add-form"
+            showItemForm={this.state.showItemForm}
+            addItem={this.addItem} />
+        </div>
+        <div className="col s6 m6">
+          <h3 className="profile-text center">Items available</h3>
+          {availableItems}
+        </div>
+        <div className="col s6 m6">
+          <h3 className="profile-text center">Items Needed</h3>
+          {wantedItems}
+        </div>
       </div>
       <hr/>
     </div>

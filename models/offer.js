@@ -3,7 +3,9 @@ var Schema = mongoose.Schema;
 var Offer = new Schema({
   name: String,
   offer: String,
-  itemId: String
+  contact: String,
+  itemId: String,
+  userId: String
 });
 
 module.exports = mongoose.model( 'Offer', Offer );

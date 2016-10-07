@@ -10,9 +10,6 @@ class Landing extends React.Component {
 		this.toggleForm = this.toggleForm.bind(this);
 		this.form = this.form.bind(this);
 	}
-	ComponentDidMount() {
-		window.jquery('.carousel-slider').carousel({full_width: true});
-	}
 
 	toggleForm(e){
 		e.preventDefault();
@@ -29,6 +26,10 @@ class Landing extends React.Component {
 		} else {
 			return null
 		}
+	}
+
+	componentDidMount(){
+		window.jQuery('.carousel.carousel-slider').carousel({full_width: true, indicators: true});
 	}
 
 
@@ -48,12 +49,18 @@ class Landing extends React.Component {
 			</div>
 				{/* render form*/}
 	      { this.form() }
+
 			<div className="row">
-				<div className="center-align info col m4 blue-grey"><h3 className="white-text bigger">Have Something You Don't Need?</h3></div>
-				<div className="center-align info col m4 blue-grey"><h3 className="white-text bigger">Need Something You Want To Trade For?</h3></div>
-				<div className="center-align info col m4 blue-grey"><h3 className="white-text bigger">Try Bartering With <br /><span className="sitefont">Trade Square</span> Today!</h3></div>
+				<div className="center-align info col m4 blue-grey"><h4 className="white-text bigger">Have Something You Don't Need?</h4></div>
+				<div className="center-align info col m4 blue-grey"><h4 className="white-text bigger">Need Something You Want To Trade For?</h4></div>
+				<div className="center-align info col m4 blue-grey"><h4 className="white-text bigger">Try Bartering With Coollege Today!</h4></div>
 			</div>
-			<Carousel />
+			
+			<div className="carousel carousel-slider">
+				<img className="carousel-item" src="http://res.cloudinary.com/mydevpoint/image/upload/v1475604285/Brett_am2bsf.jpg"/>
+				<img className="carousel-item" src="http://res.cloudinary.com/mydevpoint/image/upload/v1475604361/lorna_qmsc3o.jpg"/>
+				<img className="carousel-item" src="http://res.cloudinary.com/mydevpoint/image/upload/v1475604350/Josh_hxo9lq.jpg"/>
+			</div>
 		</div>
 		)
 	}

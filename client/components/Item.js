@@ -6,7 +6,7 @@ class Item extends React.Component {
   constructor(props) {
     super(props);
     this.addOffer = this.addOffer.bind(this);
-    this.state = { item: {}, offers: [] };
+    this.state = { item: [], user: [], offers: [] };
   }
 
   componentWillMount() {
@@ -19,7 +19,7 @@ class Item extends React.Component {
     });
 
     $.ajax({
-      url: `/api/items/${this.props.params.id}/offers`,
+      url: `/api/offers/`,
       type: 'GET'
     }).done( offers => {
       this.setState({ offers });
@@ -62,7 +62,7 @@ class Item extends React.Component {
   }
 
   render() {
-    let { name, category, condition, description } = this.state.item;
+    let { name, category, condition, description, url } = this.state.item;
     let offers = this.state.offers.map( offer => {
       return (
         <div className="row">
@@ -78,6 +78,7 @@ class Item extends React.Component {
     })
     return (
         <div className="container">
+          <img src={url}/>
           <h4>Name: {name}</h4>
           <h5>{description}</h5>
           <h5>{category}</h5>

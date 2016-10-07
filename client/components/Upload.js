@@ -60,7 +60,7 @@ class Upload extends React.Component {
         accept='image/*'
         multiple={false}
       >
-        <button type="button" className="blue-grey btn btn-info add-image-bt">Add Image</button>
+        <button type="button" className="blue-grey btn btn-info add-image-bt">Add</button>
       </DropZone>
     )
   }
