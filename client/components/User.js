@@ -129,6 +129,20 @@ class User extends React.Component {
         );
       }
     });
+  //    <ul class="collapsible" data-collapsible="accordion">
+   //     <li>
+    //      <div class="collapsible-header">{item.name}, {item.condition}</div>
+     //     <div class="collapsible-body">
+      //      <p>
+       //       {item.description}
+        //    </p>
+   //       </div>
+   //       <div className="card-image">
+   //         <Upload updateItemUrl={this.updateItemUrl} id={item._id} />
+   //         <img width="500px" src={item.url ? item.url : {} } />
+   //       </div>
+   //     </li>
+//      </ul>
     let wantedItems = this.state.items.map( (item) => {
       if (!item.needed) {
         return (

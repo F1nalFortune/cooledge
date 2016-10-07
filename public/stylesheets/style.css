@@ -70,16 +70,14 @@
   padding-right: 10px;
 }
 
-.sitefont{
-  font-family: 'Fredericka the Great', cursive;
-  text-shadow: 2px 2px #000;
-}
+
 .sitefonts {
-  font-family: 'Fredericka the Great', cursive;
+  font-family: 'Playfair Display SC', serif
 }
 
 .sitefont{
   font-family: 'Playfair Display SC', serif;
+  text-shadow: 2px 2px #000;
 }
 
 body {
@@ -163,12 +161,13 @@ a {
   padding-top: 100px;
 }
 
-// .bck {
-//   background-image: url('http://st.depositphotos.com/1001925/2676/i/950/depositphotos_26761999-Background-of-aged-grungy-textured.jpg');
-//   background-repeat: repeat;
-//   background-attachment: fixed;
-//   background-size: cover;
-// }
+
+.bck {
+  background-image: url('https://static.pexels.com/photos/1486/wood-pattern-ground-parquet-floor.jpg');
+  background-repeat: repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
 
 .user-info{
   text-shadow: 2px 2px #ad663b;
