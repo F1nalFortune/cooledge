@@ -9,6 +9,7 @@ import ProfileUpload from './ProfileUpload';
 import { connect } from 'react-redux';
 import { fetchItems } from '../actions';
 import UserForm from './UserForm';
+import Collapsible from 'react-collapsible';
 
 class User extends React.Component {
   constructor(props) {
@@ -103,34 +104,33 @@ class User extends React.Component {
       console.log(!item.needed);
       if (item.needed) {
         return (
-           <li>
-             <div className="collapsible-header">{item.name} - - {item.condition}</div>
-             <div className="collapsible-body">
-               <div className="row">
-                 <div className="col s12 m12">
-                    <Upload updateItemUrl={this.updateItemUrl} id={item._id} />
-                    <img width="500px" src={item.url ? item.url : {} } />
+                <Collapsible className="Collapsible__trigger "trigger={item.name} triggerWhenOpen={item.condition} data-collapsible="accordion">
+                  <div className="Collapsible">
+                    <div className="row Collapsible__contentInner ">
+                     <div className="col s12 m12">
+                        <Upload updateItemUrl={this.updateItemUrl} id={item._id} />
+                        <img width="500px" src={item.url ? item.url : {} } />
+                      </div>
+                      <div className="col s12 m12">
+                        <h4>
+                          {item.description}
+                        </h4>
+                      </div>
+                    </div>
+                    <div className="row Collapsible__contentInner">
+                      <div className="col s3 m3 offset-m3 offset-s3">
+                        <Link to={`/items/${item._id}`} key={item._id} className="collection-item">
+                          Offers
+                        </Link>
+                      </div>
+                      <div className="col s3 m3">
+                        <button className="btn red" onClick={() => this.deleteItem(item._id)}>
+                          Delete
+                        </button>
+                      </div>
+                    </div>
                   </div>
-                  <div className="col s12 m12">
-                    <h4>
-                      {item.description}
-                    </h4>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col s6 m6">
-                    <Link to={`/items/${item._id}`} key={item._id} className="collection-item">
-                      Offers
-                    </Link>
-                  </div>
-                  <div className="col s6 m6">
-                    <button className="btn red" onClick={() => this.deleteItem(item._id)}>
-                      Delete
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </li>
+                </Collapsible>
         );
       }
     });
@@ -138,34 +138,61 @@ class User extends React.Component {
     let wantedItems = this.state.items.map( (item) => {
       if (!item.needed) {
         return (
-            <li>
-             <div className="collapsible-header">{item.name} - - {item.condition}</div>
-             <div className="collapsible-body">
-               <div className="row">
-                 <div className="col s6 m6">
-                    <Upload updateItemUrl={this.updateItemUrl} id={item._id} />
-                    <img width="500px" src={item.url ? item.url : {} } />
+            // <li>
+            //  <div className="collapsible-header">{item.name} - - {item.condition}</div>
+            //  <div className="collapsible-body">
+            //    <div className="row">
+            //      <div className="col s6 m6">
+            //         <Upload updateItemUrl={this.updateItemUrl} id={item._id} />
+            //         <img width="500px" src={item.url ? item.url : {} } />
+            //       </div>
+            //       <div className="col s6 m6">
+            //         <h4>
+            //           {item.description}
+            //         </h4>
+            //       </div>
+            //     </div>
+            //     <div className="row">
+            //       <div className="col s3 m3 offset-m3 offset-s3">
+            //         <Link to={`/items/${item._id}`} key={item._id} className="collection-item">
+            //           Offers
+            //         </Link>
+            //       </div>
+            //       <div className="col s3 m3">
+            //         <button className="btn red" onClick={() => this.deleteItem(item._id)}>
+            //           Delete
+            //         </button>
+            //       </div>
+            //     </div>
+            //   </div>
+            // </li>
+                <Collapsible className="Collapsible__trigger "trigger={item.name} triggerWhenOpen={item.condition} data-collapsible="accordion">
+                  <div className="Collapsible">
+                    <div className="row Collapsible__contentInner ">
+                     <div className="col s12 m12">
+                        <Upload updateItemUrl={this.updateItemUrl} id={item._id} />
+                        <img width="500px" src={item.url ? item.url : {} } />
+                      </div>
+                      <div className="col s12 m12">
+                        <h4>
+                          {item.description}
+                        </h4>
+                      </div>
+                    </div>
+                    <div className="row Collapsible__contentInner">
+                      <div className="col s3 m3 offset-m3 offset-s3">
+                        <Link to={`/items/${item._id}`} key={item._id} className="collection-item">
+                          Offers
+                        </Link>
+                      </div>
+                      <div className="col s3 m3">
+                        <button className="btn red" onClick={() => this.deleteItem(item._id)}>
+                          Delete
+                        </button>
+                      </div>
+                    </div>
                   </div>
-                  <div className="col s6 m6">
-                    <h4>
-                      {item.description}
-                    </h4>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col s3 m3 offset-m3 offset-s3">
-                    <Link to={`/items/${item._id}`} key={item._id} className="collection-item">
-                      Offers
-                    </Link>
-                  </div>
-                  <div className="col s3 m3">
-                    <button className="btn red" onClick={() => this.deleteItem(item._id)}>
-                      Delete
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </li>
+                </Collapsible>
         );
       }
     });
@@ -194,15 +221,15 @@ class User extends React.Component {
         </div>
         <div className="col s6 m6">
           <h3 className="profile-text center">Items available</h3>
-          <ul className="collapsible" data-collapsible="accordion">
+
             {availableItems}
-          </ul>
+
         </div>
         <div className="col s6 m6">
           <h3 className="profile-text center">Items Needed</h3>
-           <ul className="collapsible" data-collapsible="accordion">
+
             {wantedItems}
-          </ul>
+
         </div>
       </div>
       <hr/>
