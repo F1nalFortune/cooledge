@@ -19,7 +19,7 @@ router.put('/:id', (req, res) => {
   User.findByIdAndUpdate(
     req.params.id,
     { $set : { url: req.body.url, school: req.body.school, 
-      year: req.body.year, age: req.body.age, general: req.body.general }},
+      year: req.body.year, general: req.body.general }},
     (err, user) => {
       res.json(user);
   });
@@ -41,6 +41,19 @@ router.get('/:id', (req, res) => {
     Item.find({userId: req.params.id}, (err, items) => {
       res.json({users, items})
     })
+  });
+});
+
+router.get('/schools/items', (req, res) => {
+  User.find({ school: req.query.school }, (err, users) => {
+    if (users) {
+      var ids = users.map( user => { return user.id })
+      Item.find({ userId: { $in: ids }}, (err, items) => {
+        return res.json(items);
+      })
+    } else {
+      return res.json([]);
+    }
   });
 });
 

@@ -1,9 +1,11 @@
 import React, { PropTypes } from 'react';
 import $ from 'jquery';
+import ProfileUpload from './ProfileUpload';
 
 class UserForm extends React.Component {
   constructor(props) {
     super(props);
+    this.updateUrl = this.updateUrl.bind(this);
     this.toggleEdit = this.toggleEdit.bind(this);
     this.updateUserForm = this.updateUserForm.bind(this);
     this.state = { edit: false };
@@ -17,12 +19,14 @@ class UserForm extends React.Component {
     this.setState({ edit: !this.state.edit });
   }
 
-  updateUserForm() {
+  updateUserForm(url) {
+    let image = url.length ? url : this.props.user.url
     $.ajax({
       url: `/api/users/${this.props.user._id}`,
       type: 'PUT',
       dataType: 'JSON',
-      data: { url: this.props.user.url, school: this.refs.school.value, year: this.refs.year.value, age: this.refs.age.value, general: this.refs.general.value }
+      data: { url: image, school: this.refs.school.value, year: this.refs.year.value, general: this.refs.general.value }
+
     }).done( user => {
       console.log(user);
       this.props.updateUser();
@@ -30,21 +34,20 @@ class UserForm extends React.Component {
     });
   }
 
+  updateUrl(id, url) {
+    this.props.updateUrl(id, url);
+  }
+
   userInfo() {
     return(
         <div>
           <div className="col s12 m6 user-info">
-            <div className="row">
-              <p>School:</p>
-              <div>{this.props.user.school}</div>
-            </div>
-            <div>Graduating Year:{this.props.user.year}</div>
-            <div>Age:{this.props.user.age}</div>
-            <div>General:</div>
-            <textarea></textarea>
+            <div><span className="thirty">School:</span>{this.props.user.school}</div>
+            <div><span className="thirty">Graduating Year:</span>{this.props.user.year}</div>
+            <div><span className="thirty">General:</span>{this.props.user.general}</div>
           </div>
           <div className="col m2 center">
-            <button className="btn" onClick={this.toggleEdit}>Edit</button>
+            <button className="btn blue-grey" onClick={this.toggleEdit}>Edit</button>
           </div>
         </div>
     );
@@ -59,34 +62,51 @@ class UserForm extends React.Component {
       <div>
         <div className="col s12 m6">
           <div className="input-field col s12">
-            <select className="browser-default" ref="school">
-              <option value="" disabled selected>Select a University</option>
-              <option value="harvard">Harvard</option>
-              <option value="uofu">University of Utah</option>
-              <option value="yale">Yale</option>
-            </select>
+              <select required={true} className="browser-default" ref="school">
+                <option value="" disabled selected>Select a University</option>
+                <option value="Utah State University">Utah State University</option>
+                <option value="University of Utah">University of Utah</option>
+                <option value="Southern Utah University">Southern Utah University</option>
+                <option value="Weber State University">Weber State University</option>
+                <option value="Utah Valley University">Utah Valley University</option>
+                <option value="Dixie State University">Dixie State University</option>
+                <option value="Brigham Young University">Brigham Young University</option>
+              </select>
+            </div>
+          <div className="row">
+            <div className="col s6 m6">
+              <h5 className="profile-text">Graduating Year</h5>
+            </div>
+            <div className="col s6 m6">
+              <input
+                required={true}
+                ref="year"
+                placeholder={yr}
+                defaultValue={yr}
+                className="white-text"
+              />
+            </div>
           </div>
-          <input
-            required={true}
-            ref="year"
-            placeholder={yr}
-            defaultValue={yr}
-          />
-          <input
-            required={true}
-            ref="age"
-            placeholder={ag}
-            defaultValue={ag}
-          />
-          <textarea ref="general">{gen}</textarea> 
-          {/* <div>School:{this.state.users.school}</div> 
-          <div>Graduating Year:{this.state.users.year}</div>
-          <div>Age: {this.state.users.age}</div>
-          <div>General: </div>*/}
+          <div className="row">
+            <div className="col s4 m4">
+              <h5 className="profile-text"> General Information</h5>
+            </div>
+            <div className="col s8 m8">
+              <input 
+                ref="general" 
+                required={true}
+                placeholder={gen}
+                defaultvalue={gen}
+                className="white-text" /> 
+            </div>
+          </div>
+          <div className="col s12 m4">
+            <ProfileUpload updateUserForm={this.updateUserForm} updateUserUrl={this.updateUrl} id={this.props.user._id} />
+          </div>
         </div>
         <div className="col m2 center">
-          <button className="btn" onClick={this.toggleEdit}>Cancel</button>
-          <button onClick={this.updateUserForm  } className="btn">Update</button>
+          <button className="btn blue-grey" onClick={this.toggleEdit}>Cancel</button>
+          <button onClick={this.updateUserForm  } className="btn blue-grey">Update</button>
         </div>
       </div>
     );

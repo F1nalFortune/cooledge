@@ -1,8 +1,3 @@
-/*img {
-  position: relative;
-  z-index: auto;
-}*/
-
 #sidenav-overlay{
   position: static !important;
 }
@@ -30,16 +25,24 @@
   border-color: grey;
 }
 
+.collapsible-body{
+  background-color: white;
+}
+
 .row.dashboard-bg {
   background: url('../images/dashboardbg1.jpg') no-repeat center center fixed;
   background-size: cover;
-/*  background-repeat: no-repeat;*/
-  height: 400px;
+  height: 432px;
   margin-bottom: 0px;
 }
 
-.item-filter-div {
+.row.item-filter-div {
   background-color: #edefed;
+  margin-bottom: 0px;
+}
+
+.thirty{
+  padding-right: 30px;
 }
 
 .row.col.item-list-div {
@@ -47,7 +50,6 @@
   z-index: 1;
   padding-right: 0px;
   padding-left: 0px;
-
 }
 
 .dashboard-greeting {
@@ -113,6 +115,32 @@ body {
 .search:focus {
     width: 21em;
     text-decoration: black;
+}
+
+.row.item-desc-bg {
+  background-color: #edefed;
+  padding-top: 70px;
+  padding-bottom: 60px;
+  margin-bottom: 0px;
+  color: #484848;
+}
+
+.row.add-offer-bg {
+  background-color: #edefed;
+  margin-bottom: 0px;
+  padding-bottom: 25px;
+  padding-top: 20px;
+}
+
+.border-div {
+  border-top: 1px solid grey;
+}
+
+.panel-info {
+  border: 1px solid #dce0e0;
+  position: relative;
+  background-color: white;
+  color: #484848;
 }
 
 nav {
@@ -229,3 +257,6 @@ a {
   padding-bottom: 3%;
 }
 
+.page-footer.footer-div {
+  margin-top: 0px;
+}

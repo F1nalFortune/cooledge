@@ -63,7 +63,7 @@ class ProfileUpload extends React.Component {
         >
           <div>
             <br />
-            <button type="button" className="profile btn-large blue-grey btn btn-info">Add Image</button>
+            <button type="button" className="blue-grey btn btn-info">Add Profile Image</button>
           </div>
         </DropZone>
       </div>

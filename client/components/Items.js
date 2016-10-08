@@ -14,7 +14,7 @@ class Items extends React.Component {
     this.toggleForm = this.toggleForm.bind(this);
     this.updateItemUrl = this.updateItemUrl.bind(this)
     this.form = this.form.bind(this);
-    this.state = { items: [], showForm: false };
+    this.state = { items: [], showForm: false, userSchool: [] };
   }
 
   componentWillMount() {
@@ -29,7 +29,7 @@ class Items extends React.Component {
         default:
           let items = this.setState({ items: this.props.items.filter( item => item.category === nextProps.filter)})
       }
-    }
+    } 
   }
 
   updateItemUrl(id, url) {
@@ -120,7 +120,7 @@ class Items extends React.Component {
       return (
       <div className="col s10 m4 item-list-div">
         <Link to={`/items/${item._id}`} key={item._id} >
-          <img height="250 px" width="400 px" src={item.url} />
+          <img height="250 px" width="375 px" src={item.url} />
         </Link>
         <Upload updateItemUrl={this.updateItemUrl} id={item._id} />
       </div>
@@ -130,7 +130,7 @@ class Items extends React.Component {
     return (
       <div>
         <div className="row item-filter-div">
-          <div className="col s2 m2 filter-div">
+          <div className="col s12 m2 filter-div">
             <Filter />
           </div>
           <div className="col s10 m10">
@@ -156,7 +156,7 @@ class Items extends React.Component {
 
 
 const mapStateToProps = (state) => {
- return { auth: state.auth, filter: state.filter, items: state.items };
+ return { auth: state.auth, filter: state.filter, items: state.items, userSchool: state.school };
 }
 
 export default connect(mapStateToProps)(Items);

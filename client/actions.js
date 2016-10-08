@@ -20,12 +20,12 @@ export const login = (email, password, history, redirect) => {
   }
 }
 
-export const signup = (email, password, school, year, age, history, redirect) => {
+export const signup = (email, password, school, year, history, redirect) => {
   return (dispatch) => {
     $.ajax({
       url: '/api/auth/signup',
       type: 'POST',
-      data: { email, password, school, year, age }
+      data: { email, password, school, year }
     }).done( (res) => {
       let id = res.id
       let token = getToken();
@@ -50,6 +50,20 @@ export const setFilter = (category) => {
   return {
     type: 'SET_FILTER',
     category
+  }
+}
+
+export const schoolItemFilter = (school) => {
+  return (dispatch) => {
+    $.ajax({
+      url: '/api/users/schools/items',
+      type: 'GET',
+      data: { school }
+    }).done( school => {
+      dispatch({ type: 'GET_SCHOOL', school })
+    }).fail( data => {
+      Materialize.toast(data.responseText, 3000)
+    });
   }
 }
 

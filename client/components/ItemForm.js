@@ -11,15 +11,6 @@ class ItemForm extends React.Component {
     this.state = { items: [] };
   }
 
-  //  addItem(e) {
-  //     e.preventDefault();
-  //     let name = this.refs.name.value;
-  //     let category = this.refs.category.value;
-  //     let condition = this.refs.condition.value;
-  //     this.refs.itemForm.reset();
-  //     this.props.addSongItem(name, category, condition);
-  //   }
-
    addItem(e) {
      e.preventDefault();
      if(this.refs.needed.value === 'true') {
@@ -32,8 +23,9 @@ class ItemForm extends React.Component {
        type: 'POST',
        data: {
         name: this.refs.name.value,
-        category: this.refs.category.value,
         condition: this.refs.condition.value,
+        category: this.refs.category.value,
+        description: this.refs.description.value,
         userId: this.props.auth.id,
         needed: booleanValue
        }
@@ -56,21 +48,7 @@ class ItemForm extends React.Component {
        this.getItems();
      });
    }
- // addItem(e) {
- //   e.preventDefault();
- //   $.ajax({
- //     url: '/api/items',
- //     type: 'POST',
- //     data: {
- //       name: this.refs.name.value,
- //       category: this.refs.category.value,
- //       condition: this.refs.condition.value
- //     }
- //   }).done( (item) => {
- //     this.refs.form.reset();
- //     this.setState({ items: [ { ...item }, ...this.state.items ]});
- //   });
- // }
+
 
 
   render() {
@@ -99,9 +77,10 @@ class ItemForm extends React.Component {
               </select>
             </div>
             <input type="text" ref="condition" placeholder="Condition of Item" />
-            <button className="btn" type="submit">Add</button>
+            <button data-target="modal1" className="btn blue-grey modal-trigger" type="submit">Add</button>
           </form>
         </div>
+
       </div>
     )
   }
