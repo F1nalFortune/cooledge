@@ -100,8 +100,8 @@ class User extends React.Component {
 
   render() {
     let availableItems = this.state.items.map( (item) => {
-      console.log(item.needed);
-      if (item.needed) {
+      console.log(!item.needed);
+      if (!item.needed) {
         return (
            <li>
              <div className="collapsible-header">{item.name} - - {item.condition}</div>
@@ -136,7 +136,7 @@ class User extends React.Component {
     });
 
     let wantedItems = this.state.items.map( (item) => {
-      if (!item.needed) {
+      if (item.needed) {
         return (
             <li>
              <div className="collapsible-header">{item.name} - - {item.condition}</div>
@@ -177,11 +177,10 @@ class User extends React.Component {
         <div className="row">
           <div className="col s12 m4">
             <img width="250px" src={this.state.users.url}/>
-            <ProfileUpload updateUserUrl={this.updateUserUrl} id={this.state.users._id} />
             <h5 className="profile-text">{this.state.users.username}</h5>  
           </div>
 
-          <UserForm user={this.state.users} updateUser={this.getUser} />
+          <UserForm user={this.state.users} updateUser={this.getUser} updateUrl={this.updateUserUrl}/>
 
         </div>
       </div>
@@ -189,6 +188,7 @@ class User extends React.Component {
         <div className="col s12 m12">
           <ItemForm
             className="add-form"
+            getUser={this.getUser}
             showItemForm={this.state.showItemForm}
             addItem={this.addItem} />
         </div>

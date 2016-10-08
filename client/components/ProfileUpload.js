@@ -23,6 +23,7 @@ class ProfileUpload extends React.Component {
       dataType: 'JSON',
       data: { url }
     }).done( (res) => {
+      this.props.updateUserForm(url);
       this.props.updateUserUrl(this.props.id, url);
     });
   }
@@ -63,7 +64,7 @@ class ProfileUpload extends React.Component {
         >
           <div>
             <br />
-            <button type="button" className="blue-grey btn btn-info">Add Image</button>
+            <button type="button" className="blue-grey btn btn-info">Add Profile Image</button>
           </div>
         </DropZone>
       </div>

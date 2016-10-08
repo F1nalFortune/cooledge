@@ -17,6 +17,7 @@ class Upload extends React.Component {
   }
 
   addUrl(url) {
+    debugger;
       $.ajax({
         url: `/api/items/${this.props.id}`,
         type: 'PUT',
