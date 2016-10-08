@@ -101,7 +101,7 @@ class User extends React.Component {
   render() {
     let availableItems = this.state.items.map( (item) => {
       console.log(!item.needed);
-      if (!item.needed) {
+      if (item.needed) {
         return (
            <li>
              <div className="collapsible-header">{item.name} - - {item.condition}</div>
@@ -136,7 +136,7 @@ class User extends React.Component {
     });
 
     let wantedItems = this.state.items.map( (item) => {
-      if (item.needed) {
+      if (!item.needed) {
         return (
             <li>
              <div className="collapsible-header">{item.name} - - {item.condition}</div>
