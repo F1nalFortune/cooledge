@@ -103,19 +103,18 @@ class User extends React.Component {
       console.log(item.needed);
       if (item.needed) {
         return (
-         <ul className="collapsible" data-collapsible="accordion">
            <li>
              <div className="collapsible-header">{item.name} - - {item.condition}</div>
              <div className="collapsible-body">
                <div className="row">
-                 <div className="col s6 m6">
+                 <div className="col s12 m12">
                     <Upload updateItemUrl={this.updateItemUrl} id={item._id} />
                     <img width="500px" src={item.url ? item.url : {} } />
                   </div>
-                  <div className="col s6 m6">
-                    <p>
+                  <div className="col s12 m12">
+                    <h4>
                       {item.description}
-                    </p>
+                    </h4>
                   </div>
                 </div>
                 <div className="row">
@@ -132,7 +131,6 @@ class User extends React.Component {
                 </div>
               </div>
             </li>
-          </ul>
         );
       }
     });
@@ -140,29 +138,34 @@ class User extends React.Component {
     let wantedItems = this.state.items.map( (item) => {
       if (!item.needed) {
         return (
-          <div>
-            <div className="col s6 m3">
-              <div className="card">
-                <div className="card-image">
-                  <Upload updateItemUrl={this.updateItemUrl} id={item._id} />
-                  <img width="500px" src={item.url ? item.url : {} } />
+            <li>
+             <div className="collapsible-header">{item.name} - - {item.condition}</div>
+             <div className="collapsible-body">
+               <div className="row">
+                 <div className="col s6 m6">
+                    <Upload updateItemUrl={this.updateItemUrl} id={item._id} />
+                    <img width="500px" src={item.url ? item.url : {} } />
+                  </div>
+                  <div className="col s6 m6">
+                    <h4>
+                      {item.description}
+                    </h4>
+                  </div>
                 </div>
-                <span className="card-title">{item.name}</span>
-                <p> {item.condition} </p>
-                <div className="card-content">
-                  <p>{item.description}</p>
-                </div>
-                <div className="card-action">
-                  <Link to={`/items/${item._id}`} key={item._id} className="collection-item">
-                    Offers
-                  </Link>
-                  <button className="btn red" onClick={() => this.deleteItem(item._id)}>
-                    Delete
-                  </button>
+                <div className="row">
+                  <div className="col s3 m3 offset-m3 offset-s3">
+                    <Link to={`/items/${item._id}`} key={item._id} className="collection-item">
+                      Offers
+                    </Link>
+                  </div>
+                  <div className="col s3 m3">
+                    <button className="btn red" onClick={() => this.deleteItem(item._id)}>
+                      Delete
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
+            </li>
         );
       }
     });
@@ -191,11 +194,15 @@ class User extends React.Component {
         </div>
         <div className="col s6 m6">
           <h3 className="profile-text center">Items available</h3>
-          {availableItems}
+          <ul className="collapsible" data-collapsible="accordion">
+            {availableItems}
+          </ul>
         </div>
         <div className="col s6 m6">
           <h3 className="profile-text center">Items Needed</h3>
-          {wantedItems}
+           <ul className="collapsible" data-collapsible="accordion">
+            {wantedItems}
+          </ul>
         </div>
       </div>
       <hr/>

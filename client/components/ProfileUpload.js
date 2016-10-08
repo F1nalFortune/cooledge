@@ -23,7 +23,6 @@ class ProfileUpload extends React.Component {
       dataType: 'JSON',
       data: { url }
     }).done( (res) => {
-      debugger;
       this.props.updateUserUrl(this.props.id, url);
     });
   }

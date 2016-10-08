@@ -32,8 +32,9 @@ class ItemForm extends React.Component {
        type: 'POST',
        data: {
         name: this.refs.name.value,
-        category: this.refs.category.value,
         condition: this.refs.condition.value,
+        category: this.refs.category.value,
+        description: this.refs.description.value,
         userId: this.props.auth.id,
         needed: booleanValue
        }

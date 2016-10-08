@@ -25,6 +25,10 @@
   border-color: grey;
 }
 
+.collapsible-body{
+  background-color: white;
+}
+
 .row.dashboard-bg {
   background: url('../images/dashboardbg1.jpg') no-repeat center center fixed;
   background-size: cover;
@@ -35,6 +39,10 @@
 .row.item-filter-div {
   background-color: #edefed;
   margin-bottom: 0px;
+}
+
+.thirty{
+  padding-right: 30px;
 }
 
 .row.col.item-list-div {
