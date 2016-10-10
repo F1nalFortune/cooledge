@@ -16,9 +16,13 @@ router.get('/', function(req, res) {
 
 router.get('/:id', function(req, res) {
   Item.findById(req.params.id, function(err, item) {
-    User.findById( item.userId, function( err, user){
-      res.send( 200, { user: user, item:item } );
-    } )
+    Item.find({userId:item.userId}, function(err, items){
+      User.findById( item.userId, function( err, user){
+        Offer.findOne({itemId: item._id}, function(err, offer) {
+          res.send( 200, { user: user, item:item, items:items, offer:offer } );
+        });
+      });
+    });
   })
 })
 
@@ -69,15 +73,18 @@ router.delete('/offers/:id', function(req, res) {
 })
 
 router.post('/:id/offers', function(req, res) {
+  //Query offer database for offer with item id and user id match
+  //if match return message saying can not add another offer
+  //else build offer
   new Offer({
     name: req.body.name,
     offer: req.body.offer,
-    itemId: req.body.itemId
+    contact: req.body.contact,
+    itemId: req.body.itemId,
+    userId: req.body.userId
   }).save( function(err, offer) {
     res.json(offer);
-  }).fail( function(err, data) {
-    console.log("Add offer to item failed.");
-  });
+  })
 })
 
 module.exports = router;

@@ -2,14 +2,14 @@ import React from 'react';
 import $ from 'jquery';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import { fetchItems } from '../actions';
 
 class Item extends React.Component {
   constructor(props) {
     super(props);
     this.addOffer = this.addOffer.bind(this);
+    this.addOfferForm = this.addOfferForm.bind(this);
     this.itemsNeeded = this.itemsNeeded.bind(this);
-    this.state = { item: {}, offers: [], user: {} };
+    this.state = { item: {}, items: [], offer: {}, user: {} };
   }
 
   componentWillMount() {
@@ -19,7 +19,8 @@ class Item extends React.Component {
     }).done( (res) => {
       this.setState({item:res.item});
       this.setState({user:res.user});
-      this.props.dispatch(fetchItems());
+      this.setState({items:res.items})
+      this.setState({offer:res.offer})
     }).fail(data => {
       console.log(data.responseText);
     })
@@ -35,13 +36,14 @@ class Item extends React.Component {
         name: this.refs.name.value,
         contact: this.refs.contact.value,
         offer: this.refs.offer.value,
-        itemId: itemId
+        itemId: itemId,
+        userId: this.props.auth.id
       }
     }).done( (offer) => {
       this.refs.form.reset();
-      this.setState({ offers: [ { ...offer }, ...this.state.offers ]});
+      this.setState({offer});
+      this.addOfferForm();
     }).fail( (err) => {
-      console.log("Add offer to item failed, message from Item.js component.");
       console.log(err.responseText);
     });
   }
@@ -62,11 +64,11 @@ class Item extends React.Component {
 
   itemsNeeded() {
     let arr = [];
-    this.props.items.map( (item) => {
+    this.state.items.map( (item) => {
       if (!item.needed) {
         arr.push(
           <div className="panel-info">
-            <h5 className="center-align">Name {item.name}</h5>
+            <h5 className="center-align">{item.name}</h5>
           </div> 
         )
       }
@@ -74,21 +76,33 @@ class Item extends React.Component {
     return arr;
   }
 
-  render() {
-    let { name, category, condition, description, url, needed } = this.state.item;
-    let offers = this.state.offers.map( offer => {
-      return (
+  addOfferForm() {
+    if (this.state.offer.hasOwnProperty("_id")) {
+      return(
         <div className="col s12 m4">
-          <Link to={`/offers/${offer._id}`} key={offer._id} className="collection-item">
-            {offer.name}
-          </Link>
-          <button className="btn red" onClick={() => this.deleteOffer(offer._id)}>
-            Delete
-          </button>
-        {/* <li className="collection-item" key={offer._id}>{offer.name}</li> */}
+          <h4 className="center-align">Your offer is</h4>
+          <div className="center-align panel-info">
+            <p>{this.state.offer.offer}</p>
+          </div>
         </div>
       )
-    })
+    } else {
+      return (
+        <div className="col s12 m4">
+          <h4 className="center-align">Add Offer</h4>
+          <form className="panel-info panel-padding-5" ref="form" onSubmit={this.addOffer}>
+            <input ref="name" placeholder="name" />
+            <input ref="contact" placeholder="Contact Info" />
+            <textarea ref="offer" placeholder="offer"></textarea>
+            <button className="btn blue-grey" type="submit">Add Offer</button>
+          </form>
+        </div>
+      )
+    }
+  }
+
+  render() {
+    let { name, category, condition, description, url, needed } = this.state.item;
     return (
         <div>
           <div className="row item-desc-bg">
@@ -115,15 +129,7 @@ class Item extends React.Component {
               <h4 className="center-align">Items Request for Trading</h4>
               {this.itemsNeeded()}
             </div>
-            <div className="col s12 m4 panel-info">
-              <h3>Add Offer</h3>
-              <form ref="form" onSubmit={this.addOffer}>
-                <input ref="name" placeholder="name" />
-                <input ref="contact" placeholder="Contact Info" />
-                <textarea ref="offer" placeholder="offer"></textarea>
-                <button className="btn blue-grey" type="submit">Add Offer</button>
-              </form>
-            </div>
+            {this.addOfferForm()}
           </div>
         </div>
       );
