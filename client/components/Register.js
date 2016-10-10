@@ -14,9 +14,10 @@ class Register extends React.Component {
     e.preventDefault();
     let email = this.refs.newEmail.value;
     let password = this.refs.newPassword.value;
+    let name = this.refs.name.value;
     let school = this.refs.school.value;
     let year = this.refs.year.value;
-    this.props.dispatch(signup(email, password, school, year, this.props.history, this.state.redirect));
+    this.props.dispatch(signup(email, password, name, school, year, this.props.history, this.state.redirect));
   }
 
   render() {
@@ -26,6 +27,7 @@ class Register extends React.Component {
           <form onSubmit={this.signUp} className="center-align">
             <input ref="newEmail" placeholder="email" />
             <input type="password" ref="newPassword" placeholder="password"/>
+            <input ref="name" placeholder="Name" />
             <div className="input-field col s12">
               <select className="browser-default" ref="school">
                 <option value="" disabled selected>Select a University</option>

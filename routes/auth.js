@@ -8,6 +8,7 @@ router.post('/signup', function(req, res) {
   User.register(new User({username: req.body.email}), req.body.password, function(err, user) {
     if (err)
       return res.json(500, err.message);
+    user.name = req.body.name
     user.school = req.body.school
     user.year = req.body.year
     user.age = req.body.age

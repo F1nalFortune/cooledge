@@ -1,6 +1,10 @@
 #sidenav-overlay{
   position: static !important;
 }
+.img-size {
+  width: 375px;
+  height: 250px;
+}
 
 #about{
   margin-left: 10%;
@@ -38,7 +42,7 @@
 
 .row.item-filter-div {
   background-color: #edefed;
-  margin-bottom: 0px;
+  margin-bottom: 50px;
 }
 
 .thirty{
@@ -148,10 +152,6 @@ nav {
   position: fixed;
   z-index: +2;
 }
-.side-nav {
-  position: fixed;
-  z-index: +3;
-}
 
 a {
   cursor: pointer; 
@@ -178,14 +178,16 @@ a {
   margin-top: -20px;
 }
 .bigger {
-  padding-top: 25%;
+  font-size: 48px;
+  padding-top: 18%;
 }
 .bigger:hover {
-  padding-top: 24%;
-  font-size: 2.5em;
-  line-height: 1.2em;
+  padding-top: 14%;
+  font-size: 3em;
+  line-height: 1.5em;
   transition: all .2s ease-in-out;
 }
+
 #space {
   padding-left: 20px;
   padding-right: 20px;
@@ -197,16 +199,20 @@ a {
 
 
 .bck {
-  background-image: url('https://static.pexels.com/photos/1486/wood-pattern-ground-parquet-floor.jpg');
-  background-repeat: repeat;
-  background-attachment: fixed;
+  background: url('https://static.pexels.com/photos/1486/wood-pattern-ground-parquet-floor.jpg') no-repeat center center fixed;
+  background-size: cover;
+  height: 450px;
+  width: 100%;
+}
+.gradient {
+  
   background-size: cover;
 }
 
 .user-info{
-  text-shadow: 2px 2px #ad663b;
+  text-shadow: 2px 2px #000;
   color: white;
-  font-size: 3vw;
+  font-size: 2em;
 }
 
 .profile-text{
@@ -220,12 +226,6 @@ a {
   border-radius: 50px;
 }
 
-.bigger:hover {
-  padding-top: 25%;
-  font-size: 3em;
-  line-height: 1.4em;
-  transition: all .2s ease-in-out;
-}
 .bigtext {
   font-size: 10em;
 }
@@ -259,4 +259,12 @@ a {
 
 .page-footer.footer-div {
   margin-top: 0px;
+}
+
+.long {
+  width: 20em;
+}
+
+.user-body {
+  min-height: 300px;
 }

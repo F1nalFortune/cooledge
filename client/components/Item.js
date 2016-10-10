@@ -92,10 +92,10 @@ class Item extends React.Component {
     return (
         <div>
           <div className="row item-desc-bg">
-            <div className="col s12 offset-m2 m3 img-div">
-              <img className="z-depth-3" height="260px" src={url} />
+            <div className="col s12 offset-m2 m2 img-div">
+              <img className="z-depth-3" height="250px" src={url} />
             </div>
-            <div className="col s12 m3 item-info-div panel-info">
+            <div className="col s12 m8 item-info-div panel-info">
               <h4>Name: {name}</h4>
               <h5>{description}</h5>
               <h5>Condition {condition}</h5>

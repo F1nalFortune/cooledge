@@ -47,9 +47,9 @@ class Landing extends React.Component {
 	      { this.form() }
 
 			<div className="row">
-				<div className="center-align info col m4 blue-grey"><h4 className="white-text bigger">Have Something You Don't Need?</h4></div>
-				<div className="center-align info col m4 blue-grey"><h4 className="white-text bigger">Need Something You Want To Trade For?</h4></div>
-				<div className="center-align info col m4 blue-grey"><h4 className="white-text bigger">Try Bartering With Coollege Today!</h4></div>
+				<div className="center-align info col m4 blue-grey"><h4 className="white-text bigger"><i className="medium material-icons">check_box</i><br />Have Something You Don't Need?</h4></div>
+				<div className="center-align info col m4 blue-grey"><h4 className="white-text bigger"><i className="medium material-icons">check_box_outline_blank</i><br />Need Something You <br />Want To Trade For?</h4></div>
+				<div className="center-align info col m4 blue-grey"><h4 className="white-text bigger"><i className="medium material-icons">shuffle</i><br />Try Bartering With <span className="sitefont">Trade Square</span> Today!</h4></div>
 			</div>
 			
 			<Carousel />

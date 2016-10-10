@@ -28,7 +28,6 @@ class UserForm extends React.Component {
       data: { url: image, school: this.refs.school.value, year: this.refs.year.value, general: this.refs.general.value }
 
     }).done( user => {
-      console.log(user);
       this.props.updateUser();
       this.toggleEdit();
     });
@@ -44,7 +43,7 @@ class UserForm extends React.Component {
           <div className="col s12 m6 user-info">
             <div><span className="thirty">School:</span>{this.props.user.school}</div>
             <div><span className="thirty">Graduating Year:</span>{this.props.user.year}</div>
-            <div><span className="thirty">General:</span>{this.props.user.general}</div>
+            <div><span className="thirty">About Me:</span>{this.props.user.general}</div>
           </div>
           <div className="col m2 center">
             <button className="btn blue-grey" onClick={this.toggleEdit}>Edit</button>
@@ -60,7 +59,7 @@ class UserForm extends React.Component {
     let gen = this.props.user.general;
     return (
       <div>
-        <div className="col s12 m6">
+        <div className="col s12 m6 add-form">
           <div className="input-field col s12">
               <select required={true} className="browser-default" ref="school">
                 <option value="" disabled selected>Select a University</option>
@@ -89,7 +88,7 @@ class UserForm extends React.Component {
           </div>
           <div className="row">
             <div className="col s4 m4">
-              <h5 className="profile-text"> General Information</h5>
+              <h5 className="profile-text">About Me</h5>
             </div>
             <div className="col s8 m8">
               <input 

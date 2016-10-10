@@ -15,9 +15,12 @@ class User extends React.Component {
     super(props);
     this.updateItemUrl = this.updateItemUrl.bind(this);
     this.updateUserUrl = this.updateUserUrl.bind(this);
-    this.toggleItemForm = this.toggleItemForm.bind(this);
+    this.form = this.form.bind(this);
+    this.toggleUpload = this.toggleUpload.bind(this);
+    this.uploadForm = this.uploadForm.bind(this);
+    this.toggleForm = this.toggleForm.bind(this);
     this.getUser = this.getUser.bind(this);
-    this.state = { users: [], items: [] };
+    this.state = { users: [], items: [], showItemForm: false, showUpload: false};
   }
 
   componentWillMount() {
@@ -68,9 +71,46 @@ class User extends React.Component {
     this.getUser();
   }
 
-  toggleItemForm() {
-    let formState = (this.state.showItemForm === 'hidden') ? 'show' : 'hidden';
-    this.setState({showItemForm: formState});
+  toggleForm(){
+    this.setState({ showItemForm: !this.state.showItemForm })
+  }
+
+  toggleUpload() {
+    this.setState({ showUpload: !this.state.showUpload })
+  }
+
+  form() {
+    if (this.state.showItemForm) {
+      return (
+        <div className="col s12 m12">
+          <ItemForm
+            className="add-form"
+            getUser={this.getUser}
+            showItemForm={this.state.showItemForm}
+            addItem={this.addItem}
+            toggleUpload={this.toggleUpload}
+            toggleForm={this.toggleForm}
+            uploadForm={this.uploadForm}
+             />
+        </div>
+      )
+    } else {
+      return null
+    }
+  }
+
+  uploadForm(id) {
+    if (this.state.showUpload) {
+      return (
+        <div className="col s12 m12 center">
+          <Upload id={id}/>
+          <br />
+          <button className="btn" onClick={this.toggleUpload}>Done</button>
+        </div>
+      )
+    } else {
+      return null
+    }
   }
 
   deleteItem(id) {
@@ -95,24 +135,25 @@ class User extends React.Component {
       if (!item.needed) {
         return (
            <li>
-             <div className="collapsible-header">{item.name} - - {item.condition}</div>
+            <div className="collapsible-header blue-grey darken-2 white-text"><i className="material-icons">check_box</i>{item.name} - - {item.condition}</div>
              <div className="collapsible-body">
-               <div className="row">
-                 <div className="col s12 m12">
-                    <Upload updateItemUrl={this.updateItemUrl} id={item._id} />
-                    <img width="500px" src={item.url ? item.url : {} } />
-                  </div>
+                <div className="row">
                   <div className="col s12 m12">
+                    <h3>
+                      {item.name}
+                    </h3>
                     <h4>
                       {item.description}
                     </h4>
                   </div>
+                  <div className="center">
+                    <img width="600px" src={item.url ? item.url : {} } />
+                  </div>
+                  {item.offer}
                 </div>
                 <div className="row">
                   <div className="col s6 m6">
-                    <Link to={`/items/${item._id}`} key={item._id} className="collection-item">
-                      Offers
-                    </Link>
+                    <Upload updateItemUrl={this.updateItemUrl} id={item._id} />
                   </div>
                   <div className="col s6 m6">
                     <button className="btn red" onClick={() => this.deleteItem(item._id)}>
@@ -130,12 +171,12 @@ class User extends React.Component {
       if (item.needed) {
         return (
             <li>
-             <div className="collapsible-header">{item.name} - - {item.condition}</div>
+             <div className="collapsible-header blue-grey darken-2 white-text"><i className="material-icons">check_box_outline_blank</i>{item.name} - - {item.condition}</div>
              <div className="collapsible-body">
                <div className="row">
                  <div className="col s6 m6">
-                    <Upload updateItemUrl={this.updateItemUrl} id={item._id} />
                     <img width="500px" src={item.url ? item.url : {} } />
+                    <Upload updateItemUrl={this.updateItemUrl} id={item._id} />
                   </div>
                   <div className="col s6 m6">
                     <h4>
@@ -163,34 +204,35 @@ class User extends React.Component {
 
     return (
 
-    <div className="bck">
-      <div className="container toppad">
-        <div className="row">
-          <div className="col s12 m4">
-            <img width="250px" src={this.state.users.url}/>
-            <h5 className="profile-text">{this.state.users.username}</h5>  
+    <div>
+      <div className="row bck">
+        <div className="container toppad">
+          <div className="row">
+            <div className="col s12 m4">
+              <img height="200px" src={this.state.users.url}/>
+              <h5 className="profile-text">{this.state.users.name}</h5>  
+            </div>
+
+            <UserForm user={this.state.users} updateUser={this.getUser} updateUrl={this.updateUserUrl}/>
+            <br />
           </div>
-
-          <UserForm user={this.state.users} updateUser={this.getUser} updateUrl={this.updateUserUrl}/>
-
+            <div className="center">
+              <button className='btn btn-large waves-effect waves-light col s2 offset-s5 blue-grey' onClick={this.toggleForm}>Add an Item</button>
+            </div>
         </div>
       </div>
-      <div className="row">
-        <div className="col s12 m12">
-          <ItemForm
-            className="add-form"
-            getUser={this.getUser}
-            showItemForm={this.state.showItemForm}
-            addItem={this.addItem} />
-        </div>
+      <div className="row user-body">
+        { this.form() }
+        <br />
+        { this.uploadForm() }
         <div className="col s6 m6">
-          <h3 className="profile-text center">Items available</h3>
+          <h3 className="center">Items available</h3>
           <ul className="collapsible" data-collapsible="accordion">
             {availableItems}
           </ul>
         </div>
         <div className="col s6 m6">
-          <h3 className="profile-text center">Items Needed</h3>
+          <h3 className="center">Items Needed</h3>
            <ul className="collapsible" data-collapsible="accordion">
             {wantedItems}
           </ul>

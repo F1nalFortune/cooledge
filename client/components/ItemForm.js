@@ -2,13 +2,14 @@ import React from 'react';
 import $ from 'jquery';
 import { connect } from 'react-redux';
 import { fetchItems } from '../actions';
+import Upload from './Upload';
 
 let booleanValue = true;
 class ItemForm extends React.Component {
   constructor(props) {
     super(props)
     this.addItem = this.addItem.bind(this);
-    this.state = { items: [] };
+    this.state = { items: [], upload: false };
   }
 
    addItem(e) {
@@ -30,22 +31,10 @@ class ItemForm extends React.Component {
         needed: booleanValue
        }
      }).done( (item) => {
+       this.props.toggleUpload();
+       this.props.uploadForm(item._id);
        this.refs.form.reset();
        this.props.addItem();
-     });
-   }
-
-   deleteItem(id) {
-     this.setState({
-       items: this.state.items.filter( i => i._id !== id)
-     });
-
-     $.ajax({
-       url: `/api/items/${id}`,
-       type: 'DELETE'
-     }).fail( () => {
-       alert('Item failed to delete');
-       this.getItems();
      });
    }
 
@@ -56,12 +45,12 @@ class ItemForm extends React.Component {
 
     return (
       <div>
-        <div className="col s12 m12 add-form">
-          <h2 className="sitefont profile-text">Add an Item</h2>
-          <form className="white-text" ref="form" onSubmit={(e) => this.addItem(e)}>
-            <input type="text" ref="name" placeholder="Item Name" className="white-text" />
+        <div className="col s12 m12">
+          <h2 className="sitefonts center">Add an Item</h2>
+          <form ref="form" onSubmit={(e) => this.addItem(e)}>
+            <input type="text" ref="name" placeholder="Item Name" />
             <input rows="6" type="text" ref="description" placeholder="Item Description" />
-            <div className="input-field col s12 black-text">
+            <div className="input-field col s12">
               <select className="browser-default" ref="category">
                 <option value="" disabled selected>Select a Category</option>
                 <option value="school">School Supplies</option>
@@ -69,15 +58,17 @@ class ItemForm extends React.Component {
                 <option value="electronics">Computers and Electronics</option>
               </select>
             </div>
-            <div className="input-field col s12 black-text">
+            <div className="input-field col s12">
               <select className="browser-default" ref="needed">
-                <option value="" disabled selected>Item Status ( Item Available / Item Needed )</option>
-                <option value="true">Available</option>
-                <option value="false">Needed</option>
+                <option value="" disabled selected>Item Status ( Item Available for trade / Item That You Need )</option>
+                <option value="false">Available</option>
+                <option value="true">Needed</option>
               </select>
             </div>
             <input type="text" ref="condition" placeholder="Condition of Item" />
-            <button data-target="modal1" className="btn blue-grey modal-trigger" type="submit">Add</button>
+            <div className="center">
+              <button className="btn btn-large waves-light blue-grey center" type="submit">Add Item</button>
+            </div>
           </form>
         </div>
 
