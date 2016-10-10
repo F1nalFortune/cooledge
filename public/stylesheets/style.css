@@ -122,8 +122,11 @@ body {
 }
 
 .row.item-desc-bg {
-  background-color: #edefed;
-  padding-top: 70px;
+  background: url('https://static.pexels.com/photos/1486/wood-pattern-ground-parquet-floor.jpg') no-repeat center center fixed;
+  background-size: cover;
+  height: 450px;
+  width: 100%;
+  padding-top: 100px;
   padding-bottom: 60px;
   margin-bottom: 0px;
   color: #484848;
@@ -145,6 +148,12 @@ body {
   position: relative;
   background-color: white;
   color: #484848;
+}
+
+.panel-padding-5 {
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 7px;
 }
 
 nav {
@@ -268,3 +277,42 @@ a {
 .user-body {
   min-height: 300px;
 }
+/* Collabsible Styles */
+
+.Collapsible {
+  background-color: white; }
+
+.Collapsible__contentInner {
+  padding: 10px;
+  border: 1px solid #ebebeb;
+  border-top: 0; }
+  .Collapsible__contentInner p {
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 20px; }
+    .Collapsible__contentInner p:last-child {
+      margin-bottom: 0; }
+
+.Collapsible__trigger {
+  display: block;
+  font-weight: 400;
+  text-decoration: none;
+  color: #333333;
+  position: relative;
+  border: 1px solid white;
+  padding: 10px;
+  background: #00ac9d;
+  color: white; }
+  .Collapsible__trigger:after {
+    font-family: 'FontAwesome';
+    content: '\f107';
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    display: block;
+    transition: transform 300ms; }
+  .Collapsible__trigger.is-open:after {
+    transform: rotateZ(180deg); }
+
+/* End Collapsible Styles */
+

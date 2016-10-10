@@ -17,6 +17,7 @@ var routes = require('./routes/index');
 var auth = require('./routes/auth');
 var items = require('./routes/items');
 var users = require('./routes/users');
+var offers = require('./routes/offers');
 
 var app = express();
 
@@ -59,6 +60,7 @@ passport.deserializeUser(User.deserializeUser());
 app.use('/api/auth', auth);
 app.use('/api/items', items);
 app.use('/api/users', users);
+app.use('/api/offers', offers);
 app.use('*', routes);
 
 

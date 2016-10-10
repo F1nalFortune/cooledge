@@ -3,6 +3,7 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var User = require('../models/user');
 var Item = require('../models/item');
+var Offer = require('../models/offer');
 
 /* GET users listing. */
 // router.get('/', function(req, res, next) {
@@ -39,8 +40,10 @@ router.put('/url/:id', (req, res) => {
 router.get('/:id', (req, res) => {
   User.findById(req.params.id, (err, users) => {
     Item.find({userId: req.params.id}, (err, items) => {
-      res.json({users, items})
-    })
+      Offer.find({userId: req.params.id}, (err, offers) => {
+        res.json({ users, items, offers })
+      });
+    });
   });
 });
 

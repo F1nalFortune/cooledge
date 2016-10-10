@@ -11,6 +11,7 @@ import Login from './components/Login';
 import { UserAuthWrapper } from 'redux-auth-wrapper';
 import Landing from './components/Landing';
 import Register from './components/Register';
+import PublicUser from './components/PublicUser';
 
 const UserIsAuthenticated = UserAuthWrapper({
   authSelector: state => state.auth,
@@ -27,6 +28,7 @@ export default (
       <IndexRoute component={Landing} />
       <Route path="/dashboard" component={UserIsAuthenticated(Dashboard)} />
       <Route path="/dashboard/:id" component={UserIsAuthenticated(User)} />
+      <Route path="/dashboard/public/:id" component={UserIsAuthenticated(PublicUser)} />
       <Route path="/about" component={About} />
       <Route path="/items" component={UserIsAuthenticated(Items)} />
       <Route path="/items/:id" component={UserIsAuthenticated(Item)} />
