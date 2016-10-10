@@ -9,6 +9,7 @@ class Item extends React.Component {
     this.addOffer = this.addOffer.bind(this);
     this.addOfferForm = this.addOfferForm.bind(this);
     this.itemsNeeded = this.itemsNeeded.bind(this);
+    this.getOffer = this.getOffer.bind(this);
     this.state = { item: {}, items: [], offer: {}, user: {} };
   }
 
@@ -19,10 +20,17 @@ class Item extends React.Component {
     }).done( (res) => {
       this.setState({item:res.item});
       this.setState({user:res.user});
-      this.setState({items:res.items})
-      this.setState({offer:res.offer})
-    }).fail(data => {
-      console.log(data.responseText);
+      this.setState({items:res.items});
+      this.getOffer();
+    })
+  }
+
+  getOffer() {
+    $.ajax({
+      url: `/api/offers/${this.state.item._id}?userId=${this.props.auth.id}`,
+      type: 'GET'
+      }).done( (offer) => {
+        this.setState({offer});
     })
   }
 

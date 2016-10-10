@@ -18,7 +18,7 @@ class Items extends React.Component {
   }
 
   componentWillMount() {
-    this.props.dispatch(fetchItems());
+    this.props.dispatch(fetchItems(this.props.auth.id));
   }
 
   componentWillReceiveProps(nextProps) {

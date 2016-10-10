@@ -89,10 +89,10 @@ export const addItems = (text) => {
   }
 }
 
-export const fetchItems = () => {
+export const fetchItems = (id) => {
   return (dispatch) => {
     $.ajax({
-      url: '/api/items',
+      url: `/api/items?userId=${id}`,
       type: 'GET'
     }).done( (items) => {
       dispatch(getItems(items));
