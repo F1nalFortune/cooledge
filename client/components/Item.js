@@ -38,7 +38,7 @@ class Item extends React.Component {
     e.preventDefault();
     var itemId = this.props.params.id;
     $.ajax({
-      url: `/api/items/${itemId}/offers`,
+      url: '/api/offers/',
       type: 'POST',
       data: {
         name: this.refs.name.value,
@@ -115,7 +115,7 @@ class Item extends React.Component {
         <div>
           <div className="row item-desc-bg">
             <div className="col s12 offset-m2 m3 img-div">
-              <img className="z-depth-3" height="250px" width="335px" src={url} />
+              <img className="z-depth-3" height="250px" width="325px" src={url} />
             </div>
             <div className="col s12 m3 item-info-div panel-info">
               <h4>Name: {name}</h4>
