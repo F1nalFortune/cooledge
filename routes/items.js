@@ -3,6 +3,7 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var Item = require('../models/item');
 var Offer = require('../models/offer');
+var User = require( '../models/user');
 
 
 //ITEMS
@@ -15,7 +16,9 @@ router.get('/', function(req, res) {
 
 router.get('/:id', function(req, res) {
   Item.findById(req.params.id, function(err, item) {
-    res.json(item);
+    User.findById( item.userId, function( err, user){
+      res.send( 200, { user: user, item:item } );
+    } )
   })
 })
 

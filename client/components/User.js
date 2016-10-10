@@ -101,7 +101,6 @@ class User extends React.Component {
 
   render() {
     let availableItems = this.state.items.map( (item) => {
-      console.log(!item.needed);
       if (item.needed) {
         return (
                 <Collapsible className="Collapsible__trigger "trigger={item.name} triggerWhenOpen={item.condition} data-collapsible="accordion">

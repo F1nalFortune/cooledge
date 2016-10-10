@@ -2,26 +2,27 @@ import React from 'react';
 import $ from 'jquery';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
+import { fetchItems } from '../actions';
 
 class Item extends React.Component {
   constructor(props) {
     super(props);
     this.addOffer = this.addOffer.bind(this);
-    this.usrProfile = this.usrProfile.bind(this);
-    this.state = { item: {}, offers: [], users: {} };
+    this.itemsNeeded = this.itemsNeeded.bind(this);
+    this.state = { item: {}, offers: [], user: {} };
   }
 
   componentWillMount() {
     $.ajax({
       url: `/api/items/${this.props.params.id}`,
       type: 'GET'
-    }).done( (item) => {
-      this.setState({ item });
-      console.log('hello got the item');
+    }).done( (res) => {
+      this.setState({item:res.item});
+      this.setState({user:res.user});
+      this.props.dispatch(fetchItems());
     }).fail(data => {
       console.log(data.responseText);
     })
-    this.usrProfile();
   }
 
   addOffer(e) {
@@ -59,18 +60,18 @@ class Item extends React.Component {
     });
   }
 
-  usrProfile() {
-    let id = this.props.auth.id
-    $.ajax({
-      url: `/api/users/${id}`,
-      type: 'GET',
-      dataType: 'JSON'
-    }).done( res => {
-      let { users } = res;
-      this.setState({ users });
-    }).fail( msg => {
-      console.log(msg)
-    });
+  itemsNeeded() {
+    let arr = [];
+    this.props.items.map( (item) => {
+      if (!item.needed) {
+        arr.push(
+          <div className="panel-info">
+            <h5 className="center-align">Name {item.name}</h5>
+          </div> 
+        )
+      }
+    })
+    return arr;
   }
 
   render() {
@@ -92,7 +93,7 @@ class Item extends React.Component {
         <div>
           <div className="row item-desc-bg">
             <div className="col s12 offset-m2 m3 img-div">
-              <img className="z-depth-3" height="260px" src={url} />
+              <img className="z-depth-3" height="250px" width="335px" src={url} />
             </div>
             <div className="col s12 m3 item-info-div panel-info">
               <h4>Name: {name}</h4>
@@ -100,18 +101,19 @@ class Item extends React.Component {
               <h5>Condition {condition}</h5>
             </div>
           </div>
-          <div className="col s12 m12 border-div">
-          </div>
+          <div className="col s12 m12 border-div"></div>
           <div className="row add-offer-bg">
             <div className="col s12 m3 usr-info-div">
+              <h4 className="center-align">Contact Info</h4>
               <div className="panel-info">
-                <img width="329px" src={this.state.users.url}/>
-                <h5 className="center-align">Contact Email: {this.state.users.username}</h5>
-                <h5 className="center-align">School: {this.state.users.school}</h5>
+                <img width="329px" src={this.state.user.url}/>
+                <h5 className="center-align">Contact Email: {this.state.user.username}</h5>
+                <h5 className="center-align">School: {this.state.user.school}</h5>
               </div>
             </div>
             <div className="col s12 m5">
-              <p>{needed}</p>
+              <h4 className="center-align">Items Request for Trading</h4>
+              {this.itemsNeeded()}
             </div>
             <div className="col s12 m4 panel-info">
               <h3>Add Offer</h3>
@@ -129,7 +131,7 @@ class Item extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  return { auth: state.auth };
+  return { auth: state.auth, items: state.items };
 }
 
 
