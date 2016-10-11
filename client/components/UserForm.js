@@ -25,7 +25,7 @@ class UserForm extends React.Component {
       url: `/api/users/${this.props.user._id}`,
       type: 'PUT',
       dataType: 'JSON',
-      data: { url: image, school: this.refs.school.value, year: this.refs.year.value, general: this.refs.general.value }
+      data: { url: image, name: this.refs.name.value, school: this.refs.school.value, year: this.refs.year.value, general: this.refs.general.value }
 
     }).done( user => {
       this.props.updateUser();
@@ -53,6 +53,7 @@ class UserForm extends React.Component {
   }
 
   edit() {
+    let nm = this.props.user.name;
     let sch = this.props.user.school;
     let yr = this.props.user.year;
     let ag = this.props.user.age;
@@ -60,6 +61,19 @@ class UserForm extends React.Component {
     return (
       <div>
         <div className="col s12 m6 add-form">
+          <div className="row">
+            <div className="col s4 m4">
+              <h5 className="profile-text">Name</h5>
+            </div>
+            <div className="col s8 m8">
+              <input 
+                ref="name" 
+                required={true}
+                placeholder={nm}
+                defaultvalue={nm}
+                className="white-text" /> 
+            </div>
+          </div>
           <div className="input-field col s12">
               <select required={true} className="browser-default" ref="school">
                 <option value="" disabled selected>Select a University</option>

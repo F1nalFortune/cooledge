@@ -17,15 +17,12 @@ class User extends React.Component {
     this.updateItemUrl = this.updateItemUrl.bind(this);
     this.updateUserUrl = this.updateUserUrl.bind(this);
     this.form = this.form.bind(this);
-    this.toggleUpload = this.toggleUpload.bind(this);
-    this.uploadForm = this.uploadForm.bind(this);
     this.toggleForm = this.toggleForm.bind(this);
     this.getUser = this.getUser.bind(this);
     this.state = { users: [], items: [], offers: [], showItemForm: false, showUpload: false};
   }
 
   componentWillMount() {
-    this.props.dispatch(fetchItems());
     this.getUser();
   }
 
@@ -43,17 +40,6 @@ class User extends React.Component {
     });
    }
 
-  addItem = () => {
-    $.ajax({
-      url: '/api/items',
-      type: 'GET'
-    }).done( (items) => {
-      this.setState({ items });
-    }).fail(data => {
-      console.log(data);
-    });
-  }
-
   updateItemUrl(id, url) {
     let items = this.state.items.map( item => {
       if (item._id !== id) 
@@ -65,7 +51,7 @@ class User extends React.Component {
     });
 
     this.setState({ items });
-    this.props.dispatch(fetchItems());
+    this.getUser();
   }
 
   updateUserUrl(id, url) {
@@ -76,9 +62,6 @@ class User extends React.Component {
     this.setState({ showItemForm: !this.state.showItemForm })
   }
 
-  toggleUpload() {
-    this.setState({ showUpload: !this.state.showUpload })
-  }
 
   form() {
     if (this.state.showItemForm) {
@@ -88,7 +71,6 @@ class User extends React.Component {
             className="add-form"
             getUser={this.getUser}
             showItemForm={this.state.showItemForm}
-            addItem={this.addItem}
             toggleUpload={this.toggleUpload}
             toggleForm={this.toggleForm}
             uploadForm={this.uploadForm}
@@ -100,19 +82,6 @@ class User extends React.Component {
     }
   }
 
-  uploadForm(id) {
-    if (this.state.showUpload) {
-      return (
-        <div className="col s12 m12 center">
-          <Upload id={id}/>
-          <br />
-          <button className="btn" onClick={this.toggleUpload}>Done</button>
-        </div>
-      )
-    } else {
-      return null
-    }
-  }
 
   deleteItem(id) {
     this.setState({
@@ -146,7 +115,7 @@ class User extends React.Component {
     let availableItems = this.state.items.map( (item) => {
       if (!item.needed) {
         return (
-                <Collapsible className="Collapsible__trigger"trigger={item.name} triggerWhenOpen={item.condition} data-collapsible="accordion">
+                <Collapsible key={item._id} className="Collapsible__trigger"trigger={item.name} triggerWhenOpen={item.condition} data-collapsible="accordion">
                   <div className="Collapsible">
                     <div className="row Collapsible__contentInner ">
                      <div className="col s12 m12">
@@ -161,7 +130,7 @@ class User extends React.Component {
                     </div>
                     <div className="row Collapsible__contentInner">
                       <div className="col s3 m3 offset-m3 offset-s3">
-                        <Link to={`/items/${item._id}`} key={item._id} className="collection-item">
+                        <Link to={`/items/${item._id}`}  className="collection-item">
                           Offers
                         </Link>
                       </div>
@@ -181,7 +150,7 @@ class User extends React.Component {
       if (item.needed) {
         return (
 
-                <Collapsible className="Collapsible__trigger"trigger={item.name} triggerWhenOpen={item.condition} data-collapsible="accordion">
+                <Collapsible key={item._id} className="Collapsible__trigger"trigger={item.name} triggerWhenOpen={item.condition} data-collapsible="accordion">
                   <div className="Collapsible">
                     <div className="row Collapsible__contentInner ">
                      <div className="col s12 m12">
@@ -196,7 +165,7 @@ class User extends React.Component {
                     </div>
                     <div className="row Collapsible__contentInner">
                       <div className="col s3 m3 offset-m3 offset-s3">
-                        <Link to={`/items/${item._id}`} key={item._id} className="collection-item">
+                        <Link to={`/items/${item._id}`} className="collection-item">
                           Offers
                         </Link>
                       </div>
@@ -268,10 +237,8 @@ class User extends React.Component {
             </div>
         </div>
       </div>
-      <div className="row user-body">
+      <div className="row add-offer-bg">
         { this.form() }
-        <br />
-        { this.uploadForm() }
         <div className="col s4 m4">
           <h3 className="center">Items available</h3>
 
@@ -291,7 +258,6 @@ class User extends React.Component {
 
         </div>
       </div>
-      <hr/>
     </div>
     );
   }

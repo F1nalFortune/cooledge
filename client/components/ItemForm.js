@@ -9,7 +9,7 @@ class ItemForm extends React.Component {
   constructor(props) {
     super(props)
     this.addItem = this.addItem.bind(this);
-    this.state = { items: [], upload: false };
+    this.state = { items: [], upload: false, id: null };
   }
 
    addItem(e) {
@@ -31,10 +31,9 @@ class ItemForm extends React.Component {
         needed: booleanValue
        }
      }).done( (item) => {
-       this.props.toggleUpload();
-       this.props.uploadForm(item._id);
-       this.refs.form.reset();
-       this.props.addItem();
+      this.setState({ id: item._id, upload: true })
+      this.props.getUser();
+      this.refs.form.reset();
      });
    }
 
@@ -70,6 +69,12 @@ class ItemForm extends React.Component {
               <button className="btn btn-large waves-light blue-grey center" type="submit">Add Item</button>
             </div>
           </form>
+          { this.state.upload ? 
+            <div classNam="center">
+              <Upload id={this.state.id} />
+            </div> 
+            : null 
+          }
         </div>
 
       </div>

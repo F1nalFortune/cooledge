@@ -8,6 +8,7 @@ class Item extends React.Component {
     super(props);
     this.addOffer = this.addOffer.bind(this);
     this.addOfferForm = this.addOfferForm.bind(this);
+    this.deleteOffer = this.deleteOffer.bind(this);
     this.itemsNeeded = this.itemsNeeded.bind(this);
     this.getOffer = this.getOffer.bind(this);
     this.state = { item: {}, items: [], offer: {}, user: {} };
@@ -129,7 +130,7 @@ class Item extends React.Component {
             <div className="col s12 m3 usr-info-div">
               <h4 className="center-align">Contact Info</h4>
               <div className="panel-info">
-                <img width="329px" src={this.state.user.url}/>
+                <img width="100%" src={this.state.user.url}/>
                 <h5 className="center-align">Contact Email: {this.state.user.username}</h5>
                 <h5 className="center-align">School: {this.state.user.school}</h5>
               </div>

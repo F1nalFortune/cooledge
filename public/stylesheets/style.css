@@ -137,6 +137,7 @@ body {
   margin-bottom: 0px;
   padding-bottom: 25px;
   padding-top: 20px;
+  min-height: 300px;
 }
 
 .border-div {
@@ -207,11 +208,12 @@ a {
 }
 
 
-.bck {
+.row.bck {
   background: url('https://static.pexels.com/photos/1486/wood-pattern-ground-parquet-floor.jpg') no-repeat center center fixed;
   background-size: cover;
   height: 450px;
   width: 100%;
+  margin-bottom: 0;
 }
 .gradient {
   
@@ -272,10 +274,6 @@ a {
 
 .long {
   width: 20em;
-}
-
-.user-body {
-  min-height: 300px;
 }
 /* Collabsible Styles */
 

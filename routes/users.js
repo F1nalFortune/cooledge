@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
 router.put('/:id', (req, res) => {
   User.findByIdAndUpdate(
     req.params.id,
-    { $set : { url: req.body.url, school: req.body.school, 
+    { $set : { url: req.body.url, name: req.body.name, school: req.body.school, 
       year: req.body.year, general: req.body.general }},
     (err, user) => {
       res.json(user);
