@@ -38,7 +38,7 @@ class Item extends React.Component {
     e.preventDefault();
     var itemId = this.props.params.id;
     $.ajax({
-      url: `/api/offers`,
+      url: '/api/offers',
       type: 'POST',
       data: {
         name: this.refs.name.value,
