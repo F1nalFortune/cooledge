@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "heroku:post-deploy": "npm run bower install"
+    "heroku-postbuild": "npm run bower install"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
