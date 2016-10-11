@@ -20,12 +20,13 @@ router.post('/signup', function(req, res) {
 
 router.post('/signin', function(req, res) {
   User.findOne({ username: req.body.email}, function(err, user) {
+    if (!user)
+      return res.json(500, ("User does not exist"));
     user.authenticate(req.body.password, function(err, user, passwordErr) {
       if (err)
-        return res.json(500, 'User not found');
+        return res.json(500, (err));
       if (passwordErr)
-        return res.json(500, passwordErr.message)
-
+        return res.json(500, passwordErr.message);
       return res.json({ id: user.id });
     });
   });
