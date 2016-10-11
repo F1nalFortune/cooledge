@@ -109,7 +109,7 @@ class User extends React.Component {
           </div>
         </div>
       </div>
-      <div className="row user-body">
+      <div className="row add-offer-bg">
         <div className="col s6 m6">
           <h3 className="center">Items available</h3>
 
@@ -123,7 +123,6 @@ class User extends React.Component {
 
         </div>
       </div>
-      <hr/>
     </div>
     );
   }

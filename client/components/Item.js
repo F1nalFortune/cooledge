@@ -127,18 +127,19 @@ class Item extends React.Component {
           </div>
           <div className="col s12 m12 border-div"></div>
           <div className="row add-offer-bg">
-            <div className="col s12 m3 usr-info-div">
-              <h4 className="center-align">Contact Info</h4>
-              <div className="panel-info">
-                <img width="100%" src={this.state.user.url}/>
-                <h5 className="center-align">Contact Email: {this.state.user.username}</h5>
-                <h5 className="center-align">School: {this.state.user.school}</h5>
+            <Link to='/dashboard/public/{this.state.user._id}'>
+              <div className="col s12 m3 usr-info-div">
+                <h4 className="center-align">Contact Info</h4>
+                <div className="panel-info">
+                  <img width="100%" src={this.state.user.url}/>
+                  <h5 className="center-align">Contact Email: {this.state.user.username}</h5>
+                  <h5 className="center-align">School: {this.state.user.school}</h5>
+                </div>
               </div>
-            </div>
+            </Link>
             <div className="col s12 m5">
               <h4 className="center-align">Items Request for Trading</h4>
               {this.itemsNeeded()}
-              <Link to='/dashboard/public/{this.state.user._id}'>More Info</Link>
             </div>
             {this.addOfferForm()}
           </div>

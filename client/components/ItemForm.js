@@ -70,7 +70,7 @@ class ItemForm extends React.Component {
             </div>
           </form>
           { this.state.upload ? 
-            <div classNam="center">
+            <div className="center">
               <Upload id={this.state.id} />
             </div> 
             : null 
