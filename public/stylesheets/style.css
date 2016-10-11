@@ -167,6 +167,7 @@ a {
   cursor: pointer; 
 }
 
+
 .top {
   background-image: url('http://res.cloudinary.com/mydevpoint/image/upload/v1475279082/unigates_lssl3p.jpg');
   background-repeat: no-repeat;
@@ -314,3 +315,23 @@ a {
 
 /* End Collapsible Styles */
 
+.about {
+  padding-top: 70px;
+  padding-bottom: 50px;
+}
+
+.about-pic {
+  margin-top: 1em;
+  border-radius: 50%;
+  max-height: 300px;
+}
+
+.about-back {
+  background-color: #44626B;
+  box-shadow: 16px 15px 6px 0px #000;
+}
+
+.about-link{
+  margin-top: 4px;
+  margin-bottom: 4px;
+}

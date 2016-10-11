@@ -1,26 +1,71 @@
 import React from 'react';
 
 
-const About = () => (
-  <div>
-    <h3 id="title">About</h3>
-    <p id="about"> Lorem Khaled Ipsum is a major key to success. Let me be clear, you have
-    to make it through the jungle to make it to paradise, that’s the key, Lion!
-    The weather is amazing, walk with me through the pathway of more success.
-    Take this journey with me, Lion! Celebrate success right, the only way,
-    apple. Learning is cool, but knowing is better, and I know the key to
-    success. Fan luv. It’s on you how you want to live your life. Everyone has a
-     choice. I pick my choice, squeaky clean. In life there will be road blocks
-     but we will over come it. Give thanks to the most high.
+class About extends React.Component{
+  constructor(props){
+    super(props);
+  }
 
-     Egg whites, turkey sausage, wheat toast, water. Of course they don’t want
-     us to eat our breakfast, so we are going to enjoy our breakfast. They will
-     try to close the door on you, just open it. Another one. You do know, you
-     do know that they don’t want you to have lunch. I’m keeping it real with
-     you, so what you going do is have lunch. They will try to close the door on
-      you, just open it. They don’t want us to win.</p>
-  </div>
+  componentDidMount(){
+    window.jQuery('.carousel.carousel-slider').carousel({full_width: true, indicators: true});
+  }
 
-);
+  render(){
+    return(
+      <div className='row bck about'>
+
+        <div className='col about-back s12 m8 offset-m2'>
+          <h1 className='col s12 center'>About the Team and App</h1>
+          <p className='col s12'>asdfasdfasdf</p>
+        </div>
+
+        {/*
+          this is the start of each persons about.
+          Replace img src with your image
+          Be sure to replace the href with appropriate links.
+          Make sure that at the start of every set of 3, use the first template
+          templates 2 is for every second and third
+          (ex. template-1 template-2 temp-2 
+          temp-1 temp-2 temp-2)
+        */}
+
+        {/*template 1
+        <div className='row about-back col s12 m2 offset-m2'>
+
+          <img 
+            className='col s6 offset-s3 offset-m1 m10  about-pic'
+            src='http://vignette3.wikia.nocookie.net/blossom/images/d/da/Sonia90.jpg/revision/latest?cb=20131112131310'
+          />
+
+          <p className='col offset-s3 s6 offset-m1 m10'>
+            This is a paragraph about the you.
+          </p>
+
+          <i className="col m3 fa fa-github fa-2x" aria-hidden="true"></i><a href="#" className='about-link col m9 center'>Github</a>
+          <i className="col m3 fa fa-linkedin fa-2x" aria-hidden="true"></i><a href='#' className='about-link col m9 center'>LinkedIn</a>
+          <i className='col m3 fa fa-envelope fa-2x' aria-hidden='true'></i><a href='#' className='about-link col m9 center'>E-mail</a>
+        </div>
+        */}
+
+        
+        {/*template 2
+        <div className='row about-back col s12 m2 offset-m1'>
+          <img 
+            className='col s6 offset-s3 offset-m1 m10  about-pic'
+            src='http://vignette3.wikia.nocookie.net/blossom/images/d/da/Sonia90.jpg/revision/latest?cb=20131112131310'
+          />
+          <p className='col offset-s3 s6 offset-m1 m10'>
+            This is a paragraph about the people. sdkasdads d dsfkasdf ds fds kdsa kdsak fs jkdfjkfsdjk
+          </p>
+          <i className="col m3 fa fa-github fa-2x" aria-hidden="true"></i><a href="#" className='about-link col m9 center'>Github</a>
+          <i className="col m3 fa fa-linkedin fa-2x" aria-hidden="true"></i><a href='#' className='about-link col m9 center'>LinkedIn</a>
+          <i className='col m3 fa fa-envelope fa-2x' aria-hidden='true'></i><a href='#' className='about-link col m9 center'>E-mail</a>
+        </div>
+        */}
+
+      </div>
+    )
+  }
+}
 
 export default About;
