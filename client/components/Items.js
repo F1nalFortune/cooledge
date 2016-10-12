@@ -5,6 +5,7 @@ import { Link } from 'react-router';
 import { fetchItems, searchItems } from '../actions';
 import Upload from './Upload';
 import Filter from './Filter';
+// import ReactPaginate from 'react-paginate';
 
 class Items extends React.Component {
   constructor(props) {
@@ -14,7 +15,7 @@ class Items extends React.Component {
     this.toggleForm = this.toggleForm.bind(this);
     this.updateItemUrl = this.updateItemUrl.bind(this)
     this.form = this.form.bind(this);
-    this.state = { items: [], showForm: false, userSchool: [] };
+    this.state = { items: [], showForm: false, userSchool: [], pageNum: 1 };
   }
 
   componentWillMount() {
@@ -138,14 +139,25 @@ class Items extends React.Component {
             </ul>
             <br />
           </div>
+         {/* <ReactPaginate previousLabel={"previous"}
+               nextLabel={"next"}
+               breakLabel={<a href="">...</a>}
+               breakClassName={"break-me"}
+               pageNum={this.state.pageNum}
+               marginPagesDisplayed={2}
+               pageRangeDisplayed={5}
+               clickCallback={this.handlePageClick}
+               containerClassName={"pagination"}
+               subContainerClassName={"pages pagination"}
+               activeClassName={"active"} /> */}
           <ul className="pagination center">
             <li className="disabled"><a href="#!"><i className="material-icons">chevron_left</i></a></li>
             <li className="active"><a href="#!">1</a></li>
-            <li className="waves-effect"><a href="#!">2</a></li>
-            <li className="waves-effect"><a href="#!">3</a></li>
-            <li className="waves-effect"><a href="#!">4</a></li>
-            <li className="waves-effect"><a href="#!">5</a></li>
-            <li className="waves-effect"><a href="#!"><i className="material-icons">chevron_right</i></a></li>
+            <li className="waves-effect"><a href="#">2</a></li>
+            <li className="waves-effect"><a href="#">3</a></li>
+            <li className="waves-effect"><a href="#">4</a></li>
+            <li className="waves-effect"><a href="#">5</a></li>
+            <li className="waves-effect"><a href="#"><i className="material-icons">chevron_right</i></a></li>
           </ul>
         </div>
       </div>

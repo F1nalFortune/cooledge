@@ -99,12 +99,18 @@ class User extends React.Component {
         <div className="container toppad">
           <div className="row">
             <div className="col s12 m4">
-              <img height="200px" src={this.state.users.url}/>
               <h5 className="profile-text">{this.state.users.name}</h5>  
+              <img height="200px" src={this.state.users.url}/>
             </div>
             <div className="col s12 m8">
-              <h5 className="profile-text">{this.state.users.school}</h5>
-              <h5 className="profile-text">{this.state.users.general}</h5>  
+              <div className="row">
+                <h5 className="profile-text">School:</h5>
+                <h5 className="profile-text">{this.state.users.school}</h5>
+              </div>
+              <div className="row">
+                <h5 className="profile-text">General:</h5>
+                <h5 className="profile-text">{this.state.users.general}</h5>  
+              </div>
             </div>
           </div>
         </div>

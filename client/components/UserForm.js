@@ -40,7 +40,7 @@ class UserForm extends React.Component {
   userInfo() {
     return(
         <div>
-          <div className="col s12 m6 user-info">
+          <div className="col s12 m10 user-info">
             <div><span className="thirty">School:</span>{this.props.user.school}</div>
             <div><span className="thirty">Graduating Year:</span>{this.props.user.year}</div>
             <div><span className="thirty">About Me:</span>{this.props.user.general}</div>

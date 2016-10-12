@@ -69,12 +69,7 @@ class ItemForm extends React.Component {
               <button className="btn btn-large waves-light blue-grey center" type="submit">Add Item</button>
             </div>
           </form>
-          { this.state.upload ? 
-            <div className="center">
-              <Upload id={this.state.id} />
-            </div> 
-            : null 
-          }
+         
         </div>
 
       </div>
