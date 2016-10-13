@@ -127,7 +127,7 @@ class Item extends React.Component {
           </div>
           <div className="col s12 m12 border-div"></div>
           <div className="row add-offer-bg">
-            <Link to='/dashboard/public/{this.state.user._id}'>
+            <Link to={`/dashboard/public/${this.state.user._id}`}>
               <div className="col s12 m3 usr-info-div">
                 <h4 className="center-align">Contact Info</h4>
                 <div className="panel-info">

@@ -14,9 +14,8 @@ class About extends React.Component{
     return(
       <div className='row bck about'>
 
-        <div className='col about-back s12 m8 offset-m2'>
-          <h1 className='col s12 center'>About the Team and App</h1>
-          <p className='col s12'>asdfasdfasdf</p>
+        <div className='col s12 m8 offset-m2'>
+          <h1 className='col s12 center white-text'>About the Team and App</h1>
         </div>
 
         {/*

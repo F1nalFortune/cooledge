@@ -14,14 +14,14 @@ class User extends React.Component {
   }
 
   componentWillMount() {
-    this.props.dispatch(fetchItems());
     this.getUser();
   }
 
   getUser(){
-    let id = this.props.auth.id
+
+   
     $.ajax({
-      url: `/api/users/${id}`,
+      url: `/api/users/${this.props.params.id}`,
       type: 'GET',
       dataType: 'JSON'
     }).done( res => {
