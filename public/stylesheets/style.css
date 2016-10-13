@@ -6,6 +6,13 @@
   height: 250px;
 }
 
+.bck{
+    background-image: url('http://turbophoto.com/Free-Stock-Images/Images/Water%20Fountains.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    position: relative;
+}
+
 #about{
   margin-left: 10%;
   margin-right: 10%;
@@ -27,6 +34,14 @@
   width:50%;
   border-style: solid;
   border-color: grey;
+}
+
+#ten{
+  padding-top: 10%;
+}
+
+.hundred{
+  width: 100%;
 }
 
 .bround{
@@ -86,6 +101,13 @@
   padding-right: 10px;
 }
 
+.greenz{
+  color: #26a69a;
+}
+
+.fifty{
+  width: 70%;
+}
 
 .sitefonts {
   font-family: 'Playfair Display SC', serif
