@@ -39,7 +39,7 @@ class Landing extends React.Component {
 					<h3 className='small-shadow center-align white-text'>The University Bartering App</h3>
 					<div  className='col s12 m12'>
 						<br />
-						<button  className='btn btn-large waves-effect waves-light col s2 offset-s5 blue-grey' onClick={this.toggleForm}>Register now</button>
+						<button  className='btn btn-large waves-effect waves-light col s2 offset-s5 btn-clr' onClick={this.toggleForm}>Register now</button>
 					</div>
 				</div>
 			</div>
