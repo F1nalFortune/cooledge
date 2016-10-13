@@ -21,7 +21,7 @@ class About extends React.Component{
 
                   <div className="col s4">
                     <div className="card-panel z-depth-3">
-                      <img id="image-id" className="hundred" src="http://i1028.photobucket.com/albums/y348/f1nalfortune/edwin_zpsoqqvihqr.jpg?t=1476299294" />
+                      <img id="image-id" className="hundred" src="/images/edwin.jpg" />
                       <h5 className="card-title center crd">Edwin</h5>
                       <span className="black-text">
                         I have spent the last several years working in the field of video and audio post-production.
@@ -40,10 +40,9 @@ class About extends React.Component{
 
                   <div className="col s4">
                     <div className="card-panel white z-depth-3">
-                      <img id="image-id" className="fifty" src="http://i1028.photobucket.com/albums/y348/f1nalfortune/brian_zpsdqwprva9.jpg?t=1476299294" />
+                      <img id="image-id" className="fifty" src="/images/brian.jpg" />
                       <h5 className="card-title center salt black-text crd">Brian Phelps</h5>
-                      <span className="black-text">
-                        Spending the last four years commited to graduating college, I wanted to continue my education. 
+                      <span className="black-text"> 
                         After receiving a diploma with a focus on business marketing, I became reaquainted with computers. 
                         I have been interested in them since I was very young, and wish to use the skills I earned at DevPoint 
                         Labs in the field! I enjoy music, coding, playing sports, and learning.
@@ -58,11 +57,11 @@ class About extends React.Component{
 
                   <div className="col s4">
                     <div className="card-panel z-depth-3">
-                      <img id="image-id" className="hundred" src="http://i1028.photobucket.com/albums/y348/f1nalfortune/josh_zps70wqwqy7.jpg?t=1476299292" />
+                      <img id="image-id" className="hundred" src="/images/josh.jpg" />
                       <h5 className="card-title center salt crd">Josh</h5>
                       <span className="black-text">
                         Josh is always looking to improve, be it at coding or everyday life. He’s positive about most things 
-                        but can easily stress himself out.
+                        but can easily stress himself out. Enjoys playing games, rock climbing, and drawing.
                       </span>
                       <br/>
                       <a className="greenz fa fa-github fa-2x" href="https://github.com/sonicspeed123"></a>
