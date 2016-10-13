@@ -32,7 +32,7 @@ class About extends React.Component{
                       <a className="greenz fa fa-github fa-2x" href="https://github.com/edsant1" ></a>
                       <a className="greenz fa fa-linkedin-square fa-2x" href="https://www.linkedin.com/in/edwinsantizo" ></a>
                       <br/>
-                      <a className="greenz purpl buttonvw" href="sullivangln87@gmail.com">edwin@mia.com</a>
+                      <a className="greenz purpl buttonvw" href="sullivangln87@gmail.com">edwins10329@gmail.com</a>
                     </div>
                   </div>
 
