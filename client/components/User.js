@@ -120,7 +120,7 @@ class User extends React.Component {
                     <div className="row Collapsible__contentInner ">
                      <div className="col s12 m12">
                         <Upload updateItemUrl={this.updateItemUrl} id={item._id} />
-                        <img width="100%" src={item.url ? item.url : {} } />
+                        <img className="img-size" src={item.url ? item.url : {} } />
                       </div>
                       <div className="col s12 m12">
                         <h4>
@@ -155,7 +155,7 @@ class User extends React.Component {
                     <div className="row Collapsible__contentInner ">
                      <div className="col s12 m12">
                         <Upload updateItemUrl={this.updateItemUrl} id={item._id} />
-                        <img width="400px" src={item.url ? item.url : {} } />
+                        <img className="img-size" src={item.url ? item.url : {} } />
                       </div>
                       <div className="col s12 m12">
                         <h4>
@@ -219,7 +219,7 @@ class User extends React.Component {
       <div className="row bck">
         <div className="container toppad">
           <div className="row">
-            <div className="col s12 m5">
+            <div className="col s12 m5 center">
               <img height="200px" src={this.state.users.url}/>
               <h5 className="profile-text">{this.state.users.name}</h5>  
             </div>

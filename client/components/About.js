@@ -21,7 +21,7 @@ class About extends React.Component{
 
                   <div className="col s4">
                     <div className="card-panel z-depth-3">
-                      <img id="image-id" className="hundred" src="/images/edwin.jpg" />
+                      <img id="image-id" className="hundred" src="http://i1028.photobucket.com/albums/y348/f1nalfortune/edwin_zpsoqqvihqr.jpg?t=1476299294" />
                       <h5 className="card-title center crd">Edwin</h5>
                       <span className="black-text">
                         I have spent the last several years working in the field of video and audio post-production.
@@ -32,7 +32,7 @@ class About extends React.Component{
                       <a className="greenz fa fa-github fa-2x" href="https://github.com/edsant1" ></a>
                       <a className="greenz fa fa-linkedin-square fa-2x" href="https://www.linkedin.com/in/edwinsantizo" ></a>
                       <br/>
-                      <a className="greenz purpl buttonvw" href="sullivangln87@gmail.com">edwins10329@gmail.com</a>
+                      <a className="greenz purpl buttonvw" href="edwins10329@gmail.com">edwins10329@gmail.com</a>
                     </div>
                   </div>
 
@@ -40,7 +40,7 @@ class About extends React.Component{
 
                   <div className="col s4">
                     <div className="card-panel white z-depth-3">
-                      <img id="image-id" className="fifty" src="/images/brian.jpg" />
+                      <img id="image-id" className="fifty" src="http://i1028.photobucket.com/albums/y348/f1nalfortune/brian_zpsdqwprva9.jpg?t=1476299294" />
                       <h5 className="card-title center salt black-text crd">Brian Phelps</h5>
                       <span className="black-text">
                         Spending the last four years commited to graduating college, I wanted to continue my education. 
@@ -52,13 +52,13 @@ class About extends React.Component{
                       <a className="greenz fa fa-github fa-2x" href="https://github.com/F1nalFortune"></a>
                       <a className="greenz fa fa-linkedin-square fa-2x" href="https://www.linkedin.com/in/phelpsb92"></a>
                       <br/>
-                      <a className="greenz purpl buttonvw" href="schristopherson@gmail.com">phelpsb92@gmail.com</a>
+                      <a className="greenz purpl buttonvw" href="phelpsb92@gmail.com">phelpsb92@gmail.com</a>
                     </div>
                   </div>
 
                   <div className="col s4">
                     <div className="card-panel z-depth-3">
-                      <img id="image-id" className="hundred" src="/images/josh.jpg" />
+                      <img id="image-id" className="hundred" src="http://i1028.photobucket.com/albums/y348/f1nalfortune/josh_zps70wqwqy7.jpg?t=1476299292" />
                       <h5 className="card-title center salt crd">Josh</h5>
                       <span className="black-text">
                         Josh is always looking to improve, be it at coding or everyday life. He’s positive about most things 
@@ -68,7 +68,7 @@ class About extends React.Component{
                       <a className="greenz fa fa-github fa-2x" href="https://github.com/sonicspeed123"></a>
                       <a className="greenz fa fa-linkedin-square fa-2x" href="https://www.linkedin.com/in/sahagunjoshua" ></a>
                       <br/>
-                      <a className="greenz purpl buttonvw" href="lovelandnoah@gmail.com">joshuasahagun1996@yahoo.com</a>
+                      <a className="greenz purpl buttonvw" href="joshuasahagun1996@yahoo.com">joshuasahagun1996@yahoo.com</a>
                     </div>
                   </div>
 

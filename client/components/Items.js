@@ -120,9 +120,9 @@ class Items extends React.Component {
     let items = itemArr.map( (item) => {
       return (
       <div className="col s10 m4 item-list-div">
-        <Link to={`/items/${item._id}`} key={item._id} >
-          <img className="img-size" src={item.url} />
-        </Link>
+          <Link to={`/items/${item._id}`} key={item._id} >
+            <img className="img-size" src={item.url} />
+          </Link>
       </div>
       );
     });
