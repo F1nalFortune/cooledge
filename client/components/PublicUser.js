@@ -41,7 +41,7 @@ class User extends React.Component {
                   <div className="Collapsible">
                     <div className="row Collapsible__contentInner ">
                      <div className="col s12 m12">
-                        <img width="500px" src={item.url ? item.url : {} } />
+                        <img className="img-size" src={item.url ? item.url : {} } />
                       </div>
                       <div className="col s12 m12">
                         <h4>
@@ -50,7 +50,7 @@ class User extends React.Component {
                       </div>
                     </div>
                     <div className="row Collapsible__contentInner">
-                      <div className="col s3 m3 offset-m3 offset-s3">
+                      <div className="center">
                         <Link to={`/items/${item._id}`} key={item._id} className="collection-item">
                           Item Details
                         </Link>
@@ -70,19 +70,12 @@ class User extends React.Component {
                   <div className="Collapsible">
                     <div className="row Collapsible__contentInner ">
                      <div className="col s12 m12">
-                        <img width="500px" src={item.url ? item.url : {} } />
+                        <img className="img-size" src={item.url ? item.url : {} } />
                       </div>
                       <div className="col s12 m12">
                         <h4>
                           {item.description}
                         </h4>
-                      </div>
-                    </div>
-                    <div className="row Collapsible__contentInner">
-                      <div className="col s3 m3 offset-m3 offset-s3">
-                        <Link to={`/items/${item._id}`} key={item._id} className="collection-item">
-                          Item details
-                        </Link>
                       </div>
                     </div>
 
@@ -99,12 +92,18 @@ class User extends React.Component {
         <div className="container toppad">
           <div className="row">
             <div className="col s12 m4">
-              <img height="200px" src={this.state.users.url}/>
               <h5 className="profile-text">{this.state.users.name}</h5>  
+              <img height="200px" src={this.state.users.url}/>
             </div>
             <div className="col s12 m8">
-              <h5 className="profile-text">{this.state.users.school}</h5>
-              <h5 className="profile-text">{this.state.users.general}</h5>  
+              <div className="row">
+                <h5 className="profile-text">School:</h5>
+                <h5 className="profile-text">{this.state.users.school}</h5>
+              </div>
+              <div className="row">
+                <h5 className="profile-text">General:</h5>
+                <h5 className="profile-text">{this.state.users.general}</h5>  
+              </div>
             </div>
           </div>
         </div>

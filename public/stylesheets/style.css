@@ -2,8 +2,19 @@
   position: static !important;
 }
 .img-size {
-  width: 375px;
+  width: 100%;
   height: 250px;
+}
+
+.btn.btn-clr {
+  background-color: rgba(0,0,0,0.65);
+}
+
+.bck{
+    background-image: url('http://turbophoto.com/Free-Stock-Images/Images/Water%20Fountains.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    position: relative;
 }
 
 #about{
@@ -29,6 +40,18 @@
   border-color: grey;
 }
 
+#ten{
+  padding-top: 10%;
+}
+
+.hundred{
+  width: 100%;
+}
+
+.bround{
+  background-color: #edefed !important;
+}
+
 .collapsible-body{
   background-color: white;
 }
@@ -42,7 +65,7 @@
 
 .row.item-filter-div {
   background-color: #edefed;
-  margin-bottom: 50px;
+  margin-bottom: 0px;
 }
 
 .thirty{
@@ -82,6 +105,13 @@
   padding-right: 10px;
 }
 
+.greenz{
+  color: #26a69a;
+}
+
+.fifty{
+  width: 70%;
+}
 
 .sitefonts {
   font-family: 'Playfair Display SC', serif
@@ -122,14 +152,13 @@ body {
 }
 
 .row.item-desc-bg {
-  background: url('https://static.pexels.com/photos/1486/wood-pattern-ground-parquet-floor.jpg') no-repeat center center fixed;
+  background: url('../images/dashboardbg1.jpg') no-repeat center center fixed;
   background-size: cover;
   height: 450px;
   width: 100%;
   padding-top: 100px;
   padding-bottom: 60px;
   margin-bottom: 0px;
-  color: #484848;
 }
 
 .row.add-offer-bg {

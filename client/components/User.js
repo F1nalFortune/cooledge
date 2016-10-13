@@ -120,7 +120,7 @@ class User extends React.Component {
                     <div className="row Collapsible__contentInner ">
                      <div className="col s12 m12">
                         <Upload updateItemUrl={this.updateItemUrl} id={item._id} />
-                        <img width="400px" src={item.url ? item.url : {} } />
+                        <img className="img-size" src={item.url ? item.url : {} } />
                       </div>
                       <div className="col s12 m12">
                         <h4>
@@ -155,7 +155,7 @@ class User extends React.Component {
                     <div className="row Collapsible__contentInner ">
                      <div className="col s12 m12">
                         <Upload updateItemUrl={this.updateItemUrl} id={item._id} />
-                        <img width="400px" src={item.url ? item.url : {} } />
+                        <img className="img-size" src={item.url ? item.url : {} } />
                       </div>
                       <div className="col s12 m12">
                         <h4>
@@ -164,11 +164,6 @@ class User extends React.Component {
                       </div>
                     </div>
                     <div className="row Collapsible__contentInner">
-                      <div className="col s3 m3 offset-m3 offset-s3">
-                        <Link to={`/items/${item._id}`} className="collection-item">
-                          Offers
-                        </Link>
-                      </div>
                       <div className="col s3 m3">
                         <button className="btn red" onClick={() => this.deleteItem(item._id)}>
                           Delete
@@ -224,12 +219,13 @@ class User extends React.Component {
       <div className="row bck">
         <div className="container toppad">
           <div className="row">
-            <div className="col s12 m4">
+            <div className="col s12 m5 center">
               <img height="200px" src={this.state.users.url}/>
               <h5 className="profile-text">{this.state.users.name}</h5>  
             </div>
-
-            <UserForm user={this.state.users} updateUser={this.getUser} updateUrl={this.updateUserUrl}/>
+            <div className="col s12 m7">
+              <UserForm user={this.state.users} updateUser={this.getUser} updateUrl={this.updateUserUrl}/>
+            </div>
             <br />
           </div>
             <div className="center">

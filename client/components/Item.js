@@ -119,7 +119,7 @@ class Item extends React.Component {
             <div className="col s12 offset-m2 m3 img-div">
               <img className="z-depth-3" height="250px" width="335px" src={url} />
             </div>
-            <div className="col s12 m6 item-info-div panel-info">
+            <div className="col s12 offset-m1 m3 item-info-div panel-info bround">
               <h4>Name: {name}</h4>
               <h5>{description}</h5>
               <h5>Condition {condition}</h5>
