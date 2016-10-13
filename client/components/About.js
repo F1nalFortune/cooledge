@@ -24,9 +24,7 @@ class About extends React.Component{
                       <img id="image-id" className="hundred" src="/images/edwin.jpg" />
                       <h5 className="card-title center crd">Edwin</h5>
                       <span className="black-text">
-                        I have spent the last several years working in the field of video and audio post-production.
-                        I have been able to see the power of internet development and how it creates a connection
-                        with the user. I enjoy hiking, fishing, graphic art, traveling,and reading.
+                        Coming from Technical support/helpdesk background, excited to start a new journey to software developer. Food enthusiast, Netflix binger! 
                       </span>
                       <br/>
                       <a className="greenz fa fa-github fa-2x" href="https://github.com/edsant1" ></a>
